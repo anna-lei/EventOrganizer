@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+eclipse {
+    wtp {
+        facet {
+            facet name: "java", version: "1.7"          
+            facet name: "jst.web", version: "3.0"       
+            facet name: "jst.jsf", version: "2.2"       
+        }
+    }
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+def javaMainSrcDir = new File ('src/main/java')
+task createDirs << {
+	javaMainSrcDir.mkdirs()
+}
+
+dependencies {
+	providedCompile 'com.sun.faces:jsf-api:2.2.10'
+	compile 'org.hibernate:hibernate-core:5.2.8.Final'
+}
