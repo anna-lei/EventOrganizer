@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css"></link>		
+	</head>
+	<h:outputLabel class="headline">Registrierung</h:outputLabel>
+	
+	<h:form>
+		<h:outputText class="warning" rendered="#{registerBean.userExist}" value="Der User existiert bereits."></h:outputText>
+		<h:selectOneRadio required="true">
+   			<f:selectItem itemValue="#{registerBean.type}" itemLabel="Anwender" />
+	   		<f:selectItem itemValue="#{registerBean.type}" itemLabel="Manager" />
+		</h:selectOneRadio>
+	
+		<div class="leftSide">
+			<p>Anrede</p>
+			<h:inputText value="#{registerBean.anrede}"></h:inputText>
+			<p>Vorname</p>
+			<h:inputText value="#{registerBean.vorname}"></h:inputText>
+			<p>Nachname</p>
+			<h:inputText value="#{registerBean.nachname}"></h:inputText>
+			<p>Geburtsdatum</p>
+			<h:inputText value="#{registerBean.date}"></h:inputText>
+		</div>
+		
+		<div class="rightSide">
+			<p>Email</p>
+			<h:inputText value="#{registerBean.email}"></h:inputText>
+			<p>Passwort</p>
+			<h:inputSecret value="#{registerBean.password}"></h:inputSecret>
+			<p>Passwort wiederholen</p>
+			<h:inputSecret value="#{registerBean.password}"></h:inputSecret>
+		</div>
+		
+		<br></br>
+		<br></br>
+		<h:commandButton class="button" action="#{registerBean.cancel}" value="Abbrechen"> </h:commandButton>
+		<h:commandButton class="button" action="#{registerBean.register}" value="Registrieren"> </h:commandButton>
+	</h:form>
+</body>
+</html>
