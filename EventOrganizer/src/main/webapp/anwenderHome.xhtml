@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<body>
+	<h3><h:outputText rendered="#{not empty userService.aktuellUser}" value = "Herzlich Willkommen #{userService.getUsername(userService.aktuellUser)}" ></h:outputText></h3>
+	<br />
+	<h:form>
+		<h3>Suche:</h3>
+		<h:inputText value="Suchbegriff weiterleiten"></h:inputText>
+		<h:commandButton  value="suche"> </h:commandButton>
+	</h:form><br />
+	<h4>nächste Veranstaltungen:</h4>
+	<ul>
+		<ui:repeat var="user" value="#{userService.users}">
+		<li><a href="eventDetail.jsf"><h:outputText value="#{user.username}"/></a>
+		<br />
+		<table>
+		  <tr>
+		    <th>Datum und Uhrzeit</th>
+		    <th>Veranstaltungsort</th> 
+		    <th>verfügbare Tickets</th>
+		  </tr>
+		  <tr>
+		    <td>15.05.17 19:00 Uhr</td>
+		    <td>München</td>
+		    <td>50</td>
+		  </tr>
+		</table>
+		</li>
+		</ui:repeat>
+	</ul>
+	<a href="index.html">zurück</a>
+</body>
+</html>
