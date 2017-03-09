@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+.button{
+	cursor: pointer;
+}
+
+.headline{
+	text-decoration: underline;
+}
+
+.warning{
+	color: red;
+}
+
+.menuRight{
+	border: solid;
+	width: 30%;
+}
+
+.leftSide{
+	background-color: yellow;
+}
+
+.rightSide{
+	background-color: grey;
+}
+
+.oneEvent{
+	border: solid;
+}

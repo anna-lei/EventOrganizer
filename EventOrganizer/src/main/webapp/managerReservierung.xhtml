@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">>
+	<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="style.css"></link>		
+		</head>
+		<h:outputLabel class="headline">Reservierungen</h:outputLabel>
+		
+		<h:form>
+			<div class="menuRight"><p>Meine Veranstaltungen</p></div>
+			<div class="menuRight"><p>Reservierungen</p></div>
+		</h:form>
+		
+		<h:form>
+			<h:outputLabel>Veranstaltung 1</h:outputLabel>
+			<h:outputLabel>0 verfügbar</h:outputLabel>
+			
+			<h:dataTable var="lang" value="#{project.languages}">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:outputText value="Test">Hans Glück</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Anzahl</f:facet>
+					<h:outputText value="Tets">5</h:outputText>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		
+		
+	</body>
+</html>

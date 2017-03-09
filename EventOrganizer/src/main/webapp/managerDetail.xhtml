@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="style.css"></link>		
+		</head>
+		<h:outputLabel class="headline">Veranstaltung XY</h:outputLabel>
+		<h:commandButton action="#{managerDetailBean.publish}" value="Veröffentlichen" class="button"></h:commandButton>
+		<h:commandButton action="#{managerDetailBean.edit}" value="Bearbeiten" class="button"></h:commandButton> <br/>
+		
+		<h:outputLabel>03.03.18</h:outputLabel>
+		<h:outputLabel>20:30 Uhr</h:outputLabel>
+		<br></br>
+		<h:outputText value="Beschreibung abcdefghijklmnopqrstuvwxyz Beschreibung abcdefghijklmnopqrstuvwxyz Beschreibung abcdefghijklmnopqrstuvwxyz Beschreibung abcdefghijklmnopqrstuvwxyz Beschreibung abcdefghijklmnopqrstuvwxyz">Beschreibung</h:outputText>
+		<br/>
+		<h:outputLabel>Reservierungen (2 verfügbar)</h:outputLabel>
+		
+		<h:dataTable var="lang" value="#{project.languages}">
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="Test">Hans Glück</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Anzahl</f:facet>
+				<h:outputText value="Tets">5</h:outputText>
+			</h:column>
+		</h:dataTable>
+		
+		<h:commandButton action="#{managerDetailBean.back}" value="Zurück" class="button"></h:commandButton>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="style.css"></link>		
+		</head>
+		<h:outputLabel class="headline">Login</h:outputLabel>
+
+		<h:form>
+			<h:outputText class="warning" rendered="#{loginBean.failLogin}" value="Der User oder das Passwort ist nicht korrekt."></h:outputText>
+			<br></br>
+			<h:inputText value="#{loginBean.name}"></h:inputText>
+			<br></br>
+			<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
+			<br></br>
+			<a href="register.jsf">Neu registrieren</a>
+			<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button"></h:commandButton>
+		</h:form>
+		
+	</body>
+</html>
