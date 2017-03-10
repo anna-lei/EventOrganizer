@@ -5,32 +5,40 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 	<head>
-		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>	
+		<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>		
 		<ui:include src="header.xhtml"></ui:include>
 	</head>
 
-	<H2>Details zur Veranstaltung</H2>
-	<h:form>
-		<table>
-		  <tr>
-		    <th>Titel:</th>
-		    <th><h:outputText value="#{loginService.activeUser.name}"></h:outputText></th> 
-		  </tr>
-		  <tr>
-		    <td>Datum und Uhrzeit:</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		  <tr>
-		    <td>verfügbare Tickets</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		</table>
-		<br />
-		<br />
+	<div class="context" style="text-align: left">
+		<h:form>	
+			<h:outputLabel value="#{loginService.activeUser.name}" class="headline">Titel 123 257er</h:outputLabel>
+			<br/>
+		
+			<table>
+		  		<tr>
+		    		<td>Datum:</td>
+		    		<td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Ort:</td>
+		    		<td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Verfügbare Tickets:</td>
+		    		<td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
+		  		</tr>
+			</table>
+			<br/>
+			<h:outputLabel>Beschreibung:</h:outputLabel> <br/>
+			<h:outputText value="GANZ VIEL TEXT ZUR BESCHREIBUNG!! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." style="font-size: 14px;"></h:outputText>
+		<br/>
+		<br/>
+		
 		<input type="number" min="1" max="10" value="5" />
-		<h:commandButton value="reservieren"> </h:commandButton>
+		<h:commandButton class="button" action="#{eventDetailBean.reserv}" value="Reservieren"> </h:commandButton>
 	</h:form>
-	<br />
-	<a href="anwenderHome.jsf">zurück</a>
+
+	</div>
 </body>
 </html>

@@ -47,7 +47,7 @@ public class RegisterBean {
 	}
 
 	public String cancel() {
-		return "home.jsf";
+		return "login.jsf";
 	}
 
 	
