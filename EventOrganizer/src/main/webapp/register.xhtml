@@ -10,30 +10,28 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<h:outputLabel class="headline">Registrierung</h:outputLabel>
 	
 	<h:form>
-		<h:outputText class="warning" rendered="#{registerBean.userExist}" value="Der User existiert bereits."></h:outputText>
-		<h:selectOneRadio required="true">
-   			<f:selectItem itemValue="#{registerBean.type}" itemLabel="Anwender" />
-	   		<f:selectItem itemValue="#{registerBean.type}" itemLabel="Manager" />
+		<h:outputText class="warning" rendered="#{not empty userService.getUserByName(registerBean.mail)}" value="Der User existiert bereits."></h:outputText>
+		<h:selectOneRadio required="false">
+   			<f:selectItem itemValue="#{register.type}" itemLabel="Anwender" />
+	   		<f:selectItem itemValue="#{register.type}" itemLabel="Manager" />
 		</h:selectOneRadio>
 	
 		<div class="leftSide">
-			<p>Anrede</p>
-			<h:inputText value="#{registerBean.anrede}"></h:inputText>
 			<p>Vorname</p>
-			<h:inputText value="#{registerBean.vorname}"></h:inputText>
+			<h:inputText value="#{registerBean.prename}"></h:inputText>
 			<p>Nachname</p>
-			<h:inputText value="#{registerBean.nachname}"></h:inputText>
+			<h:inputText value="#{registerBean.name}"></h:inputText>
 			<p>Geburtsdatum</p>
 			<h:inputText value="#{registerBean.date}"></h:inputText>
 		</div>
 		
 		<div class="rightSide">
 			<p>Email</p>
-			<h:inputText value="#{registerBean.email}"></h:inputText>
+			<h:inputText value="#{registerBean.mail}"></h:inputText>
 			<p>Passwort</p>
-			<h:inputSecret value="#{registerBean.password}"></h:inputSecret>
+			<h:inputSecret value="#{registerBean.password1}"></h:inputSecret>
 			<p>Passwort wiederholen</p>
-			<h:inputSecret value="#{registerBean.password}"></h:inputSecret>
+			<h:inputSecret value="#{registerBean.password2}"></h:inputSecret>
 		</div>
 		
 		<br></br>

@@ -1,59 +1,80 @@
 package de.auc.model;
 
 public class User {
+	
 	private String name;
-	private String vorname;
-	private String datum;
+	private String prename;
+	private String date;
 	private String mail;
-	private String username;
-	private String passwort;
+	private String password;
 	
 	
 	
-	public User(String name, String vorname, String datum, String mail, String username, String passwort) {
+	public User(String name, String prename, String date, String mail, String password) {
 		super();
 		this.name = name;
-		this.vorname = vorname;
-		this.datum = datum;
+		this.prename = prename;
+		this.date = date;
 		this.mail = mail;
-		this.username = username;
-		this.passwort = passwort;
+		this.password = password;
 	}
 	
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+
+
+
+	public void setUser(String name) {
 		this.name = name;
 	}
-	public String getVorname() {
-		return vorname;
+
+
+
+	public String getPrename() {
+		return prename;
 	}
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
+
+
+
+	public void setPrename(String prename) {
+		this.prename = prename;
 	}
-	public String getDatum() {
-		return datum;
+
+
+
+	public String getDate() {
+		return date;
 	}
-	public void setDatum(String datum) {
-		this.datum = datum;
+
+
+
+	public void setDate(String date) {
+		this.date = date;
 	}
+
+
+
 	public String getMail() {
 		return mail;
 	}
+
+
+
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getUsername() {
-		return username;
+
+
+	public String getPassword() {
+		return password;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getPasswort() {
-		return passwort;
-	}
-	public void setPasswort(String passwort) {
-		this.passwort = passwort;
-	}
+
+
 }

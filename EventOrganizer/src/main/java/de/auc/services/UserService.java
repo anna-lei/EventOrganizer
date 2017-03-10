@@ -11,38 +11,31 @@ import de.auc.model.User;
 @ManagedBean
 @SessionScoped
 public class UserService {
-	private List<User> users = new ArrayList<User>();
-	private User aktuellUser;
-	
-	
+	private List<User> users = new ArrayList<User>();	
 
 	public UserService() {
-		User user = new User("Claudia", "Schaefers", "18.08.1995", "cs@jee.de", "claudi", "123");
-		User user1 = new User("a", "a", "a", "a", "a", "a");
+		User user = new User("Claudia", "Schaefers", "18.08.1995", "cs@jee.de",  "123");
+		User user1 = new User("a", "a", "a", "a", "a");
 		users.add(user);
 		users.add(user1);
-		aktuellUser = user;
 		
 	}
 	
 	public String getUsername(User user) {
-		return user.getUsername();
+		return user.getMail();
 	}
 	
-	public boolean addUser(String name, String vorname, String datum, String mail, String username, String passwort) {
-		User user = new User(name, vorname, datum, mail, username, passwort);
-		if(getUser(user.getUsername())==null) {
-			users.add(user);
-			return true;
-		} else {
-			return false;
+	public boolean addUser(User user) {
+		if (getUserByName(user.getMail()) == null) {
+			return users.add(user);
 		}
+		return false;
 	
 	}
 	
-	public User getUser(String username) {
+	public User getUserByName(String mail) {
 		for(User user: users) {
-			if (user.getName().equals(username)) {
+			if (user.getMail().equals(mail)) {
 				return user;
 			}
 		}
@@ -55,13 +48,5 @@ public class UserService {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
-
-	public User getAktuellUser() {
-		return aktuellUser;
-	}
-
-	public void setAktuellUser(User aktuellUser) {
-		this.aktuellUser = aktuellUser;
 	}
 }

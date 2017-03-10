@@ -10,9 +10,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<h:outputLabel class="headline">Login</h:outputLabel>
 
 		<h:form>
-			<h:outputText class="warning" rendered="#{loginBean.failLogin}" value="Der User oder das Passwort ist nicht korrekt."></h:outputText>
+			<h:outputText class="warning" rendered="{!loginService.login}" value="Der Username oder das Passwort ist nicht korrekt."></h:outputText>
 			<br></br>
-			<h:inputText value="#{loginBean.name}"></h:inputText>
+			<h:inputText value="#{loginBean.username}"></h:inputText>
 			<br></br>
 			<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
 			<br></br>

@@ -4,24 +4,24 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <body>
-	<h3><h:outputText rendered="#{not empty userService.aktuellUser}" value = "Vielen Dank, #{userService.getUsername(userService.aktuellUser)}" ></h:outputText></h3>
+	<h3><h:outputText rendered="#{not empty loginService.activeUser}" value = "Vielen Dank, #{loginService.activeUser.name}" ></h:outputText></h3>
 	<h:form>
 		<table>
 		  <tr>
 		    <th>Titel:</th>
-		    <th><h:outputText value="#{userService.getUsername(userService.aktuellUser)}"></h:outputText></th> 
+		    <th><h:outputText value="#{loginService.activeUser.name}"></h:outputText></th> 
 		  </tr>
 		  <tr>
 		    <td>Datum und Uhrzeit:</td>
-		    <td><h:outputText value="#{userService.getUsername(userService.aktuellUser)}"></h:outputText></td>
+		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
 		  </tr>
 		  <tr>
 		    <td>Anzahl Tickets</td>
-		    <td><h:outputText value="#{userService.getUsername(userService.aktuellUser)}"></h:outputText></td>
+		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
 		  </tr>
 		  <tr>
 		    <td>Bestätigungscode</td>
-		    <td><h:outputText value="#{userService.getUsername(userService.aktuellUser)}"></h:outputText></td>
+		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
 		  </tr>
 		</table>
 		
