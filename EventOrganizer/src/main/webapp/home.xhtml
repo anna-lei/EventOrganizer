@@ -2,7 +2,8 @@
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <body>
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
@@ -10,33 +11,38 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<ui:include src="header.xhtml"></ui:include>
 	</head>
 	
-	<h3><h:outputText rendered="#{not empty loginService.activeUser}" value = "Herzlich Willkommen #{loginService.activeUser.name}" ></h:outputText></h3>
-	<br />
-	<h:form>
-		<h3>Suche:</h3>
-		<h:inputText value="Suchbegriff weiterleiten"></h:inputText>
-		<h:commandButton  value="suche"> </h:commandButton>
-	</h:form><br />
-	<h4>nächste Veranstaltungen:</h4>
-	<ul>
-		<ui:repeat var="user" value="#{userService.users}">
-		<li><a href="eventDetail.jsf"><h:outputText value="#{user.mail}"/></a>
-		<br />
+	<div class="context">
+	
+		<h3><h:outputText rendered="#{not empty loginService.activeUser}" value = "Herzlich Willkommen #{loginService.activeUser.name}" ></h:outputText></h3>
+		<br/>
+	
+		<h:form class="form">
+			<h:outputLabel>Suche: </h:outputLabel>
+			<h:inputText value="#{homeBean.searchText}" class="inputText" p:placeholder="Suchbegriff"></h:inputText>
+			<h:commandButton  action="#{homeBean.search}" value="Suchen" class="button"> </h:commandButton>
+		</h:form>
+		<br/>
+		
+		<h:outputLabel value="#{homeBean.searchText}" style="text-decoration: underline;">Nächste Veranstaltungen: </h:outputLabel>
+	
+<!-- 	Preis für ein Ticket? -->
 		<table>
-		  <tr>
-		    <th>Datum und Uhrzeit</th>
-		    <th>Veranstaltungsort</th> 
-		    <th>verfügbare Tickets</th>
-		  </tr>
-		  <tr>
-		    <td>15.05.17 19:00 Uhr</td>
-		    <td>München</td>
-		    <td>50</td>
-		  </tr>
+			<tr>
+				<th>Event</th>
+		    	<th>Datum</th>
+		    	<th>Ort</th> 
+		    	<th>Verfügbare Tickets</th>
+		  	</tr>
+		  	<ui:repeat var="user" value="#{userService.users}">
+			  	<tr>  	
+		  			<td><a href="eventDetail.jsf" style="color: black"><h:outputText value="#{user.mail}"/></a></td>
+					<td>15.05.17 19:00 Uhr</td>
+		    		<td>München</td>
+		    		<td>50</td>
+		  		</tr>
+			</ui:repeat>
 		</table>
-		</li>
-		</ui:repeat>
-	</ul>
-	<a href="index.html">zurück</a>
+	
+	</div>
 </body>
 </html>

@@ -17,9 +17,9 @@ public class LoginBean {
 	
 	public String login(){
 		if(loginService.login(username, password)){
-			return "anwenderHome.jsf";
+			return "home.jsf";
 		}
-		return "index.html";
+		return "login.jsf";
 	}
 	public String getUsername() {
 		return username;

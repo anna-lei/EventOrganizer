@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 	<body>
 		<head>
 			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
@@ -11,18 +12,22 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<ui:include src="header.xhtml"></ui:include>
 		</head>
 		
+	<div class="context">
 		<h:outputLabel class="headline">Login</h:outputLabel>
 
 		<h:form>
-			<h:outputText class="warning" rendered="{!loginService.login}" value="Der Username oder das Passwort ist nicht korrekt."></h:outputText>
+<!-- die renderes ist am Anfang schon false, weil kein User angemeldet ist und deshalb auch hier schon false erscheint -->
+<!-- Ich glaube hier muss man schon mit einem boolean arbeiten, oder mit dieser FacedMessage oder wie das hieß -->
+			<h:outputText class="warning" rendered="#{!loginService.login(loginBean.username, loginBean.password)}" value="Der Username oder das Passwort ist nicht korrekt."></h:outputText>
 			<br></br>
-			<h:inputText value="#{loginBean.username}"></h:inputText>
+			<h:inputText value="#{loginBean.username}" p:placeholder="E-Mail-Adresse" class="inputText"></h:inputText>
 			<br></br>
-			<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
+			<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
 			<br></br>
-			<a href="register.jsf">Neu registrieren</a>
+			<a href="register.jsf" style="padding-right: 10px;">Neu registrieren</a>
 			<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button"></h:commandButton>
 		</h:form>
+	</div>
 		
 	</body>
 </html>

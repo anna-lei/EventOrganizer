@@ -1,15 +1,45 @@
 @CHARSET "ISO-8859-1";
 
+body {
+	font-family: Calibri;
+}
+
+.context {
+	padding: 15px;
+	text-align: center;
+}
+
 .button {
 	cursor: pointer;
+	border: solid black 0.2px;
+	border-radius: 5px;
+	background-color: white;
+	height: 25px;
+	font-size: 14px;
+	margin: 5px;
+}
+
+.button:hover {
+	opacity: 0.5;
 }
 
 .headline {
 	text-decoration: underline;
+	font-size: 30px;
 }
 
 .warning {
 	color: red;
+}
+
+.inputText {
+	margin: 5px;
+	width: 195px;
+	height: 24px;
+}
+
+label {
+	font-size: 18px;
 }
 
 .menuRight {
@@ -17,12 +47,8 @@
 	width: 30%;
 }
 
-.leftSide {
-	background-color: yellow;
-}
-
-.rightSide {
-	background-color: grey;
+.form {
+	text-align: left;
 }
 
 .oneEvent {

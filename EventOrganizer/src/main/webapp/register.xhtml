@@ -6,41 +6,72 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/register.css"></link>		
 			<ui:include src="header.xhtml"></ui:include>
 		</head>
-		
+	
+	<div class="context">	
 	<h:outputLabel class="headline">Registrierung</h:outputLabel>
 	
-	<h:form>
+	<h:form class="form">
 		<h:outputText class="warning" rendered="#{not empty userService.getUserByName(registerBean.mail)}" value="Der User existiert bereits."></h:outputText>
 		<h:selectOneRadio required="false">
    			<f:selectItem itemValue="#{register.type}" itemLabel="Anwender" />
 	   		<f:selectItem itemValue="#{register.type}" itemLabel="Manager" />
 		</h:selectOneRadio>
 	
-		<div class="leftSide">
-			<p>Vorname</p>
-			<h:inputText value="#{registerBean.prename}"></h:inputText>
-			<p>Nachname</p>
-			<h:inputText value="#{registerBean.name}"></h:inputText>
-			<p>Geburtsdatum</p>
-			<h:inputText value="#{registerBean.date}"></h:inputText>
-		</div>
-		
-		<div class="rightSide">
-			<p>Email</p>
-			<h:inputText value="#{registerBean.mail}"></h:inputText>
-			<p>Passwort</p>
-			<h:inputSecret value="#{registerBean.password1}"></h:inputSecret>
-			<p>Passwort wiederholen</p>
-			<h:inputSecret value="#{registerBean.password2}"></h:inputSecret>
-		</div>
-		
+		<table>
+			<tr>
+    			<td>
+					<h:outputLabel>Vorname: </h:outputLabel>
+				</td>
+				<td>
+					<h:inputText value="#{registerBean.prename}" class="inputText"></h:inputText>
+				</td>
+	    		<td>
+ 			   		<h:outputLabel>Email:</h:outputLabel>
+ 			   	</td>
+				<td>
+					<h:inputText value="#{registerBean.mail}" class="inputText"></h:inputText>
+    			</td>
+  			</tr>
+  			<tr>
+    			<td>
+					<h:outputLabel>Nachname: </h:outputLabel>
+				</td>
+				<td>
+					<h:inputText value="#{registerBean.name}" class="inputText"></h:inputText>
+				</td>
+	    		<td>
+					<h:outputLabel>Passwort:</h:outputLabel>
+				</td>
+				<td>
+					<h:inputSecret value="#{registerBean.password1}" class="inputText"></h:inputSecret>
+    			</td>
+  			</tr>
+  			<tr>
+    			<td>
+					<h:outputLabel>Geburtsdatum: </h:outputLabel>
+				</td>
+				<td>
+					<h:inputText value="#{registerBean.date}" class="inputText"></h:inputText>
+				</td>
+    			<td>
+					<h:outputLabel>Passwort wiederholen:</h:outputLabel>
+				</td>
+				<td>
+					<h:inputSecret value="#{registerBean.password2}" class="inputText"></h:inputSecret>
+    			</td>
+  			</tr>
+		</table>
+
 		<br></br>
-		<br></br>
-		<h:commandButton class="button" action="#{registerBean.cancel}" value="Abbrechen"> </h:commandButton>
-		<h:commandButton class="button" action="#{registerBean.register}" value="Registrieren"> </h:commandButton>
+		<div class="buttonDiv">
+			<h:commandButton class="button" action="#{registerBean.cancel}" value="Abbrechen"> </h:commandButton>
+			<h:commandButton class="button" action="#{registerBean.register}" value="Registrieren"> </h:commandButton>
+		</div>
 	</h:form>
+	</div>
 </body>
 </html>

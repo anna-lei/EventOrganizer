@@ -28,7 +28,7 @@ public class RegisterBean {
 				User user = new User(name, prename, date, mail, password1);
 				if(userService.addUser(user)) {
 					System.out.println("Hier");
-					return "login.jsf";
+					return "home.jsf";
 				}
 				//Falls der User schon existiert
 				return "register.jsf";
@@ -47,7 +47,7 @@ public class RegisterBean {
 	}
 
 	public String cancel() {
-		return "anwenderHome.jsf";
+		return "home.jsf";
 	}
 
 	
