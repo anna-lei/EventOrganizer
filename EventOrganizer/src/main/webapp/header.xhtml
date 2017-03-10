@@ -4,17 +4,19 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <body>
-<head>
-		<link rel="stylesheet" type="text/css" href="style.css"></link>		
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles/header.css"></link>		
 	</head>
-<header>
-<img src="http://wiki.selfhtml.org/mediawiki/images/3/39/Selfhtml-Logo-Neu.png"></img> 
-<h1>Event-Organizer</h1>
-</header> 
-<menu type="context" id="werkzeugleiste">
-    <menuitem type="command" label="Neues Dokument" onclick="new()">
-    <menuitem type="command" label="Speichern unter ..." onclick="saveAs()">
-  </menu>
+	
+	<header class="header">
+		<img src="styles/EO_Logo.png" alt="EO" class="logo"></img> 
+		<a href="home.jsf" class="noLink">Event-Organizer</a>
+	</header> 
+	
+	<ul class="menuUl">
+  		<li class="menuLi" id="home"><a href="home.jsf">Startseite</a></li>
+  		<li class="menuLi" id="login" style="float:right"><a href="login.jsf">Login</a></li>
+	</ul>
 
 </body>
 </html>

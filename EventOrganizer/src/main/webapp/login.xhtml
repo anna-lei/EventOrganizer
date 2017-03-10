@@ -2,11 +2,15 @@
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="style.css"></link>		
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+			<link rel="stylesheet" type="text/css" href="styles/login.css"></link>
+			<ui:include src="header.xhtml"></ui:include>
 		</head>
+		
 		<h:outputLabel class="headline">Login</h:outputLabel>
 
 		<h:form>

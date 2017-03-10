@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+.header {
+	background-image: url("banner.jpg");
+	background-repeat: round;
+	height: 110px;
+}
+
+.logo {
+	padding-top: 4px;
+	padding-left: 5px;
+}
+
+.noLink {
+	text-decoration: none;
+	color: white;
+	font-size: 50px;
+	font-weight: 900;
+	font-family: Segoe Script;
+	padding-left: 20px;
+}
+
+.menuUl {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-family: Calibri;
+}
+
+.menuLi {
+    float: left;
+}
+
+.menuLi a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menuLi a:hover:not(.active) {
+    background-color: rgb(78, 252, 252);
+    color: black;
+}
