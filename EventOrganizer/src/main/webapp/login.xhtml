@@ -15,12 +15,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<div class="context">
 		<h:outputLabel class="headline">Login</h:outputLabel>
 
-		<h:form>
-<!-- die renderes ist am Anfang schon false, weil kein User angemeldet ist und deshalb auch hier schon false erscheint -->
-<!-- Ich glaube hier muss man schon mit einem boolean arbeiten, oder mit dieser FacedMessage oder wie das hieß -->
-			<h:outputText class="warning" rendered="#{!loginService.login(loginBean.username, loginBean.password)}" value="Der Username oder das Passwort ist nicht korrekt."></h:outputText>
+		<h:form id="loginform">
+
+			<h:message class="warning" for="login" id="login" />
 			<br></br>
-			<h:inputText value="#{loginBean.username}" p:placeholder="E-Mail-Adresse" class="inputText"></h:inputText>
+			<h:inputText value="#{loginBean.mail}" p:placeholder="E-Mail-Adresse" class="inputText"></h:inputText>
 			<br></br>
 			<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
 			<br></br>

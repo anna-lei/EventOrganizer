@@ -1,7 +1,9 @@
 package de.auc.services;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import de.auc.model.User;
 
@@ -13,15 +15,45 @@ public class LoginService {
 	@ManagedProperty("#{userService}")
 	private UserService userService;
 	
-	public boolean login(String username, String password) {
-		User userToLogin = userService.getUserByName(username);
+	public boolean login(String mail, String password) {
+		User userToLogin = userService.getUserByName(mail);
 		if (userToLogin != null) {
 			if (password.equals(userToLogin.getPassword())) {
 				activeUser = userToLogin;
 				return true;
 			}
 		}
+		FacesMessage loginMessage = new FacesMessage("Der Username oder das Passwort ist nicht korrekt.");
+		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 		return false;
+	}
+	
+	public boolean register(String name, String prename, String date, String mail, String password1, String password2) {
+		FacesMessage registerMessage;
+		if(userService.getUserByName(mail)!=null){
+			registerMessage = new FacesMessage("Der User existiert bereits.");
+			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+			return false;
+		} else {
+			if(password1.equals(password2)){
+				if(password1.length() > 7){
+					User user = new User(name, prename, date, mail, password1);
+					userService.addUser(user);
+					return true;
+				}
+				else{
+					//Das Passwort ist zu kurz
+					registerMessage = new FacesMessage("Das Passwort muss mindestens 8 Zeichen lang sein.");
+					FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+					return false;
+				}	
+			}else {
+				registerMessage = new FacesMessage("Die Passwörter stimmen nicht überein.");
+				FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+				return false;
+			}
+		}
+		
 	}
 
 	public User getActiveUser() {

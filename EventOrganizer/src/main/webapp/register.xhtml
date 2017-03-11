@@ -14,8 +14,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<div class="context">	
 	<h:outputLabel class="headline">Registrierung</h:outputLabel>
 	
-	<h:form class="form">
-		<h:outputText class="warning" rendered="#{not empty userService.getUserByName(registerBean.mail)}" value="Der User existiert bereits."></h:outputText>
+	<h:form id="registerform" class="form">
 		<h:selectOneRadio required="false">
    			<f:selectItem itemValue="#{register.type}" itemLabel="Anwender" />
 	   		<f:selectItem itemValue="#{register.type}" itemLabel="Manager" />
@@ -65,8 +64,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     			</td>
   			</tr>
 		</table>
-
 		<br></br>
+		<h:message class="warning" for="register" id="register" />
 		<div class="buttonDiv">
 			<h:commandButton class="button" action="#{registerBean.cancel}" value="Abbrechen"> </h:commandButton>
 			<h:commandButton class="button" action="#{registerBean.register}" value="Registrieren"> </h:commandButton>

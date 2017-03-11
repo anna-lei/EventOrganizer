@@ -21,15 +21,14 @@ public class UserService {
 		
 	}
 	
+	
+	
 	public String getUsername(User user) {
 		return user.getMail();
 	}
 	
-	public boolean addUser(User user) {
-		if (getUserByName(user.getMail()) == null) {
-			return users.add(user);
-		}
-		return false;
+	public void addUser(User user) {
+		users.add(user);
 	
 	}
 	

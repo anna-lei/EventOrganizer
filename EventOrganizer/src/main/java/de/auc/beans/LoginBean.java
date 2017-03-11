@@ -5,28 +5,32 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import de.auc.services.LoginService;
+import de.auc.services.PageRenderingService;
 
 @ManagedBean
 @RequestScoped
 public class LoginBean {
-	private String username;
+	private String mail;
 	private String password;
 	
 	@ManagedProperty("#{loginService}")
 	private LoginService loginService;
 	
+	@ManagedProperty("#{pageRenderingService}")
+	private PageRenderingService pageRenderingService;
+	
 	public String login(){
-		if(loginService.login(username, password)){
-			return "home.jsf";
+		if(loginService.login(mail, password)){
+			return pageRenderingService.getHome();
 		}
-		return "login.jsf";
+		return pageRenderingService.getLogin();
 	}
-	public String getUsername() {
-		return username;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public void setPassword(String password) {
@@ -44,4 +48,12 @@ public class LoginBean {
 	public void setLoginService(LoginService loginService){
 		this.loginService = loginService;
 	}
+	public PageRenderingService getPageRenderingService() {
+		return pageRenderingService;
+	}
+	public void setPageRenderingService(PageRenderingService pageRenderingService) {
+		this.pageRenderingService = pageRenderingService;
+	}
+	
+	
 }

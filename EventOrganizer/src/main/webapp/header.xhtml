@@ -14,8 +14,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	</header> 
 	
 	<ul class="menuUl">
-  		<li class="menuLi" id="home"><a href="home.jsf">Startseite</a></li>
-  		<li class="menuLi" id="login" style="float:right"><a href="login.jsf">Login</a></li>
+  		<li class="menuLi" id="home"><a href="#{pageRenderingService.getHome()}">Startseite</a></li>
+  		<li class="menuLi" id="login" style="float:right"><a href="#{pageRenderingService.getLogin()}">Login</a></li>
 	</ul>
 
 </body>

@@ -33,12 +33,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		    	<th>Ort</th> 
 		    	<th>Verfügbare Tickets</th>
 		  	</tr>
-		  	<ui:repeat var="user" value="#{userService.users}">
+		  	<ui:repeat var="event" value="#{eventService.events}">
 			  	<tr>  	
-		  			<td><a href="eventDetail.jsf" style="color: black"><h:outputText value="#{user.mail}"/></a></td>
-					<td>15.05.17 19:00 Uhr</td>
-		    		<td>München</td>
-		    		<td>50</td>
+		  			<td><a href="#{pageRenderingService.getEventDetail(event)}" style="color: black"><h:outputText value="#{event.name}"/></a></td>
+					<td><h:outputText value="#{event.date}"/></td>
+		    		<td><h:outputText value="#{event.location}"/></td>
+		    		<td><h:outputText value="#{event.numberOfTickets}"/></td>
 		  		</tr>
 			</ui:repeat>
 		</table>

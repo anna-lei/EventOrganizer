@@ -1,13 +1,13 @@
 package de.auc.beans;
 
-import javax.faces.application.FacesMessage;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
-import de.auc.model.User;
-import de.auc.services.UserService;
+import de.auc.services.LoginService;
+import de.auc.services.PageRenderingService;
+
 
 @ManagedBean
 @RequestScoped
@@ -19,35 +19,24 @@ public class RegisterBean {
 	private String password1;
 	private String password2;
 	
-	@ManagedProperty("#{userService}")
-	private UserService userService;
+	@ManagedProperty("#{loginService}")
+	private LoginService loginService;
+	
+	@ManagedProperty("#{pageRenderingService}")
+	private PageRenderingService pageRenderingService;
 	
 	public String register() {
-		if(password1.equals(password2)){
-			if(password1.length() > 4){
-				User user = new User(name, prename, date, mail, password1);
-				if(userService.addUser(user)) {
-					System.out.println("Hier");
-					return "home.jsf";
-				}
-				//Falls der User schon existiert
-				return "register.jsf";
-			}
-			else{
-				//Das Passwort ist zu kurz
-				FacesMessage passwordToShort = new FacesMessage("Das Passwort muss mindestens 4 Zeichen lang sein.", null);
-				FacesContext.getCurrentInstance().addMessage(null, passwordToShort);
-				return "register.jsf";
-			}	
-		}else {
-			//Die Passwörter sind unterschiedlich
-			return "register.jsf";
+		if(loginService.register(name, prename, date, mail, password1, password2)){
+			loginService.login(mail, password1);
+			return pageRenderingService.getHome();
 		}
+		return pageRenderingService.getRegister();
+		
 		
 	}
 
 	public String cancel() {
-		return "login.jsf";
+		return pageRenderingService.getLogin();
 	}
 
 	
@@ -98,13 +87,23 @@ public class RegisterBean {
 	public void setPassword2(String password2) {
 		this.password2 = password2;
 	}
-	
 
-	public UserService getUserService(){
-		return this.userService;
+	public PageRenderingService getPageRenderingService() {
+		return pageRenderingService;
+	}
+
+	public void setPageRenderingService(PageRenderingService pageRenderingService) {
+		this.pageRenderingService = pageRenderingService;
+	}
+
+	public LoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(LoginService loginService) {
+		this.loginService = loginService;
 	}
 	
-	public void setUserService(UserService userService){
-		this.userService = userService;
-	}
+	
+	
 }

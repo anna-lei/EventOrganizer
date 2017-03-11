@@ -12,26 +12,26 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 	<div class="context" style="text-align: left">
 		<h:form>	
-			<h:outputLabel value="#{loginService.activeUser.name}" class="headline">Titel 123 257er</h:outputLabel>
+			<h:outputText value="#{eventService.activeEvent.name}" class="headline"></h:outputText>
 			<br/>
 		
 			<table>
 		  		<tr>
 		    		<td>Datum:</td>
-		    		<td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
+		    		<td><h:outputText value="#{eventService.activeEvent.date}"/></td>
 		  		</tr>
 		  		<tr>
 		    		<td>Ort:</td>
-		    		<td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
+		    		<td><h:outputText value="#{eventService.activeEvent.location}"></h:outputText></td>
 		  		</tr>
 		  		<tr>
 		    		<td>Verfügbare Tickets:</td>
-		    		<td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
+		    		<td><h:outputText value="#{eventService.activeEvent.numberOfTickets}"></h:outputText></td>
 		  		</tr>
 			</table>
 			<br/>
 			<h:outputLabel>Beschreibung:</h:outputLabel> <br/>
-			<h:outputText value="GANZ VIEL TEXT ZUR BESCHREIBUNG!! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." style="font-size: 14px;"></h:outputText>
+			<h:outputText value="#{eventService.activeEvent.description}" style="font-size: 14px;"></h:outputText>
 		<br/>
 		<br/>
 		
