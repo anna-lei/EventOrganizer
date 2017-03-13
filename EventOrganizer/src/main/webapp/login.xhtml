@@ -23,7 +23,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<br></br>
 			<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
 			<br></br>
-			<a href="register.jsf" style="padding-right: 10px;">Neu registrieren</a>
+			<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;">Neu registrieren</a>
 			<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button"></h:commandButton>
 		</h:form>
 	</div>

@@ -38,7 +38,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			  	<ui:repeat var="event" value="#{eventService.events}">
 				  	<tr>  	
 <!-- 				  	TODO: hier muss zu eventDetail gewechselt werden, aber für den Manager -->
-		  				<td><a href="managerDetail.jsf" style="color: black"><h:outputText value="#{event.name}"/></a></td>
+		  				<td><a href="#{pageRenderingService.getManagerDetail()}" style="color: black"><h:outputText value="#{event.name}"/></a></td>
 						<td><h:outputText value="#{event.date}"/></td>
 		    			<td><h:outputText value="#{event.location}"/></td>
 		    			
