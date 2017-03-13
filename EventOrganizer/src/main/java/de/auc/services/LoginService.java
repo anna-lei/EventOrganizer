@@ -23,7 +23,7 @@ public class LoginService {
 				return true;
 			}
 		}
-		FacesMessage loginMessage = new FacesMessage("Der Username oder das Passwort ist nicht korrekt.");
+		FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der Username oder das Passwort ist nicht korrekt.", "");
 		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 		return false;
 	}
@@ -31,7 +31,7 @@ public class LoginService {
 	public boolean register(String name, String prename, String date, String mail, String password1, String password2) {
 		FacesMessage registerMessage;
 		if(userService.getUserByName(mail)!=null){
-			registerMessage = new FacesMessage("Der User existiert bereits.");
+			registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der User existiert bereits.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 			return false;
 		} else {
@@ -43,12 +43,12 @@ public class LoginService {
 				}
 				else{
 					//Das Passwort ist zu kurz
-					registerMessage = new FacesMessage("Das Passwort muss mindestens 8 Zeichen lang sein.");
+					registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Das Passwort muss mindestens 8 Zeichen lang sein.", "");
 					FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 					return false;
 				}	
 			}else {
-				registerMessage = new FacesMessage("Die Passwörter stimmen nicht überein.");
+				registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die Passwörter stimmen nicht überein.", "");
 				FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 				return false;
 			}
