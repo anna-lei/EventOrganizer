@@ -32,20 +32,7 @@
 	float: left;
 }
 
-/* .menuLi a { */
-/* 	display: block; */
-/* 	color: white; */
-/* 	text-align: center; */
-/* 	padding: 14px 16px; */
-/* 	text-decoration: none; */
-/* } */
-
-/* .menuLi a:hover:not (.active ) { */
-/* 	background-color: rgb(78, 252, 252); */
-/* 	color: black; */
-/* } */
-
-.headerButton {
+li input{
 	color: white;
 	font-size: 18px;
 	border: none;
@@ -54,7 +41,7 @@
 	padding: 14px;
 }
 
-.headerButton:hover{
+li input:hover{
 	background-color: rgb(78, 252, 252);
 	color: black;
 	cursor: pointer;
