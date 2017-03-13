@@ -21,26 +21,41 @@
 }
 
 .menuUl {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 
 .menuLi {
-    float: left;
+	float: left;
 }
 
-.menuLi a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+/* .menuLi a { */
+/* 	display: block; */
+/* 	color: white; */
+/* 	text-align: center; */
+/* 	padding: 14px 16px; */
+/* 	text-decoration: none; */
+/* } */
+
+/* .menuLi a:hover:not (.active ) { */
+/* 	background-color: rgb(78, 252, 252); */
+/* 	color: black; */
+/* } */
+
+.headerButton {
+	color: white;
+	font-size: 18px;
+	border: none;
+	background-color: #333;
+	font-family: Calibri;
+	padding: 14px;
 }
 
-.menuLi a:hover:not(.active) {
-    background-color: rgb(78, 252, 252);
-    color: black;
+.headerButton:hover{
+	background-color: rgb(78, 252, 252);
+	color: black;
+	cursor: pointer;
 }
