@@ -26,7 +26,8 @@ public class EventService {
 	public List<Event> searchEvents(String searchText) {
 		List<Event> currentEvents = new ArrayList<Event>();
 		for (Event event: events) {
-			if(event.getName().contains(searchText)) {
+			System.out.println(event.getName());
+			if(event.getName().toLowerCase().contains(searchText.toLowerCase())) {
 				currentEvents.add(event);
 			}
 		}

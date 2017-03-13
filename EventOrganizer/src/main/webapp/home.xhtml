@@ -24,7 +24,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		</h:form>
 		<br/>
 		
-		<h:outputLabel value="#{homeBean.searchText}" style="text-decoration: underline;">Nächste Veranstaltungen: </h:outputLabel>
+		<h:outputLabel rendered="#{not empty homeBean.searchText}" value="#{homeBean.searchText}" style="text-decoration: underline;">Nächste Veranstaltungen: </h:outputLabel>
 	
 <!-- 	Preis für ein Ticket? -->
 		<table class="coloredTable">
