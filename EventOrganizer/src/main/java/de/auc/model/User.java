@@ -28,7 +28,8 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
-	public User(String name, String prename, String date, String mail, String password, boolean managerflag) {
+	public User(Integer userid, String name, String prename, String date, String mail, String password, boolean managerflag) {
+		this.userid = userid;
 		this.name = name;
 		this.prename = prename;
 		this.date = date;

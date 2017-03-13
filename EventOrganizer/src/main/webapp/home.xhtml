@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -42,8 +43,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</tr>
 				<ui:repeat var="event" value="#{homeBean.events}">
 					<tr>
-						<td><a href="#{pageRenderingService.getEventDetail(event)}"
-							class="link">#{event.name}</a></td>
+						<td>
+							<h:link value="#{event.name}" outcome="eventDetail.jsf">
+								<f:param name="eventid" value="#{event.eventid}"/>
+							</h:link>	
+						</td>
 						<td><h:outputText value="#{event.date}" /></td>
 						<td><h:outputText value="#{event.location}" /></td>
 						<td><h:outputText value="#{event.numberOfTickets}" /></td>

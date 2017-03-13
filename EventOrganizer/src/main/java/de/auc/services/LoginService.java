@@ -40,7 +40,8 @@ public class LoginService {
 		} else {
 			if(password1.equals(password2)){
 				if(password1.length() > 7){
-					User user = new User(name, prename, date, mail, password1, managerflag);
+					//TODO Userid generieren
+					User user = new User(5, name, prename, date, mail, password1, managerflag);
 					userService.addUser(user);
 					activeUser = user;
 					return true;

@@ -27,9 +27,9 @@ public class Event {
 	@OneToMany(mappedBy="event")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
-	public Event(String name, String description, String location, String date,
+	public Event(Integer eventid, String name, String description, String location, String date,
 			Integer numberOfTickets, boolean publicly) {
-
+		this.eventid = eventid;
 		this.name = name;
 		this.description = description;
 		this.location = location;
