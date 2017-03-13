@@ -2,7 +2,8 @@
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -12,40 +13,41 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-			<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
 		</head>
-
 		<div class="context" style="text-align: left">
+		<f:metadata>
+				<f:viewParam name="eventid" value="#{detailBean.event}"
+					converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden"/>
+				</f:metadata>	
+			<h:outputText value="#{detailBean.event.name}"
+				class="headline"></h:outputText>
+			<br />
+
+			<table>
+				<tr>
+					<td>Datum:</td>
+					<td><h:outputText value="#{detailBean.event.date}" /></td>
+				</tr>
+				<tr>
+					<td>Ort:</td>
+					<td><h:outputText value="#{detailBean.event.location}"></h:outputText></td>
+				</tr>
+				<tr>
+					<td>Verfügbare Tickets:</td>
+					<td><h:outputText
+							value="#{detailBean.event.numberOfTickets}"></h:outputText></td>
+				</tr>
+			</table>
+			<br />
+			<h:outputLabel>Beschreibung:</h:outputLabel>
+			<br />
+			<h:outputText value="#{detailBean.event.description}"
+				style="font-size: 14px;"></h:outputText>
+			<br /> <br />
+			
 			<h:form>
-				<h:outputText value="#{eventService.activeEvent.name}"
-					class="headline"></h:outputText>
-				<br />
-
-				<table>
-					<tr>
-						<td>Datum:</td>
-						<td><h:outputText value="#{eventService.activeEvent.date}" /></td>
-					</tr>
-					<tr>
-						<td>Ort:</td>
-						<td><h:outputText
-								value="#{eventService.activeEvent.location}"></h:outputText></td>
-					</tr>
-					<tr>
-						<td>Verfügbare Tickets:</td>
-						<td><h:outputText
-								value="#{eventService.activeEvent.numberOfTickets}"></h:outputText></td>
-					</tr>
-				</table>
-				<br />
-				<h:outputLabel>Beschreibung:</h:outputLabel>
-				<br />
-				<h:outputText value="#{eventService.activeEvent.description}"
-					style="font-size: 14px;"></h:outputText>
-				<br />
-				<br />
-
 				<input type="number" min="1" max="10" value="5" />
 				<h:commandButton class="button" action="#{eventDetailBean.reserv}"
 					value="Reservieren">

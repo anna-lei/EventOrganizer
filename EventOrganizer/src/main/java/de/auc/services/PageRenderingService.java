@@ -46,7 +46,6 @@ public class PageRenderingService {
 	}
 	
 	public String getEventDetail(Event event) {
-		eventService.setActiveEvent(event);
 		return PAGE_EVENT_DETAIL_JSF;
 		
 	}
