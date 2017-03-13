@@ -10,65 +10,63 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<ui:include src="header.xhtml" />
 	</ui:define>
 	<ui:define name="main.content">
+	
+<!-- 	Diese xhtml-Seite wird sowohl für das Hinzufügen eines Events, als auch für das Bearbeiten verwendet. -->
 
 		<body>
-		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-		</head>
+			<head>
+				<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+			</head>
 
-		<div class="context">
-			<h:outputLabel class="headline">Event bearbeiten:</h:outputLabel>
-			<br /> <br />
+			<div class="context">
+			
+<!-- 		TODO: Hier muss gerendered werden, ob das Event neu angelegt wird oder gespeichert wird. -->
+				<h:outputLabel class="headline">Event bearbeiten</h:outputLabel>
+				<h:outputLabel class="headline">Event hinzufügen</h:outputLabel>
+				
+				<br /> <br />
 
-			<h:form class="form">
+				<h:form class="form">
 
-				<table style="margin-left: 38%;">
-					<tr>
-						<td><h:outputLabel>Titel: </h:outputLabel></td>
-						<td><h:inputText value="#{editEventBean.title}"
-								class="inputText" /></td>
-					</tr>
-					<tr>
-						<td><h:outputLabel>Datum:</h:outputLabel></td>
-						<td><h:inputText value="#{editEventBean.date}"
-								class="inputText" /></td>
-					</tr>
-					<tr>
-						<td><h:outputLabel>Uhrzeit: </h:outputLabel></td>
-						<td><h:inputText value="#{editEventBean.time}"
-								class="inputText" /></td>
-					</tr>
-					<tr>
-						<td><h:outputLabel>Ort:</h:outputLabel></td>
-						<td><h:inputText value="#{editEventBean.location}"
-								class="inputText" /></td>
-					</tr>
-					<tr>
-						<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-						<td><h:inputText value="#{editEventBean.tickets}"
-								class="inputText" /></td>
-					</tr>
-					<tr>
-						<td><h:outputLabel>Beschreibung:</h:outputLabel></td>
-						<td><h:inputTextarea value="#{editEventBean.description}"
-								class="inputText" /></td>
-					</tr>
-				</table>
-				<br />
+					<table style="margin-left: 38%;">
+						<tr>
+							<td><h:outputLabel>Titel: </h:outputLabel></td>
+							<td><h:inputText value="#{editEventBean.title}" class="inputText" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel>Datum:</h:outputLabel></td>
+							<td><h:inputText value="#{editEventBean.date}" class="inputText" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel>Uhrzeit: </h:outputLabel></td>
+							<td><h:inputText value="#{editEventBean.time}" class="inputText" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel>Ort:</h:outputLabel></td>
+							<td><h:inputText value="#{editEventBean.location}" class="inputText" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
+							<td><h:inputText value="#{editEventBean.tickets}" class="inputText" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel>Beschreibung:</h:outputLabel></td>
+							<td><h:inputTextarea value="#{editEventBean.description}" class="inputText" /></td>
+						</tr>
+					</table>
+					<br />
 
-				<div class="buttonDiv" style="margin-right: 37%;">
-					<h:commandButton class="button" action="#{editEventBean.cancel}"
-						value="Abbrechen">
-					</h:commandButton>
-					<h:commandButton class="button" action="#{editEventBean.save}"
-						value="Speichern">
-					</h:commandButton>
-					<h:commandButton class="button" action="#{editEventBean.publish}"
-						value="Veröffentlichen">
-					</h:commandButton>
-				</div>
-			</h:form>
-		</div>
+					<div class="buttonDiv" style="margin-right: 37%;">
+						<h:commandButton class="button" action="#{editEventBean.cancel}" value="Abbrechen"/>
+						
+<!-- 		TODO: Hier muss gerendered werden, ob das Event neu angelegt wird oder gespeichert wird. -->
+						<h:commandButton class="button" action="#{editEventBean.save}" value="Speichern"/>
+						<h:commandButton class="button" action="#{addEventBean.add}" value="Anlegen"/>
+						
+						<h:commandButton class="button" action="#{editEventBean.publish}" value="Veröffentlichen"/>
+					</div>
+				</h:form>
+			</div>
 		</body>
 
 	</ui:define>

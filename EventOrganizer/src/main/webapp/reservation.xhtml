@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+	
+	
+<!-- 	TODO: Hier muss noch das richtige Event übergeben werden. -->
+
+		<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
+		</head>
+
+		<div class="context" style="text-align: left">
+		<table>
+			<tr>
+			<td>
+				<h:outputLabel class="headline">Verbindliche Reservierung</h:outputLabel>
+				<h:form>
+					<br />
+
+					<table>
+						<tr>
+							<th>Titel:</th>
+							<th><h:outputText value="#{detailBean.event.name}"></h:outputText></th>
+						</tr>
+						<tr>
+							<td>Datum:</td>
+							<td><h:outputText value="#{detailBean.event.date}" /></td>
+						</tr>
+						<tr>
+							<td>Ort:</td>
+							<td><h:outputText value="#{detailBean.event.location}"></h:outputText></td>
+						</tr>
+						<tr>
+							<td>Anzahl Tickets:</td>
+							<td><h:outputText value="#{detailBean.event.numberOfTickets}"> Anzahl ausgewählter Tickets</h:outputText></td>
+						</tr>
+					</table>
+					<br />
+
+					<h:commandButton class="button" action="#{reservBean.back}" value="Zurück"/>
+					<h:commandButton class="button" action="#{reservBean.reserv}" value="Reservieren"/>
+
+				</h:form>
+			</td>
+			
+			<td>
+				<h:outputLabel rendered="#{not empty loginService.activeUser}" class="headline">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>
+				<br />
+				<h:outputLabel>Deine Ticketreservierung war erfolgreich.</h:outputLabel>
+				<br/>
+				<h:outputLabel value="Bestätigungscode:"/>
+				<h:outputText value="#{loginService.activeUser.prename}">CODE</h:outputText>
+					
+			</td>
+			</tr>
+			
+		</table>
+		</div>
+		</body>
+
+	</ui:define>
+</ui:composition>
+</html>

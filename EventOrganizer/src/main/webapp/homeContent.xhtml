@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+		<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
+	</head>
+
+	<div style="text-align: left; padding:15px;">
+
+		<h:form class="form">
+			<h:outputLabel>Suche: </h:outputLabel>
+			<h:inputText value="#{homeBean.searchText}" class="inputText" p:placeholder="Suchbegriff" style="margin-left: 80px;"/>
+			<h:commandButton action="#{homeBean.search}" value="Suchen" class="button"/>
+		</h:form>
+	
+		<h:outputLabel rendered="#{empty homeBean.searchText}" style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+		<h:messages for="search" id="search" class="message"/>
+		<!-- 	Preis für ein Ticket? -->
+		<table rendered="#{not empty homeBean.events}" class="coloredTable">
+			<tr>
+				<th>Event</th>
+				<th>Datum</th>
+				<th>Ort</th>
+				<th>Verfügbare Tickets</th>
+			</tr>
+			<ui:repeat var="event" value="#{homeBean.events}">
+				<tr>
+					<td>
+						<h:link value="#{event.name}" outcome="eventDetail.jsf" class="link">
+							<f:param name="eventid" value="#{event.eventid}" />
+						</h:link>
+					</td>
+					<td><h:outputText value="#{event.date}" /></td>
+					<td><h:outputText value="#{event.location}" /></td>
+					<td><h:outputText value="#{event.numberOfTickets}" /></td>
+				</tr>
+			</ui:repeat>
+		</table>
+
+	</div>
+</body>
+</html>
