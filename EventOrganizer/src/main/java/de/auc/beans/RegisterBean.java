@@ -18,6 +18,7 @@ public class RegisterBean {
 	private String mail;
 	private String password1;
 	private String password2;
+	private boolean managerflag;
 	
 	@ManagedProperty("#{loginService}")
 	private LoginService loginService;
@@ -26,7 +27,7 @@ public class RegisterBean {
 	private PageRenderingService pageRenderingService;
 	
 	public String register() {
-		if(loginService.register(name, prename, date, mail, password1, password2)){
+		if(loginService.register(name, prename, date, mail, password1, password2, managerflag)){
 			return pageRenderingService.getHome();
 		}
 		return pageRenderingService.getRegister();
@@ -101,6 +102,14 @@ public class RegisterBean {
 
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
+	}
+
+	public boolean isManagerflag() {
+		return managerflag;
+	}
+
+	public void setManagerflag(boolean managerflag) {
+		this.managerflag = managerflag;
 	}
 	
 	

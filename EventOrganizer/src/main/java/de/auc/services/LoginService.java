@@ -31,7 +31,7 @@ public class LoginService {
 		activeUser = null;
 	}
 	
-	public boolean register(String name, String prename, String date, String mail, String password1, String password2) {
+	public boolean register(String name, String prename, String date, String mail, String password1, String password2, boolean managerflag) {
 		FacesMessage registerMessage;
 		if(userService.getUserByName(mail)!=null){
 			registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der User existiert bereits.", "");
@@ -40,7 +40,7 @@ public class LoginService {
 		} else {
 			if(password1.equals(password2)){
 				if(password1.length() > 7){
-					User user = new User(name, prename, date, mail, password1);
+					User user = new User(name, prename, date, mail, password1, managerflag);
 					userService.addUser(user);
 					activeUser = user;
 					return true;

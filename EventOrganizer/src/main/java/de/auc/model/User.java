@@ -24,24 +24,27 @@ public class User {
 	private String date;
 	private String mail;
 	private String password;
+	private boolean managerflag;
 	@OneToMany(mappedBy="user")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
-	public User(String name, String prename, String date, String mail, String password) {
+	public User(String name, String prename, String date, String mail, String password, boolean managerflag) {
 		this.name = name;
 		this.prename = prename;
 		this.date = date;
 		this.mail = mail;
 		this.password = password;
+		this.managerflag = managerflag;
 
 	}
 
-	public Integer getId() {
+	
+	public Integer getUserid() {
 		return userid;
 	}
 
-	public void setId(Integer id) {
-		this.userid = id;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public String getName() {
@@ -90,6 +93,16 @@ public class User {
 
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
+	}
+
+	
+
+	public boolean isManagerflag() {
+		return managerflag;
+	}
+
+	public void setManagerflag(boolean managerflag) {
+		this.managerflag = managerflag;
 	}	
 	
 	

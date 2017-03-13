@@ -15,9 +15,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<h:outputLabel class="headline">Registrierung</h:outputLabel>
 	
 	<h:form id="registerform" class="form">
-		<h:selectOneRadio required="false">
-   			<f:selectItem itemValue="#{register.type}" itemLabel="Anwender" />
-	   		<f:selectItem itemValue="#{register.type}" itemLabel="Manager" />
+		<h:selectOneRadio required="true" value="#{registerBean.managerflag}">
+   			<f:selectItem itemValue="false" itemLabel="Anwender" />
+	   		<f:selectItem itemValue="true" itemLabel="Manager" />
 		</h:selectOneRadio>
 	
 		<table>
