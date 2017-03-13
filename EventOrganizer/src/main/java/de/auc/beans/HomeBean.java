@@ -21,6 +21,14 @@ public class HomeBean {
 	@ManagedProperty("#{eventService}")
 	private EventService eventService;
 	
+	@PostConstruct
+	public void initEvents() {
+		events.clear();
+		for(Event event: eventService.getEvents()) {
+			events.add(event);
+		}
+	}
+	
 	public String search() { 
 		events.clear();
 		for(Event event: eventService.searchEvents(searchText)) {

@@ -3,8 +3,10 @@ package de.auc.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import de.auc.model.Event;
 import de.auc.model.User;
@@ -25,11 +27,18 @@ public class EventService {
 	
 	public List<Event> searchEvents(String searchText) {
 		List<Event> currentEvents = new ArrayList<Event>();
+		FacesMessage searchMessage;
 		for (Event event: events) {
-			System.out.println(event.getName());
 			if(event.getName().toLowerCase().contains(searchText.toLowerCase())) {
 				currentEvents.add(event);
 			}
+		}
+		if(currentEvents.size()==0){
+			searchMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Für den Suchbegriff wurden keine Events gefunden...", "");
+			FacesContext.getCurrentInstance().addMessage("search", searchMessage);
+		} else {
+			searchMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden", "");
+			FacesContext.getCurrentInstance().addMessage("search", searchMessage);
 		}
 		return currentEvents;
 		
