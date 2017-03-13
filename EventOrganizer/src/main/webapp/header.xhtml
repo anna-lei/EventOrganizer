@@ -15,20 +15,20 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	
 	<ul class="menuUl">
 		<h:form>
-	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getHome()}" value="Startseite" class="headerButton" id="home"/></li>
+	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getHome()}" value="Startseite" class="home"/></li>
 		</h:form>
 <!--   	TODO:	Hier  muss die Abfrage rein, wenn User gleich Manager -->
   		<h:form rendered="#{not empty loginService.activeUser}">
-  			<li class="menuLi"><h:commandButton action="#{pageRenderingService.getMyEvents()}" class="headerButton" id="myEvents" value="Meine Veranstaltungen" /></li>
-	  		<li class="menuLi" id="reservations"><h:commandButton action="#{pageRenderingService.getManagerReservation()}" value="Reservierungen" class="headerButton"/></li>
+  			<li class="menuLi"><h:commandButton action="#{pageRenderingService.getMyEvents()}" value="Meine Veranstaltungen" class="myEvents"/></li>
+	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getManagerReservation()}" value="Reservierungen" class="reservations"/></li>
 		</h:form>  		
 		<h:form rendered="#{empty loginService.activeUser}">
-  			<li class="menuLi" id="login" style="float:right"><h:commandButton action="#{pageRenderingService.getLogin()}" value="Login" class="headerButton" id="login"/></li>
+  			<li class="menuLi" id="login" style="float:right"><h:commandButton action="#{pageRenderingService.getLogin()}" value="Login" class="login"/></li>
   		</h:form>
   		<h:form rendered="#{not empty loginService.activeUser}">
   		
 <!--   		TODO:	Hier muss der User ausgeloggt werden -->
-  			<li class="menuLi" style="float:right"><h:commandButton action="#{headerBean.logout}" value="Logout" class="headerButton" id="login"/></li>
+  			<li class="menuLi" style="float:right"><h:commandButton action="#{headerBean.logout}" value="Logout" class="login"/></li>
   		</h:form>
 	</ul>
 
