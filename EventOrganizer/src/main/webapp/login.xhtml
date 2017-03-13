@@ -3,6 +3,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 	<body>
@@ -17,9 +18,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<h:form id="loginform">
 
-			<h:message class="warning" for="login" id="login" />
+			<h:messages class="warning" for="login" id="login" />
 			<br></br>
-			<h:inputText value="#{loginBean.mail}" p:placeholder="E-Mail-Adresse" class="inputText"></h:inputText>
+			<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText">
+				<f:converter binding="#{userConverter}" />
+			</h:inputText>
 			<br></br>
 			<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
 			<br></br>

@@ -34,7 +34,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		    	<th>Ort</th> 
 		    	<th>Verfügbare Tickets</th>
 		  	</tr>
-		  	<ui:repeat var="event" value="#{eventService.events}">
+		  	<ui:repeat var="event" value="#{homeBean.events}">
 			  	<tr>  	
 		  			<td><a href="#{pageRenderingService.getEventDetail(event)}" class="link">#{event.name}</a></td>
 					<td><h:outputText value="#{event.date}"/></td>

@@ -27,7 +27,6 @@ public class RegisterBean {
 	
 	public String register() {
 		if(loginService.register(name, prename, date, mail, password1, password2)){
-			loginService.login(mail, password1);
 			return pageRenderingService.getHome();
 		}
 		return pageRenderingService.getRegister();

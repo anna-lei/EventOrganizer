@@ -15,8 +15,7 @@ public class LoginService {
 	@ManagedProperty("#{userService}")
 	private UserService userService;
 	
-	public boolean login(String mail, String password) {
-		User userToLogin = userService.getUserByName(mail);
+	public boolean login(User userToLogin, String password) {
 		if (userToLogin != null) {
 			if (password.equals(userToLogin.getPassword())) {
 				activeUser = userToLogin;
@@ -26,6 +25,10 @@ public class LoginService {
 		FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der Username oder das Passwort ist nicht korrekt.", "");
 		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 		return false;
+	}
+	
+	public void logout() {
+		activeUser = null;
 	}
 	
 	public boolean register(String name, String prename, String date, String mail, String password1, String password2) {
@@ -39,6 +42,7 @@ public class LoginService {
 				if(password1.length() > 7){
 					User user = new User(name, prename, date, mail, password1);
 					userService.addUser(user);
+					activeUser = user;
 					return true;
 				}
 				else{

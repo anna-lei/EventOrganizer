@@ -4,14 +4,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import de.auc.model.User;
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
 @ManagedBean
 @RequestScoped
 public class LoginBean {
-	private String mail;
 	private String password;
+	private User user;
 	
 	@ManagedProperty("#{loginService}")
 	private LoginService loginService;
@@ -20,19 +21,12 @@ public class LoginBean {
 	private PageRenderingService pageRenderingService;
 	
 	public String login(){
-		if(loginService.login(mail, password)){
+		if(loginService.login(user, password)){
 			return pageRenderingService.getHome();
 		}
 		return pageRenderingService.getLogin();
 	}
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -54,6 +48,13 @@ public class LoginBean {
 	public void setPageRenderingService(PageRenderingService pageRenderingService) {
 		this.pageRenderingService = pageRenderingService;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 	
 }
