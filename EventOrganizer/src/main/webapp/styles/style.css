@@ -33,6 +33,7 @@ body {
 
 .warning {
 	color: red;
+	list-style-type: none;
 }
 
 .inputText {
