@@ -32,6 +32,12 @@
 	float: left;
 }
 
+.name{
+	float: right; 
+	color: white; 
+	padding: 14px;
+}
+
 li input{
 	color: white;
 	font-size: 18px;
