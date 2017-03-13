@@ -2,6 +2,8 @@
 
 body {
 	font-family: Calibri;
+	font-size: 18px;
+	cursor: default;
 }
 
 .context {
@@ -26,6 +28,7 @@ body {
 .headline {
 	text-decoration: underline;
 	font-size: 30px;
+	cursor: default;
 }
 
 .warning {
@@ -36,21 +39,25 @@ body {
 	margin: 5px;
 	width: 195px;
 	height: 24px;
-}
-
-label, td, th {
-	font-size: 18px;
-}
-
-.menuRight {
-	border: solid;
-	width: 30%;
+	font-family: Calibri;
 }
 
 .form {
 	text-align: left;
 }
 
-.oneEvent {
-	border: solid;
+select {
+    margin: 5px;
+    width: 170px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.link{
+	color: black; 
+}
+
+.buttonDiv{
+	float: right;
+	margin-right: 19%;
 }

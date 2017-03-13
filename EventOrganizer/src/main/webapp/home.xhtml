@@ -8,6 +8,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
 		<link rel="stylesheet" type="text/css" href="styles/home.css"></link>	
+		<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
 		<ui:include src="header.xhtml"></ui:include>
 	</head>
 	
@@ -26,7 +27,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<h:outputLabel value="#{homeBean.searchText}" style="text-decoration: underline;">Nächste Veranstaltungen: </h:outputLabel>
 	
 <!-- 	Preis für ein Ticket? -->
-		<table>
+		<table class="coloredTable">
 			<tr>
 				<th>Event</th>
 		    	<th>Datum</th>
@@ -35,7 +36,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		  	</tr>
 		  	<ui:repeat var="event" value="#{eventService.events}">
 			  	<tr>  	
-		  			<td><a href="#{pageRenderingService.getEventDetail(event)}" style="color: black"><h:outputText value="#{event.name}"/></a></td>
+		  			<td><a href="#{pageRenderingService.getEventDetail(event)}" class="link">#{event.name}</a></td>
 					<td><h:outputText value="#{event.date}"/></td>
 		    		<td><h:outputText value="#{event.location}"/></td>
 		    		<td><h:outputText value="#{event.numberOfTickets}"/></td>

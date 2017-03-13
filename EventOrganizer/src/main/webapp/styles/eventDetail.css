@@ -1,5 +1,9 @@
 @CHARSET "ISO-8859-1";
 
+th:nth-child(2n) {
+    padding-left: 20px;
+}
+
 td:nth-child(2n) {
     padding-left: 20px;
 }

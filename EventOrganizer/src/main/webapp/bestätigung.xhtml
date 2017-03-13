@@ -5,33 +5,45 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 	<head>
-		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>	
+		<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>	
 		<ui:include src="header.xhtml"></ui:include>
 	</head>
-
-	<h3><h:outputText rendered="#{not empty loginService.activeUser}" value = "Vielen Dank, #{loginService.activeUser.name}" ></h:outputText></h3>
-	<h:form>
-		<table>
-		  <tr>
-		    <th>Titel:</th>
-		    <th><h:outputText value="#{loginService.activeUser.name}"></h:outputText></th> 
-		  </tr>
-		  <tr>
-		    <td>Datum und Uhrzeit:</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		  <tr>
-		    <td>Anzahl Tickets</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		  <tr>
-		    <td>Bestätigungscode</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		</table>
+	
+	<div class="context" style="text-align: left">	
+		<h:outputLabel rendered="#{not empty loginService.activeUser}" class="headline">Vielen Dank, #{loginService.activeUser.name} !</h:outputLabel>
+		<br/>
+		<h:outputLabel>Deine Ticketreservierung war erfolgreich.</h:outputLabel>
+		<h:form>
+			<br/>
 		
-	</h:form>
-	<br />
-	<a href="anwenderHome.jsf">zurück</a>
+			<table>
+				<tr>
+					<td>Titel:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.name}"></h:outputText></td>
+		    	</tr>
+		  		<tr>
+		    		<td>Datum:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.date}"/></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Ort:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.location}"></h:outputText></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Anzahl Tickets:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.numberOfTickets}"> Anzahl ausgewählter Tickets</h:outputText></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Bestätigungscode:</td>
+		    		<td><h:outputText value="#{loginService.activeUser.name}"> Anzahl ausgewählter Tickets</h:outputText></td>
+		  		</tr>
+			</table>
+			<br/>
+			
+			<h:commandButton class="button" action="#{acceptBean.home}" value="Startseite"> </h:commandButton>
+			
+		</h:form>
+	</div>
 </body>
 </html>

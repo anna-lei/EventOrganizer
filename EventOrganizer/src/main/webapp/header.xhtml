@@ -15,7 +15,18 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	
 	<ul class="menuUl">
   		<li class="menuLi" id="home"><a href="#{pageRenderingService.getHome()}">Startseite</a></li>
-  		<li class="menuLi" id="login" style="float:right"><a href="#{pageRenderingService.getLogin()}">Login</a></li>
+<!--   	TODO:	Hier  muss die Abfrage rein, wenn User gleich Manager -->
+  		<h:form rendered="#{not empty loginService.activeUser}">
+  			<li class="menuLi" id="myEvents"><a href="myEvents.jsf">Meine Veranstaltungen</a></li>
+	  		<li class="menuLi" id="reservations"><a href="managerReservierung.jsf">Reservierungen</a></li>
+		</h:form>  		
+		<h:form rendered="#{empty loginService.activeUser}">
+  			<li class="menuLi" id="login" style="float:right"><a href="#{pageRenderingService.getLogin()}">Login</a></li>
+  		</h:form>
+  		<h:form rendered="#{not empty loginService.activeUser}">
+<!--   		TODO:	Hier muss der User ausgeloggt werden und anschließend auf die Startseite geleitet werden-->
+  			<li class="menuLi" id="login" style="float:right"><a href="#{pageRenderingService.getLogin()}">Logout</a></li>
+  		</h:form>
 	</ul>
 
 </body>

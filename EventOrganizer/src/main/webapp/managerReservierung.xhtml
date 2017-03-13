@@ -7,32 +7,39 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>	
+			<link rel="stylesheet" type="text/css" href="styles/managerReservations.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>			
 			<ui:include src="header.xhtml"></ui:include>
 		</head>
-		<h:outputLabel class="headline">Reservierungen</h:outputLabel>
+		<div class="context" style="text-align: left">	
+			<h:outputText value="Reservierungen" class="headline"></h:outputText>
+			<br/>
+			<br/>		
 		
-		<h:form>
-			<div class="menuRight"><p>Meine Veranstaltungen</p></div>
-			<div class="menuRight"><p>Reservierungen</p></div>
-		</h:form>
+		<ui:repeat var="event" value="#{eventService.events}">
+			<a href="#{pageRenderingService.getEventDetail(event)}" class="link">#{eventService.activeEvent.name}</a>
+<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
+			<h:outputLabel style="float: right; margin-right: 15px;">#{event.numberOfTickets} verfügbare Tickets</h:outputLabel>
+	
+<!-- 	Preis für ein Ticket? -->
+			<table class="coloredTable">
+				<tr>
+					<th>Name</th>
+		    		<th>Anzahl Tickets</th>
+		  		</tr>
+<!-- 		  		TODO: Hier muss über die Reservierungen iteriert werden  -->
+		  		<ui:repeat var="event" value="#{eventService.events}">
+			  		<tr>  	
+		  				<td><h:outputText value="#{event.name}"/></td>
+						<td><h:outputText value="#{event.date}"/></td>
+		  			</tr>
+				</ui:repeat>
+			</table>
+			<br/>
+			<br/>
+		</ui:repeat>
 		
-		<h:form>
-			<h:outputLabel>Veranstaltung 1</h:outputLabel>
-			<h:outputLabel>0 verfügbar</h:outputLabel>
-			
-			<h:dataTable var="lang" value="#{project.languages}">
-				<h:column>
-					<f:facet name="header">Name</f:facet>
-					<h:outputText value="Test">Hans Glück</h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Anzahl</f:facet>
-					<h:outputText value="Tets">5</h:outputText>
-				</h:column>
-			</h:dataTable>
-		</h:form>
-		
-		
+		</div>
 	</body>
 </html>

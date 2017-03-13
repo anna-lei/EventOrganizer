@@ -6,37 +6,43 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <body>
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+		<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
 		<ui:include src="header.xhtml"></ui:include>
 	</head>
 
-	<H2>verbindliche Reservierung:</H2>
-	<h:form>
-		<table>
-		  <tr>
-		    <th>Titel:</th>
-		    <th><h:outputText value="#{loginService.activeUser.name}"></h:outputText></th> 
-		  </tr>
-		  <tr>
-		    <td>Datum und Uhrzeit:</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		  <tr>
-		    <td>Anzahl Tickets</td>
-		    <td><h:outputText value="#{loginService.activeUser.name}"></h:outputText></td>
-		  </tr>
-		  <tr>
-		  	<td>&nbsp;</td>
-		  </tr>
-		  <tr>
-		    <th>Name:</th>
-		    <th><h:outputText value="#{loginService.activeUser.name}"></h:outputText></th> 
-		  </tr>
-		</table>
-		<br />
-		<br />
-		<h:commandButton value="reservieren"> </h:commandButton>
-	</h:form>
-	<br />
-	<a href="eventDetail.jsf">zurück</a>
+	<div class="context" style="text-align: left">	
+		<h:outputLabel class="headline">Verbindliche Reservierung</h:outputLabel>
+		<h:form>
+			<br/>
+		
+			<table>
+				<tr>
+		    		<th>Name:</th>
+		    		<th><h:outputText value="#{loginService.activeUser.name}"></h:outputText></th> 
+		  		</tr>
+				<tr>
+					<th>Titel:</th>
+		    		<th><h:outputText value="#{eventService.activeEvent.name}"></h:outputText></th>
+		    	</tr>
+		  		<tr>
+		    		<td>Datum:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.date}"/></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Ort:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.location}"></h:outputText></td>
+		  		</tr>
+		  		<tr>
+		    		<td>Anzahl Tickets:</td>
+		    		<td><h:outputText value="#{eventService.activeEvent.numberOfTickets}"> Anzahl ausgewählter Tickets</h:outputText></td>
+		  		</tr>
+			</table>
+			<br/>
+			
+			<h:commandButton class="button" action="#{reservBean.back}" value="Zurück"> </h:commandButton>
+			<h:commandButton class="button" action="#{reservBean.reserv}" value="Reservieren"> </h:commandButton>
+			
+		</h:form>
+	</div>
 </body>
 </html>
