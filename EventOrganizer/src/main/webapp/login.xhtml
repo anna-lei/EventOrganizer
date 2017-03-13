@@ -6,30 +6,40 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-	<body>
+
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+
+		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
 			<link rel="stylesheet" type="text/css" href="styles/login.css"></link>
-			<ui:include src="header.xhtml"></ui:include>
 		</head>
-		
-	<div class="context">
-		<h:outputLabel class="headline">Login</h:outputLabel>
 
-		<h:form id="loginform">
+		<div class="context">
+			<h:outputLabel class="headline">Login</h:outputLabel>
 
-			<h:messages class="warning" for="login" id="login" />
-			
-			<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText">
-				<f:converter binding="#{userConverter}" />
-			</h:inputText>
-			<br></br>
-			<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
-			<br></br>
-			<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;">Neu registrieren</a>
-			<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button"></h:commandButton>
-		</h:form>
-	</div>
-		
-	</body>
+			<h:form id="loginform">
+
+				<h:messages class="warning" for="login" id="login" />
+
+				<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText">
+					<f:converter binding="#{userConverter}" />
+				</h:inputText>
+				<br></br>
+				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
+				<br></br>
+				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;">Neu registrieren</a>
+				<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button"></h:commandButton>
+			</h:form>
+		</div>
+
+		</body>
+
+	</ui:define>
+</ui:composition>
+
 </html>

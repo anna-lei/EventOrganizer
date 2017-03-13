@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<h:body>
+		<ui:insert name="main.header">
+			<head>
+				<link rel="stylesheet" type="text/css" href="styles/header.css"></link>		
+			</head>
+	
+			<div class="header">
+				<img src="styles/EO_Logo.png" class="logo"></img> 
+				<a href="#{pageRenderingService.getHome()}" class="noLink">Event-Organizer</a>
+			</div> 
+		</ui:insert>
+		
+		<ui:insert name="main.menu"/>
+		
+		<ui:insert name="main.content"/>
+		
+	</h:body>
+
+</html>

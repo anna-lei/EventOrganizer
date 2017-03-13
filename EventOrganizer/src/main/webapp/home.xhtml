@@ -4,45 +4,62 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-<body>
-	<head>
-		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
-		<link rel="stylesheet" type="text/css" href="styles/home.css"></link>	
-		<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
-		<ui:include src="header.xhtml"></ui:include>
-	</head>
-	
-	<div class="context">
-	
-		<h3><h:outputText rendered="#{not empty loginService.activeUser}" value = "Herzlich Willkommen #{loginService.activeUser.name}" ></h:outputText></h3>
-		<br/>
-	
-		<h:form class="form">
-			<h:outputLabel>Suche: </h:outputLabel>
-			<h:inputText value="#{homeBean.searchText}" class="inputText" p:placeholder="Suchbegriff"></h:inputText>
-			<h:commandButton  action="#{homeBean.search}" value="Suchen" class="button"> </h:commandButton>
-		</h:form>
-		<br/>
-		<h:outputLabel rendered="#{empty homeBean.searchText}" style="text-decoration: underline;">Nächste Events:</h:outputLabel>
-		<h:messages for="search" id="search" />
-<!-- 	Preis für ein Ticket? -->
-		<table rendered="#{not empty homeBean.events}" class="coloredTable">
-			<tr>
-				<th>Event</th>
-		    	<th>Datum</th>
-		    	<th>Ort</th> 
-		    	<th>Verfügbare Tickets</th>
-		  	</tr>
-		  	<ui:repeat var="event" value="#{homeBean.events}">
-			  	<tr>  	
-		  			<td><a href="#{pageRenderingService.getEventDetail(event)}" class="link">#{event.name}</a></td>
-					<td><h:outputText value="#{event.date}"/></td>
-		    		<td><h:outputText value="#{event.location}"/></td>
-		    		<td><h:outputText value="#{event.numberOfTickets}"/></td>
-		  		</tr>
-			</ui:repeat>
-		</table>
-	
-	</div>
-</body>
+
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+
+		<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/home.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
+		</head>
+
+		<div class="context">
+
+			<h3>
+				<h:outputText rendered="#{not empty loginService.activeUser}"
+					value="Herzlich Willkommen #{loginService.activeUser.name}"></h:outputText>
+			</h3>
+			<br />
+
+			<h:form class="form">
+				<h:outputLabel>Suche: </h:outputLabel>
+				<h:inputText value="#{homeBean.searchText}" class="inputText"
+					p:placeholder="Suchbegriff"></h:inputText>
+				<h:commandButton action="#{homeBean.search}" value="Suchen"
+					class="button">
+				</h:commandButton>
+			</h:form>
+			<br />
+			<h:outputLabel rendered="#{empty homeBean.searchText}"
+				style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+			<h:messages for="search" id="search" />
+			<!-- 	Preis für ein Ticket? -->
+			<table rendered="#{not empty homeBean.events}" class="coloredTable">
+				<tr>
+					<th>Event</th>
+					<th>Datum</th>
+					<th>Ort</th>
+					<th>Verfügbare Tickets</th>
+				</tr>
+				<ui:repeat var="event" value="#{homeBean.events}">
+					<tr>
+						<td><a href="#{pageRenderingService.getEventDetail(event)}"
+							class="link">#{event.name}</a></td>
+						<td><h:outputText value="#{event.date}" /></td>
+						<td><h:outputText value="#{event.location}" /></td>
+						<td><h:outputText value="#{event.numberOfTickets}" /></td>
+					</tr>
+				</ui:repeat>
+			</table>
+
+		</div>
+		</body>
+	</ui:define>
+</ui:composition>
+
 </html>

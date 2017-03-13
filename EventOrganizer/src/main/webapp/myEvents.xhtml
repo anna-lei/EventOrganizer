@@ -4,50 +4,65 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-		<body>
-			<head>
-				<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
-				<link rel="stylesheet" type="text/css" href="styles/myEvents.css"></link>
-				<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
-				<ui:include src="header.xhtml"></ui:include>
-			</head>
 
-		<div class="context" style="text-align: left;">	
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+
+		<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/myEvents.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
+		</head>
+
+		<div class="context" style="text-align: left;">
 			<h:outputLabel class="headline">Meine Veranstaltungen</h:outputLabel>
-			<br/>	
-			<br/>
-		
+			<br /> <br />
+
 			<h:form>
 				<h:outputText value="Veranstaltungen: "></h:outputText>
 				<h:selectOneMenu>
-  	 				<f:selectItem itemValue="#{managerStartBean.filter}" itemLabel="alle" />
- 	  				<f:selectItem itemValue="#{managerStartBean.filter}" itemLabel="angelegte" />
-   					<f:selectItem itemValue="#{managerStartBean.filter}" itemLabel="veröffentlichte" />
+					<f:selectItem itemValue="#{managerStartBean.filter}"
+						itemLabel="alle" />
+					<f:selectItem itemValue="#{managerStartBean.filter}"
+						itemLabel="angelegte" />
+					<f:selectItem itemValue="#{managerStartBean.filter}"
+						itemLabel="veröffentlichte" />
 				</h:selectOneMenu>
-				<h:commandButton class="button" action="#{managerStartBean.add}" value="+"> </h:commandButton>
+				<h:commandButton class="button" action="#{managerStartBean.add}"
+					value="+">
+				</h:commandButton>
 			</h:form>
-	
-<!-- 	Preis für ein Ticket? -->
+
+			<!-- 	Preis für ein Ticket? -->
 			<table class="coloredTable">
 				<tr>
 					<th>Event</th>
-		    		<th>Datum</th>
-			    	<th>Ort</th> 
-			    	<th>Reservierte Tickets</th>
-			  	</tr>
-			  	<ui:repeat var="event" value="#{eventService.events}">
-				  	<tr>  	
-<!-- 				  	TODO: hier muss zu eventDetail gewechselt werden, aber für den Manager -->
-		  				<td><a href="#{pageRenderingService.getManagerDetail()}" style="color: black"><h:outputText value="#{event.name}"/></a></td>
-						<td><h:outputText value="#{event.date}"/></td>
-		    			<td><h:outputText value="#{event.location}"/></td>
-		    			
-<!-- 		    			TODO: ersetzen durch verfügbareTickets -->
-		  		  		<td><h:outputText value="#{event.numberOfTickets}"/></td>
-		  			</tr>
+					<th>Datum</th>
+					<th>Ort</th>
+					<th>Reservierte Tickets</th>
+				</tr>
+				<ui:repeat var="event" value="#{eventService.events}">
+					<tr>
+						<!-- 				  	TODO: hier muss zu eventDetail gewechselt werden, aber für den Manager -->
+						<td><a href="#{pageRenderingService.getManagerDetail()}"
+							style="color: black"><h:outputText value="#{event.name}" /></a></td>
+						<td><h:outputText value="#{event.date}" /></td>
+						<td><h:outputText value="#{event.location}" /></td>
+
+						<!-- 		    			TODO: ersetzen durch verfügbareTickets -->
+						<td><h:outputText value="#{event.numberOfTickets}" /></td>
+					</tr>
 				</ui:repeat>
 			</table>
 
 		</div>
-	</body>
+		</body>
+
+
+	</ui:define>
+</ui:composition>
 </html>

@@ -4,77 +4,73 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<body>
-		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>	
-			<ui:include src="header.xhtml"></ui:include>
-		</head>
-	
-	<div class="context">	
-	<h:outputLabel class="headline">Event bearbeiten:</h:outputLabel>
-	<br/>
-	<br/>
-	
-	<h:form class="form">
 
-		<table style="margin-left: 38%;">
-			<tr>
-    			<td>
-					<h:outputLabel>Titel: </h:outputLabel>
-				</td>
-				<td>
-					<h:inputText value="#{editEventBean.title}" class="inputText"/>
-				</td>
-			</tr>
-			<tr>
-	    		<td>
- 			   		<h:outputLabel>Datum:</h:outputLabel>
- 			   	</td>
-				<td>
-					<h:inputText value="#{editEventBean.date}" class="inputText"/>
-    			</td>
-  			</tr>
-  			<tr>
-    			<td>
-					<h:outputLabel>Uhrzeit: </h:outputLabel>
-				</td>
-				<td>
-					<h:inputText value="#{editEventBean.time}" class="inputText"/>
-				</td>
-			</tr>
-  			<tr>
-	    		<td>
-					<h:outputLabel>Ort:</h:outputLabel>
-				</td>
-				<td>
-					<h:inputText value="#{editEventBean.location}" class="inputText"/>
-    			</td>
-  			</tr>
-  			<tr>
-    			<td>
-					<h:outputLabel>Anzahl Tickets: </h:outputLabel>
-				</td>
-				<td>
-					<h:inputText value="#{editEventBean.tickets}" class="inputText"/>
-				</td>
-			</tr>
-  			<tr>
-    			<td>
-					<h:outputLabel>Beschreibung:</h:outputLabel>
-				</td>
-				<td>
-					<h:inputTextarea value="#{editEventBean.description}" class="inputText"/>
-    			</td>
-  			</tr>
-		</table>
-		<br/>
-		
-		<div class="buttonDiv" style="margin-right: 37%;">
-			<h:commandButton class="button" action="#{editEventBean.cancel}" value="Abbrechen"> </h:commandButton>
-			<h:commandButton class="button" action="#{editEventBean.save}" value="Speichern"> </h:commandButton>
-			<h:commandButton class="button" action="#{editEventBean.publish}" value="Veröffentlichen"> </h:commandButton>
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+
+		<body>
+		<head>
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+		</head>
+
+		<div class="context">
+			<h:outputLabel class="headline">Event bearbeiten:</h:outputLabel>
+			<br /> <br />
+
+			<h:form class="form">
+
+				<table style="margin-left: 38%;">
+					<tr>
+						<td><h:outputLabel>Titel: </h:outputLabel></td>
+						<td><h:inputText value="#{editEventBean.title}"
+								class="inputText" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel>Datum:</h:outputLabel></td>
+						<td><h:inputText value="#{editEventBean.date}"
+								class="inputText" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel>Uhrzeit: </h:outputLabel></td>
+						<td><h:inputText value="#{editEventBean.time}"
+								class="inputText" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel>Ort:</h:outputLabel></td>
+						<td><h:inputText value="#{editEventBean.location}"
+								class="inputText" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
+						<td><h:inputText value="#{editEventBean.tickets}"
+								class="inputText" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel>Beschreibung:</h:outputLabel></td>
+						<td><h:inputTextarea value="#{editEventBean.description}"
+								class="inputText" /></td>
+					</tr>
+				</table>
+				<br />
+
+				<div class="buttonDiv" style="margin-right: 37%;">
+					<h:commandButton class="button" action="#{editEventBean.cancel}"
+						value="Abbrechen">
+					</h:commandButton>
+					<h:commandButton class="button" action="#{editEventBean.save}"
+						value="Speichern">
+					</h:commandButton>
+					<h:commandButton class="button" action="#{editEventBean.publish}"
+						value="Veröffentlichen">
+					</h:commandButton>
+				</div>
+			</h:form>
 		</div>
-	</h:form>
-	</div>
-</body>
+		</body>
+
+	</ui:define>
+</ui:composition>
 </html>

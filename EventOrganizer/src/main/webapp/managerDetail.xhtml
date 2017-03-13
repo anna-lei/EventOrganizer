@@ -5,58 +5,76 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<body>
+
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+
+		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>		
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
 			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
-			<ui:include src="header.xhtml"></ui:include>
 		</head>
-		
+
 		<div class="context" style="text-align: left">
-		<h:form>	
-			<h:outputText value="#{eventService.activeEvent.name}" class="headline"></h:outputText>
-			<h:commandButton action="#{managerDetailBean.publish}" value="Veröffentlichen" class="button"></h:commandButton>
-			<h:commandButton action="#{managerDetailBean.edit}" value="Bearbeiten" class="button"></h:commandButton> <br/>
-			<br/>
-		
-			<table>
-		  		<tr>
-		    		<td>Datum:</td>
-		    		<td><h:outputText value="#{eventService.activeEvent.date}" style="padding-left: 20px;"/></td>
-		  		</tr>
-		  		<tr>
-		    		<td>Ort:</td>
-		    		<td><h:outputText value="#{eventService.activeEvent.location}" style="padding-left: 20px;"/></td>
-		  		</tr>
-			</table>
-			<br/>
-			<h:outputLabel>Beschreibung:</h:outputLabel> <br/>
-			<h:outputText value="#{eventService.activeEvent.description}" style="font-size: 14px;"/>
-		<br/>
-		<br/>
-		
-<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
-		<h:outputLabel>Reservierungen (#{event.numberOfTickets} verfügbare Tickets)</h:outputLabel>
-	
-<!-- 	Preis für ein Ticket? -->
-		<table class="coloredTable">
-			<tr>
-				<th>Name</th>
-		    	<th>Anzahl Tickets</th>
-		  	</tr>
-		  	<ui:repeat var="event" value="#{eventService.events}">
-			  	<tr>  	
-		  			<td><h:outputText value="#{event.name}"/></td>
-					<td><h:outputText value="#{event.date}"/></td>
-		  		</tr>
-			</ui:repeat>
-		</table>
-		
-		<h:commandButton action="#{managerDetailBean.back}" value="Zurück" class="button"></h:commandButton>
+			<h:form>
+				<h:outputText value="#{eventService.activeEvent.name}"
+					class="headline"></h:outputText>
+				<h:commandButton action="#{managerDetailBean.publish}"
+					value="Veröffentlichen" class="button"></h:commandButton>
+				<h:commandButton action="#{managerDetailBean.edit}"
+					value="Bearbeiten" class="button"></h:commandButton>
+				<br />
+				<br />
 
-	</h:form>
+				<table>
+					<tr>
+						<td>Datum:</td>
+						<td><h:outputText value="#{eventService.activeEvent.date}"
+								style="padding-left: 20px;" /></td>
+					</tr>
+					<tr>
+						<td>Ort:</td>
+						<td><h:outputText
+								value="#{eventService.activeEvent.location}"
+								style="padding-left: 20px;" /></td>
+					</tr>
+				</table>
+				<br />
+				<h:outputLabel>Beschreibung:</h:outputLabel>
+				<br />
+				<h:outputText value="#{eventService.activeEvent.description}"
+					style="font-size: 14px;" />
+				<br />
+				<br />
 
-	</div>
-		
-	</body>
+				<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
+				<h:outputLabel>Reservierungen (#{event.numberOfTickets} verfügbare Tickets)</h:outputLabel>
+
+				<!-- 	Preis für ein Ticket? -->
+				<table class="coloredTable">
+					<tr>
+						<th>Name</th>
+						<th>Anzahl Tickets</th>
+					</tr>
+					<ui:repeat var="event" value="#{eventService.events}">
+						<tr>
+							<td><h:outputText value="#{event.name}" /></td>
+							<td><h:outputText value="#{event.date}" /></td>
+						</tr>
+					</ui:repeat>
+				</table>
+
+				<h:commandButton action="#{managerDetailBean.back}" value="Zurück"
+					class="button"></h:commandButton>
+
+			</h:form>
+
+		</div>
+		</body>
+
+	</ui:define>
+</ui:composition>
 </html>

@@ -5,41 +5,49 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<body>
+
+<ui:composition template="template.xhtml">
+	<ui:define name="main.menu">
+		<ui:include src="header.xhtml" />
+	</ui:define>
+	<ui:define name="main.content">
+
+		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>	
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
 			<link rel="stylesheet" type="text/css" href="styles/managerReservations.css"></link>
-			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>			
-			<ui:include src="header.xhtml"></ui:include>
+			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
 		</head>
-		<div class="context" style="text-align: left">	
+		<div class="context" style="text-align: left">
 			<h:outputText value="Reservierungen" class="headline"></h:outputText>
-			<br/>
-			<br/>		
-		
-		<ui:repeat var="event" value="#{eventService.events}">
-			<a href="#{pageRenderingService.getEventDetail(event)}" class="link">#{eventService.activeEvent.name}</a>
-<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
-			<h:outputLabel style="float: right; margin-right: 15px;">#{event.numberOfTickets} verfügbare Tickets</h:outputLabel>
-	
-<!-- 	Preis für ein Ticket? -->
-			<table class="coloredTable">
-				<tr>
-					<th>Name</th>
-		    		<th>Anzahl Tickets</th>
-		  		</tr>
-<!-- 		  		TODO: Hier muss über die Reservierungen iteriert werden  -->
-		  		<ui:repeat var="event" value="#{eventService.events}">
-			  		<tr>  	
-		  				<td><h:outputText value="#{event.name}"/></td>
-						<td><h:outputText value="#{event.date}"/></td>
-		  			</tr>
-				</ui:repeat>
-			</table>
-			<br/>
-			<br/>
-		</ui:repeat>
-		
+			<br /> <br />
+
+			<ui:repeat var="event" value="#{eventService.events}">
+				<a href="#{pageRenderingService.getEventDetail(event)}" class="link">#{eventService.activeEvent.name}</a>
+				<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
+				<h:outputLabel style="float: right; margin-right: 15px;">#{event.numberOfTickets} verfügbare Tickets</h:outputLabel>
+
+				<!-- 	Preis für ein Ticket? -->
+				<table class="coloredTable">
+					<tr>
+						<th>Name</th>
+						<th>Anzahl Tickets</th>
+					</tr>
+					<!-- 		  		TODO: Hier muss über die Reservierungen iteriert werden  -->
+					<ui:repeat var="event" value="#{eventService.events}">
+						<tr>
+							<td><h:outputText value="#{event.name}" /></td>
+							<td><h:outputText value="#{event.date}" /></td>
+						</tr>
+					</ui:repeat>
+				</table>
+				<br />
+				<br />
+			</ui:repeat>
+
 		</div>
-	</body>
+		</body>
+
+	</ui:define>
+</ui:composition>
 </html>
