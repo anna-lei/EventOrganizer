@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles/header.css"></link>		
+	</head>
+	
+	<header class="header">
+		<img src="styles/EO_Logo.png" class="logo"></img> 
+		<a href="#{pageRenderingService.getHome()}" class="noLink">Event-Organizer</a>
+	</header> 
+	
+	<ul class="menuUl">
+		<h:form>
+	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getHome()}" value="Startseite" class="headerButton" id="home"/></li>
+		</h:form>
+<!--   	TODO:	Hier  muss die Abfrage rein, wenn User gleich Manager -->
+  		<h:form rendered="#{not empty loginService.activeUser}">
+  			<li class="menuLi"><h:commandButton action="#{pageRenderingService.getMyEvents()}" class="headerButton" id="myEvents" value="Meine Veranstaltungen" /></li>
+	  		<li class="menuLi" id="reservations"><h:commandButton action="#{pageRenderingService.getManagerReservation()}" value="Reservierungen" class="headerButton"/></li>
+		</h:form>  		
+		<h:form rendered="#{empty loginService.activeUser}">
+  			<li class="menuLi" id="login" style="float:right"><h:commandButton action="#{pageRenderingService.getLogin()}" value="Login" class="headerButton" id="login"/></li>
+  		</h:form>
+  		<h:form rendered="#{not empty loginService.activeUser}">
+  		
+<!--   		TODO:	Hier muss der User ausgeloggt werden -->
+  			<li class="menuLi" style="float:right"><h:commandButton action="#{headerBean.logout}" value="Logout" class="headerButton" id="login"/></li>
+  		</h:form>
+	</ul>
+
+</body>
+</html>
