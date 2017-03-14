@@ -8,48 +8,48 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
 <body>
-<head>
-<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
-</head>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+		<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
+	</head>
 
-<div style="text-align: left; padding: 15px;">
+	<div style="text-align: left; padding: 15px;">
 
-	<h:form class="form">
-		<h:outputLabel>Suche: </h:outputLabel>
-		<h:inputText value="#{homeBean.searchText}" class="inputText"
-			p:placeholder="Suchbegriff" style="margin-left: 80px;" />
-		<h:commandButton action="#{homeBean.search}" value="Suchen"
-			class="button" />
-	</h:form>
+		<h:form class="form">
+			<h:outputLabel>Suche: </h:outputLabel>
+			<h:inputText value="#{homeBean.searchText}" class="inputText"
+				p:placeholder="Suchbegriff" style="margin-left: 80px;" />
+			<h:commandButton action="#{homeBean.search}" value="Suchen"
+				class="button" />
+		</h:form>
 
-	<h:outputLabel rendered="#{empty homeBean.searchText}"
-		style="text-decoration: underline;">Nächste Events:</h:outputLabel>
-	<h:messages for="search" id="search" class="message" />
+		<h:outputLabel rendered="#{empty homeBean.searchText}"
+			style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+		<h:messages for="search" id="search" class="message" />
 	<!-- 	Preis für ein Ticket? -->
 
-	<h:dataTable var="event" value="#{homeBean.events}"
-		rendered="#{not empty homeBean.events}" class="coloredTable">
-		<h:column>
-			<f:facet name="header">Event</f:facet>
-			<h:link value="#{event.name}" outcome="eventDetail.jsf" class="link">
-				<f:param name="eventid" value="#{event.eventid}" />
-			</h:link>
-		</h:column>
-		<h:column>
-			<f:facet name="header">Datum</f:facet>
-			<h:outputText value="#{event.date}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Ort</f:facet>
-			<h:outputText value="#{event.location}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">Verfügbare Tickets</f:facet>
-			<h:outputText value="#{event.numberOfTickets}" />
-		</h:column>
-	</h:dataTable>
+		<h:dataTable var="event" value="#{homeBean.events}"
+			rendered="#{not empty homeBean.events}" class="coloredTable">
+			<h:column>
+				<f:facet name="header">Event</f:facet>
+				<h:link value="#{event.name}" outcome="eventDetail.jsf" class="link">
+					<f:param name="eventid" value="#{event.eventid}" />
+				</h:link>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Datum</f:facet>
+				<h:outputText value="#{event.date}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ort</f:facet>
+				<h:outputText value="#{event.location}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Verfügbare Tickets</f:facet>
+				<h:outputText value="#{event.numberOfTickets}" />
+			</h:column>
+		</h:dataTable>
 
-</div>
+	</div>
 </body>
 </html>

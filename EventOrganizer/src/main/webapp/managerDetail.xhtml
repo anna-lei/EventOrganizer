@@ -14,8 +14,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
 		</head>
 
 		<div class="context" style="text-align: left">
@@ -53,19 +53,18 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
 				<h:outputLabel>Reservierungen (#{event.numberOfTickets} verfügbare Tickets)</h:outputLabel>
 
-				<!-- 	Preis für ein Ticket? -->
-				<table class="coloredTable">
-					<tr>
-						<th>Name</th>
-						<th>Anzahl Tickets</th>
-					</tr>
-					<ui:repeat var="event" value="#{eventService.events}">
-						<tr>
-							<td><h:outputText value="#{event.name}" /></td>
-							<td><h:outputText value="#{event.date}" /></td>
-						</tr>
-					</ui:repeat>
-				</table>
+				<h:dataTable var="event" value="#{eventService.events}" class="coloredTable">
+					<h:column>
+						<f:facet name="header">Name</f:facet>
+						
+<!-- 			TODO Richtige Sachen hier rein schreiben -->
+						<h:outputText value="#{event.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Anzahl Tickets</f:facet>
+						<td><h:outputText value="#{event.date}" /></td>
+					</h:column>
+				</h:dataTable>
 
 				<h:commandButton action="#{managerDetailBean.back}" value="Zurück"
 					class="button"></h:commandButton>
