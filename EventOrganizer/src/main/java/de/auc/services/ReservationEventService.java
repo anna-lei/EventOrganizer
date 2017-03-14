@@ -24,10 +24,12 @@ public class ReservationEventService implements Serializable{
 	private LoginService loginService;
 	
 	
-	public void reserve(Event event, Integer selectedTickets) {
+	public Reservation reserve(Event event, Integer selectedTickets) {
 		eventService.getEventById(event.getEventid()).setNumberOfTickets(eventService.getEventById(event.getEventid()).getNumberOfTickets()-selectedTickets);
 		//TODO Eventid
-		this.addReservation(new Reservation(5, generateCode(), selectedTickets, loginService.getActiveUser(), event)); 
+		Reservation reservation = new Reservation(5, generateCode(), selectedTickets, loginService.getActiveUser(), event);
+		addReservation(reservation);
+		return reservation;
 		
 	}
 	

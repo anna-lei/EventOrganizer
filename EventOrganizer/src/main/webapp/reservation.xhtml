@@ -64,11 +64,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 									value="#{reservationBean.selectedTickets}" />
 							</h:commandButton>
 						</h:form></td>
-
-					<td><h:outputLabel class="headline">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>
-						<br /> <h:outputLabel>Deine Ticketreservierung war erfolgreich.</h:outputLabel>
-						<br /> <h:outputLabel value="Bestätigungscode:" /> <h:outputText
-							value="#{loginService.activeUser.prename}">CODE</h:outputText></td>
+					<h:outputText value="#{reservationBean.reservation.code}"></h:outputText>
+					<h:outputLabel rendered="#{not empty reservationBean.reservation.code}" class="headline">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>
+						<h:outputLabel rendered="#{not empty reservationBean.reservation.code}">Deine Ticketreservierung war erfolgreich.</h:outputLabel>
+						<h:outputLabel rendered="#{not empty reservationBean.reservation.code}" value="Bestätigungscode:" /> 
+						<h:outputText rendered="#{not empty reservationBean.reservation.code}" value="#{reservationBean.reservation.code}" ></h:outputText>
 				</tr>
 
 			</table>

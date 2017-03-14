@@ -1,17 +1,11 @@
 package de.auc.beans;
 
-import java.util.Map;
-
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.services.EventService;
-import de.auc.services.LoginService;
-import de.auc.services.PageRenderingService;
 
 @Named(value="detailBean")
 @RequestScoped
@@ -23,12 +17,6 @@ public class DetailBean {
 	@Inject
 	private EventService eventService;
 		
-	@Inject
-	private LoginService loginService;
-	
-	@Inject
-	private PageRenderingService pageRenderingService;
-	
 
 	public EventService getEventService() {
 		return eventService;
