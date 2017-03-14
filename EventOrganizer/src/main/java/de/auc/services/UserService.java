@@ -1,16 +1,17 @@
 package de.auc.services;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import de.auc.model.User;
 
-@ManagedBean
+@Named(value="userService")
 @SessionScoped
-public class UserService {
+public class UserService implements Serializable {
 	private List<User> users = new ArrayList<User>();	
 
 	public UserService() {

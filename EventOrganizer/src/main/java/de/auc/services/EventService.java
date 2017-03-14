@@ -3,15 +3,14 @@ package de.auc.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import de.auc.model.Event;
-import de.auc.model.User;
 
-@ManagedBean
+@Named(value="eventService")
 @ApplicationScoped
 public class EventService {
 	private List<Event> events = new ArrayList<Event>();

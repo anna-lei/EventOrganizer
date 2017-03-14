@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.services.EventService;
 
 
-@ManagedBean
-@ViewScoped
+@Named(value="homeBean")
+@RequestScoped
 public class HomeBean {
 	private String searchText;
 	private List<Event> events = new ArrayList<Event>();
 	
-	@ManagedProperty("#{eventService}")
+	@Inject
 	private EventService eventService;
 	
 	@PostConstruct
@@ -53,14 +53,7 @@ public class HomeBean {
 		this.events = events;
 	}
 
-	public EventService getEventService() {
-		return eventService;
-	}
 
-	public void setEventService(EventService eventService) {
-		this.eventService = eventService;
-	}
-	
 	
 	
 	

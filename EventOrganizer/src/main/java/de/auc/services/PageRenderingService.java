@@ -1,12 +1,12 @@
 package de.auc.services;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.model.Event;
 
-@ManagedBean
+@Named(value="pageRenderingService")
 @ApplicationScoped
 public class PageRenderingService {
 	
@@ -18,7 +18,7 @@ public class PageRenderingService {
 	private static final String PAGE_MANAGER_RESERVATION_JSF = "managerReservierung.jsf";
 	private static final String PAGE_MANAGER_DETAIL_JSF = "managerDetail.jsf";
 	
-	@ManagedProperty("#{eventService}")
+	@Inject
 	private EventService eventService;
 
 	public String getManagerDetail(){

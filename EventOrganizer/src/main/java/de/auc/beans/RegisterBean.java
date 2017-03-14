@@ -1,15 +1,15 @@
 package de.auc.beans;
 
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
 
-@ManagedBean
+@Named(value="registerBean")
 @RequestScoped
 public class RegisterBean {
 	private String name;
@@ -20,10 +20,10 @@ public class RegisterBean {
 	private String password2;
 	private boolean managerflag;
 	
-	@ManagedProperty("#{loginService}")
+	@Inject
 	private LoginService loginService;
 	
-	@ManagedProperty("#{pageRenderingService}")
+	@Inject
 	private PageRenderingService pageRenderingService;
 	
 	public String register() {

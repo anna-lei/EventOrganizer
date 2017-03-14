@@ -1,15 +1,15 @@
 package de.auc.beans;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.services.LoginService;
 
-@ManagedBean
-@ViewScoped
+@Named(value="headerBean")
+@RequestScoped
 public class HeaderBean {
-	@ManagedProperty("#{loginService}")
+	@Inject
 	private LoginService loginService;
 	
 	public String logout(){

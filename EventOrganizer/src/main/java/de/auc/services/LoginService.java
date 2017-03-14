@@ -1,18 +1,20 @@
 package de.auc.services;
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.model.User;
 
-@ManagedBean
+@Named(value="loginService")
 @SessionScoped
-public class LoginService {
+public class LoginService implements Serializable{
 
 	private User activeUser;
-	@ManagedProperty("#{userService}")
+	@Inject
 	private UserService userService;
 	
 	public boolean login(User userToLogin, String password) {

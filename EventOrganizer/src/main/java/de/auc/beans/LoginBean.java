@@ -1,23 +1,23 @@
 package de.auc.beans;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.model.User;
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
-@ManagedBean
+@Named(value="loginBean")
 @RequestScoped
 public class LoginBean {
 	private String password;
 	private User user;
 	
-	@ManagedProperty("#{loginService}")
+	@Inject
 	private LoginService loginService;
 	
-	@ManagedProperty("#{pageRenderingService}")
+	@Inject
 	private PageRenderingService pageRenderingService;
 	
 	public String login(){

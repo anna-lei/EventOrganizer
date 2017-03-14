@@ -1,19 +1,19 @@
 package de.auc.beans;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.services.EventService;
 
-@ManagedBean
-@ViewScoped
+@Named(value="detailBean")
+@RequestScoped
 public class DetailBean {
 
 	private Event event;
 	
-	@ManagedProperty("#{eventService}")
+	@Inject
 	private EventService eventService;
 
 	public EventService getEventService() {
