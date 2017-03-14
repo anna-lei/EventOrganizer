@@ -26,14 +26,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 				<h:messages class="warning" for="login" id="login" />
 
-				<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText">
+				<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText" tabindex="1">
 					<f:converter binding="#{userConverter}" />
 				</h:inputText>
 				<br></br>
-				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText"></h:inputSecret>
+				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText" tabindex="2"></h:inputSecret>
 				<br></br>
-				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;">Neu registrieren</a>
-				<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button"></h:commandButton>
+				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;" tabindex="4">Neu registrieren</a>
+				<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button" tabindex="3"></h:commandButton>
 			</h:form>
 		</div>
 

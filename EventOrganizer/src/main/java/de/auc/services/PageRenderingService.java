@@ -17,6 +17,7 @@ public class PageRenderingService {
 	private static final String PAGE_MYEVENTS_JSF = "myEvents.jsf";
 	private static final String PAGE_MANAGER_RESERVATION_JSF = "managerReservierung.jsf";
 	private static final String PAGE_MANAGER_DETAIL_JSF = "managerDetail.jsf";
+	private static final String PAGE_RESERVATION_JSF = "reservation.jsf";
 	
 	@Inject
 	private EventService eventService;
@@ -45,7 +46,7 @@ public class PageRenderingService {
 		return PAGE_REGISTER_JSF;
 	}
 	
-	public String getEventDetail(Event event) {
+	public String getEventDetail() {
 		return PAGE_EVENT_DETAIL_JSF;
 		
 	}
@@ -57,6 +58,11 @@ public class PageRenderingService {
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}
+
+	public String getReservation() {
+		return PAGE_RESERVATION_JSF;
+	}
+	
 	
 	
 }

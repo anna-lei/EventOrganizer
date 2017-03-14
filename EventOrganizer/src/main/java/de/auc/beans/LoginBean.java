@@ -22,7 +22,11 @@ public class LoginBean {
 	
 	public String login(){
 		if(loginService.login(user, password)){
-			return pageRenderingService.getHome();
+			if(false){
+				return pageRenderingService.getEventDetail();
+			}else {
+				return pageRenderingService.getHome();
+			}
 		}
 		return pageRenderingService.getLogin();
 	}

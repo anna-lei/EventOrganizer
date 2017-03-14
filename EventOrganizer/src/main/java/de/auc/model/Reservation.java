@@ -16,7 +16,7 @@ public class Reservation {
 	@OneToMany(mappedBy="user_id")
 	private Integer id;
 	private String code;
-	private Integer numberOfTickets;
+	private Integer selectedTickets;
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
@@ -27,7 +27,7 @@ public class Reservation {
 		super();
 		this.id = id;
 		this.code = code;
-		this.numberOfTickets = numberOfTickets;
+		this.selectedTickets = numberOfTickets;
 		this.user = user;
 		this.event = event;
 	}
@@ -49,11 +49,11 @@ public class Reservation {
 	}
 
 	public Integer getNumberOfTickets() {
-		return numberOfTickets;
+		return selectedTickets;
 	}
 
 	public void setNumberOfTickets(Integer numberOfTickets) {
-		this.numberOfTickets = numberOfTickets;
+		this.selectedTickets = numberOfTickets;
 	}
 
 	public User getUser() {

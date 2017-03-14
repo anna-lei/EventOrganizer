@@ -57,9 +57,7 @@ public class EventService {
 	
 	public Event getEventById(Integer eventid) {
 		for(Event event: events) {
-			System.out.println("get event by id");
 			if(event.getEventid().equals(eventid)){
-				System.out.println("gefunden");
 				return event;
 			}
 		}

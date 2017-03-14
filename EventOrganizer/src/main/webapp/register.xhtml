@@ -31,35 +31,35 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td><h:outputLabel>Vorname: </h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.prename}"
-								class="inputText"></h:inputText></td>
+								class="inputText" tabindex="1"></h:inputText></td>
 						<td><h:outputLabel>Email:</h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.mail}"
-								class="inputText"></h:inputText></td>
+								class="inputText" tabindex="4"></h:inputText></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Nachname: </h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.name}"
-								class="inputText"></h:inputText></td>
+								class="inputText" tabindex="2"></h:inputText></td>
 						<td><h:outputLabel>Passwort:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password1}"
-								class="inputText"></h:inputSecret></td>
+								class="inputText" tabindex="5"></h:inputSecret></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Geburtsdatum: </h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.date}"
-								class="inputText"></h:inputText></td>
+								class="inputText" tabindex="3"></h:inputText></td>
 						<td><h:outputLabel>Passwort wiederholen:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password2}"
-								class="inputText"></h:inputSecret></td>
+								class="inputText" tabindex="6"></h:inputSecret></td>
 					</tr>
 				</table>
 				<br></br>
 				<h:messages class="warning" for="register" id="register" />
 				<div class="buttonDiv">
-					<h:commandButton class="button" action="#{registerBean.cancel}"
+					<h:commandButton class="button" action="#{registerBean.cancel}" tabindex="8"
 						value="Abbrechen">
 					</h:commandButton>
-					<h:commandButton class="button" action="#{registerBean.register}"
+					<h:commandButton class="button" action="#{registerBean.register}" tabindex="7"
 						value="Registrieren">
 					</h:commandButton>
 				</div>

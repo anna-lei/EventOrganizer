@@ -2,6 +2,7 @@
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="template.xhtml">
@@ -26,35 +27,40 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputLabel class="headline">Verbindliche Reservierung</h:outputLabel>
 				<h:form>
 					<br />
+					<f:metadata>
+					<f:viewParam name="eventid" value="#{reservationBean.event}"
+						converter="#{eventConverter}"
+						converterMessage="Das Event wurde nicht gefunden" />
+					</f:metadata>
 
 					<table>
 						<tr>
 							<th>Titel:</th>
-							<th><h:outputText value="#{detailBean.event.name}"></h:outputText></th>
+							<th><h:outputText value="#{reservationBean.event.name}"></h:outputText></th>
 						</tr>
 						<tr>
 							<td>Datum:</td>
-							<td><h:outputText value="#{detailBean.event.date}" /></td>
+							<td><h:outputText value="#{reservationBean.event.date}" /></td>
 						</tr>
 						<tr>
 							<td>Ort:</td>
-							<td><h:outputText value="#{detailBean.event.location}"></h:outputText></td>
+							<td><h:outputText value="#{reservationBean.event.location}"></h:outputText></td>
 						</tr>
 						<tr>
 							<td>Anzahl Tickets:</td>
-							<td><h:outputText value="#{detailBean.event.numberOfTickets}"> Anzahl ausgewählter Tickets</h:outputText></td>
+							<td><h:outputText value="#{detailBean.selectedTickets}"></h:outputText></td>
 						</tr>
 					</table>
 					<br />
 
-					<h:commandButton class="button" action="#{reservBean.back}" value="Zurück"/>
-					<h:commandButton class="button" action="#{reservBean.reserv}" value="Reservieren"/>
+					
+					<h:commandButton class="button" action="#{reservationBean.reserve}" value="Reservieren"/>
 
 				</h:form>
 			</td>
 			
 			<td>
-				<h:outputLabel rendered="#{not empty loginService.activeUser}" class="headline">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>
+				<h:outputLabel class="headline">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>
 				<br />
 				<h:outputLabel>Deine Ticketreservierung war erfolgreich.</h:outputLabel>
 				<br/>

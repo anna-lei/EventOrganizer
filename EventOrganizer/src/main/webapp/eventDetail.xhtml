@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -17,10 +18,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
 		</head>
 		<div class="context" style="text-align: left">
-		<f:metadata>
+			<f:metadata>
 				<f:viewParam name="eventid" value="#{detailBean.event}"
-					converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden"/>
-				</f:metadata>	
+					converter="#{eventConverter}"
+					converterMessage="Das Event wurde nicht gefunden" />
+			</f:metadata>
 			<h:outputText value="#{detailBean.event.name}"
 				class="headline"></h:outputText>
 			<br />
@@ -48,10 +50,15 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<br /> <br />
 			
 			<h:form>
-				<input type="number" min="1" max="10" value="5" />
-				<h:commandButton class="button" action="#{eventDetailBean.reserv}"
+				<h:inputText id="number" p:type="number" p:min="1" p:max="10"  value="#{detailBean.selectedTickets}"/>
+			
+				<h:link value="reserv" outcome="reservation.jsf" class="link">
+					<f:param name="eventid" value="#{detailBean.event.eventid}" />
+				</h:link>
+				<h:commandButton class="button" action="#{detailBean.startReservation}"
 					value="Reservieren">
 				</h:commandButton>
+				
 			</h:form>
 
 		</div>
