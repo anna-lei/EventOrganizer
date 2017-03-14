@@ -4,8 +4,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.auc.model.Event;
-
 @Named(value="pageRenderingService")
 @ApplicationScoped
 public class PageRenderingService {
@@ -61,8 +59,7 @@ public class PageRenderingService {
 
 	public String getReservation() {
 		return PAGE_RESERVATION_JSF;
+	
 	}
-	
-	
 	
 }

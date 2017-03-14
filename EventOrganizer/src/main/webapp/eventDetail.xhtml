@@ -14,8 +14,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-			<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
 		</head>
 		<div class="context" style="text-align: left">
 			<f:metadata>
@@ -23,8 +23,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					converter="#{eventConverter}"
 					converterMessage="Das Event wurde nicht gefunden" />
 			</f:metadata>
-			<h:outputText value="#{detailBean.event.name}"
-				class="headline"></h:outputText>
+			<h:outputText value="#{detailBean.event.name}" class="headline"></h:outputText>
 			<br />
 
 			<table>
@@ -38,8 +37,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</tr>
 				<tr>
 					<td>Verfügbare Tickets:</td>
-					<td><h:outputText
-							value="#{detailBean.event.numberOfTickets}"></h:outputText></td>
+					<td><h:outputText value="#{detailBean.event.numberOfTickets}"></h:outputText></td>
 				</tr>
 			</table>
 			<br />
@@ -48,17 +46,16 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<h:outputText value="#{detailBean.event.description}"
 				style="font-size: 14px;"></h:outputText>
 			<br /> <br />
-			
+
+				<h:inputText id="number" p:type="number" p:min="1" p:max="10" placeholder="2"
+					value="#{detailBean.selectedTickets}"/>
 			<h:form>
-				<h:inputText id="number" p:type="number" p:min="1" p:max="10"  value="#{detailBean.selectedTickets}"/>
-			
-				<h:link value="reserv" outcome="reservation.jsf" class="link">
+
+				<h:link value="Reservieren" outcome="reservation.jsf" class="link">
 					<f:param name="eventid" value="#{detailBean.event.eventid}" />
+					<f:param name="selectedTickets" value="#{detailBean.selectedTickets}" />
 				</h:link>
-				<h:commandButton class="button" action="#{detailBean.startReservation}"
-					value="Reservieren">
-				</h:commandButton>
-				
+								
 			</h:form>
 
 		</div>

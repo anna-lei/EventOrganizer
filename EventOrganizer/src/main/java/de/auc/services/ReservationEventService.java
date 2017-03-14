@@ -28,6 +28,7 @@ public class ReservationEventService implements Serializable{
 		eventService.getEventById(event.getEventid()).setNumberOfTickets(eventService.getEventById(event.getEventid()).getNumberOfTickets()-selectedTickets);
 		//TODO Eventid
 		this.addReservation(new Reservation(5, generateCode(), selectedTickets, loginService.getActiveUser(), event)); 
+		
 	}
 	
 	public void addReservation(Reservation reservation) {

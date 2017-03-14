@@ -14,15 +14,17 @@ public class ReservationBean {
 	private Event event;
 	private Integer selectedTickets;
 		
-	@Inject
-	private PageRenderingService pageRenderingService;
 	
 	@Inject
 	private ReservationEventService reservationEventService;
 	
+	@Inject
+	private PageRenderingService pageRenderingService;
+	
 	public String reserve() {
 		reservationEventService.reserve(event, selectedTickets);
 		return pageRenderingService.getReservation();
+		
 	}
 
 	public Event getEvent() {

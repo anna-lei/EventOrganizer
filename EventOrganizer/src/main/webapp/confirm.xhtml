@@ -26,43 +26,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<td><h:outputLabel class="headline">Verbindliche Reservierung</h:outputLabel>
 						<h:form>
 							<br />
-							<f:metadata>
-								<f:viewParam name="eventid" value="#{reservationBean.event}"
-									converter="#{eventConverter}"
-									converterMessage="Das Event wurde nicht gefunden" />
-								<f:viewParam name="selectedTickets"
-									value="#{reservationBean.selectedTickets}" />
-							</f:metadata>
+							
 
-							<table>
-								<tr>
-									<th>Titel:</th>
-									<th><h:outputText value="#{reservationBean.event.name}"></h:outputText></th>
-								</tr>
-								<tr>
-									<td>Datum:</td>
-									<td><h:outputText value="#{reservationBean.event.date}" /></td>
-								</tr>
-								<tr>
-									<td>Ort:</td>
-									<td><h:outputText
-											value="#{reservationBean.event.location}"></h:outputText></td>
-								</tr>
-								<tr>
-									<td>Anzahl Tickets:</td>
-									<td><h:outputText
-											value="#{reservationBean.selectedTickets}"></h:outputText></td>
-								</tr>
-							</table>
-							<br />
+							
 
-
-							<h:commandButton class="button"
-								action="#{reservationBean.reserve}" value="Reservieren">
-								<f:param name="eventid" value="#{reservationBean.event.eventid}" />
-								<f:param name="selectedTickets"
-									value="#{reservationBean.selectedTickets}" />
-							</h:commandButton>
 						</h:form></td>
 
 					<td><h:outputLabel class="headline">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>

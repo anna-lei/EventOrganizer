@@ -1,5 +1,7 @@
 package de.auc.beans;
 
+import java.util.Map;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -16,7 +18,7 @@ import de.auc.services.PageRenderingService;
 public class DetailBean {
 
 	private Event event;
-	private Integer selectedTickets;
+	private Integer selectedTickets = 2;
 		
 	@Inject
 	private EventService eventService;
@@ -52,29 +54,6 @@ public class DetailBean {
 		this.selectedTickets = selectedTickets;
 	}
 	
-	public String startReservation() {
-		if(loginService.getActiveUser()==null){
-			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Für diese Operation müssen Sie angemeldet sein.", "");
-			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
-			return pageRenderingService.getLogin();
-		} else {
-			System.out.println(this.event.toString());
-			return pageRenderingService.getReservation();
-		}
-		
-		
-		
-	}
-	
-	
-	
-
-	
-	
-
-
-	
-	
-	
+			
 	
 }
