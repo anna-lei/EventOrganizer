@@ -66,11 +66,4 @@ public class LoginService implements Serializable{
 		this.activeUser = activeUser;
 	}
 
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
 }

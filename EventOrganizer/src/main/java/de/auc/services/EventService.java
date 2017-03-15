@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
-import de.auc.model.User;
 
 @Named(value="eventService")
 @ApplicationScoped

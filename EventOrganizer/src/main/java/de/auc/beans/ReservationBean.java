@@ -67,5 +67,14 @@ public class ReservationBean {
 		this.reservation = reservation;
 	}
 
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	
 	
 }

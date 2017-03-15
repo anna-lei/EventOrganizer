@@ -50,19 +50,6 @@ public class LoginBean {
 		return password;
 	}
 	
-	public LoginService getLoginService(){
-		return loginService;
-	}
-	
-	public void setLoginService(LoginService loginService){
-		this.loginService = loginService;
-	}
-	public PageRenderingService getPageRenderingService() {
-		return pageRenderingService;
-	}
-	public void setPageRenderingService(PageRenderingService pageRenderingService) {
-		this.pageRenderingService = pageRenderingService;
-	}
 	public User getUser() {
 		return user;
 	}

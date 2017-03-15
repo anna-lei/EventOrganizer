@@ -18,14 +18,6 @@ public class DetailBean {
 	private EventService eventService;
 		
 
-	public EventService getEventService() {
-		return eventService;
-	}
-
-	public void setEventService(EventService eventService) {
-		this.eventService = eventService;
-	}
-
 	public Event getEvent() {
 		return event;
 	}

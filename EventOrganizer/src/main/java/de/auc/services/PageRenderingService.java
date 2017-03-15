@@ -49,14 +49,6 @@ public class PageRenderingService {
 		
 	}
 
-	public EventService getEventService() {
-		return eventService;
-	}
-
-	public void setEventService(EventService eventService) {
-		this.eventService = eventService;
-	}
-
 	public String getReservation() {
 		return PAGE_RESERVATION_JSF;
 	

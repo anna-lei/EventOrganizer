@@ -92,21 +92,6 @@ public class RegisterBean {
 		this.password2 = password2;
 	}
 
-	public PageRenderingService getPageRenderingService() {
-		return pageRenderingService;
-	}
-
-	public void setPageRenderingService(PageRenderingService pageRenderingService) {
-		this.pageRenderingService = pageRenderingService;
-	}
-
-	public LoginService getLoginService() {
-		return loginService;
-	}
-
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
-	}
 
 	public boolean isManagerflag() {
 		return managerflag;

@@ -22,6 +22,7 @@ public class PasswortValidator {
 					FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 		}
 		
+		
 	}
 	
 	public UserService getUserService() {
