@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
+import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 import de.auc.services.ReservationEventService;
 
@@ -25,11 +26,17 @@ public class ReservationBean {
 	private ReservationEventService reservationEventService;
 	
 	@Inject
-	private PageRenderingService pageRenderingService;
-	
+	private LoginService loginService;
+		
 	public String reserve() {
-		reservation = reservationEventService.reserve(event, selectedTickets);
-		return pageRenderingService.getReservation();
+		if(loginService.getActiveUser()==null) {
+			return PageRenderingService.getLogin();
+		} else {
+			reservation = reservationEventService.reserve(event, selectedTickets);
+			return null;
+		}
+		
+		
 		
 	}
 	

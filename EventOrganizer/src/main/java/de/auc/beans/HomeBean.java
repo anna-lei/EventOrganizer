@@ -23,8 +23,6 @@ public class HomeBean {
 	@Inject
 	private EventService eventService;
 	
-	@Inject
-	private PageRenderingService pageRenderingService;
 	
 	@PostConstruct
 	public void initEvents() {
@@ -59,7 +57,7 @@ public class HomeBean {
 	}
 	
 	public String home() {
-		return pageRenderingService.getHome();
+		return PageRenderingService.getHome();
 	}
 
 
