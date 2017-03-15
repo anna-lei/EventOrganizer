@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -19,6 +20,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		</head>
 
 		<div class="context">
+			<f:metadata>
+				<f:viewParam name="eventid" value="#{reservationBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
+			</f:metadata>
+		
 			<h:outputLabel class="headline">Verbindliche Reservierung</h:outputLabel>
 			<br/>
 			<br/>
@@ -30,11 +35,6 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:form class="tableCenter">
 				<br />
-				<f:metadata>
-					<f:viewParam name="eventid" value="#{reservationBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
-					<f:viewParam name="selectedTickets" value="#{reservationBean.selectedTickets}" />
-				</f:metadata>
-
 				<table>
 					<tr>
 						<th>Titel:</th>
@@ -50,7 +50,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</tr>
 					<tr>
 						<td>Anzahl Tickets:</td>
-						<td><h:outputText value="#{reservationBean.selectedTickets}" /></td>
+						<td>
+							<h:inputText id="selectedTickets" p:type="number" p:min="1" p:max="10" value="#{reservationBean.selectedTickets}" rendered="#{empty reservationBean.reservation.code}"/>
+							<h:outputText rendered="#{not empty reservationBean.reservation.code}" value="#{reservationBean.selectedTickets}" />
+						</td>
 					</tr>
 					<tr>
 						<td><h:outputLabel value="Bestätigungscode:" rendered="#{not empty reservationBean.reservation.code}" class="success" /></td>
@@ -58,10 +61,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</tr>
 				</table>
 				<br />
-
+				
 				<h:commandButton class="button" action="#{reservationBean.reserve}" value="Reservieren" rendered="#{empty reservationBean.reservation.code}" style="margin-left: 45%;">
 					<f:param name="eventid" value="#{reservationBean.event.eventid}" />
-					<f:param name="selectedTickets" value="#{reservationBean.selectedTickets}" />
 				</h:commandButton>
 			</h:form>
 

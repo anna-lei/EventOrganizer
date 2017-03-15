@@ -12,7 +12,6 @@ import de.auc.services.EventService;
 public class DetailBean {
 
 	private Event event;
-	private Integer selectedTickets = 2;
 		
 	@Inject
 	private EventService eventService;
@@ -26,13 +25,7 @@ public class DetailBean {
 		this.event = event;
 	}
 
-	public Integer getSelectedTickets() {
-		return selectedTickets;
-	}
-
-	public void setSelectedTickets(Integer selectedTickets) {
-		this.selectedTickets = selectedTickets;
-	}
+	
 	
 			
 	

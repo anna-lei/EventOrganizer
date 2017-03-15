@@ -16,7 +16,7 @@ import de.auc.services.ReservationEventService;
 @RequestScoped
 public class ReservationBean {
 	private Event event;
-	private Integer selectedTickets;
+	private Integer selectedTickets = 2;
 	private Reservation reservation;
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 		

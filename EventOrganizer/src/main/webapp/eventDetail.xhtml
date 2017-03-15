@@ -4,7 +4,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	>
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -43,16 +43,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			</table>
 			<br/>
 			
-			<h:form style="text-align:left; margin-left: 38%;">
+			<h:form style="text-align:left; margin-left: 38%; width: 40%;">
 				<h:outputLabel>Beschreibung:</h:outputLabel>
 				<br/>
 				<h:outputText value="#{detailBean.event.description}" style="font-size: 14px;"/>
 				<br/>
 				<br/>
-				<h:inputText id="number" p:type="number" p:min="1" p:max="10" />
-				<h:link value="Reservieren" outcome="reservation.jsf" class="link" style="margin-left: 15%;">
+				<h:link value="Reservieren" outcome="reservation.jsf" class="link" style="margin-left: 80%;">
 					<f:param name="eventid" value="#{detailBean.event.eventid}" />
-					<f:param name="selectedTickets" value="#{detailBean.selectedTickets}" />
 				</h:link>
 			</h:form>
 			<br/> <br/>
