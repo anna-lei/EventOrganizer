@@ -32,7 +32,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<br></br>
 				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText" tabindex="2"></h:inputSecret>
 				<br></br>
-				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;" tabindex="4">Neu registrieren</a>
+				<a href="#{registerBean.startRegister()}" style="padding-right: 10px;" tabindex="4">Neu registrieren</a>
 				<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button" tabindex="3"></h:commandButton>
 			</h:form>
 		</div>

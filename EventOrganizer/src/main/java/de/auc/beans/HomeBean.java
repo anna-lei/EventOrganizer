@@ -4,22 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.services.EventService;
+import de.auc.services.PageRenderingService;
 
 
 @Named(value="homeBean")
-@RequestScoped
+@ApplicationScoped
 public class HomeBean {
 	private String searchText;
 	private List<Event> events = new ArrayList<Event>();
 	
 	@Inject
 	private EventService eventService;
+	
+	@Inject
+	private PageRenderingService pageRenderingService;
 	
 	@PostConstruct
 	public void initEvents() {
@@ -51,6 +56,10 @@ public class HomeBean {
 
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+	
+	public String home() {
+		return pageRenderingService.getHome();
 	}
 
 

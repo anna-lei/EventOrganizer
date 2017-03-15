@@ -49,10 +49,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputText value="#{detailBean.event.description}" style="font-size: 14px;"/>
 				<br/>
 				<br/>
-				<h:inputText id="number" p:type="number" p:min="1" p:max="10"  value="#{detailBean.selectedTickets}" />
+				<h:inputText id="number" p:type="number" p:min="1" p:max="10" />
 				<h:link value="Reservieren" outcome="reservation.jsf" class="link" style="margin-left: 15%;">
 					<f:param name="eventid" value="#{detailBean.event.eventid}" />
-					<f:param name="selectedTickets" value="number" />
+					<f:param name="selectedTickets" value="#{detailBean.selectedTickets}" />
 				</h:link>
 			</h:form>
 			<br/> <br/>

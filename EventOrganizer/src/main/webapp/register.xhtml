@@ -42,7 +42,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								class="inputText" tabindex="2"></h:inputText></td>
 						<td><h:outputLabel>Passwort:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password1}"
-								class="inputText" tabindex="5"></h:inputSecret></td>
+								class="inputText" tabindex="5" validator="#{passwortValidator.validateLength}">
+						</h:inputSecret></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Geburtsdatum: </h:outputLabel></td>

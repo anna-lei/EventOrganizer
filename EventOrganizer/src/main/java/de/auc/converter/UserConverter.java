@@ -1,5 +1,6 @@
 package de.auc.converter;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.component.UIComponent;
@@ -16,7 +17,9 @@ public class UserConverter implements Converter{
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		return (value == null) ? value : userService.getUserByName(value);
+		FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der Username oder das Passwort ist nicht korrekt.", "");
+		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
+		return (value == null) ? loginMessage : userService.getUserByName(value);
 	}
 
 	@Override

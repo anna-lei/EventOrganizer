@@ -26,6 +26,10 @@ public class RegisterBean {
 	@Inject
 	private PageRenderingService pageRenderingService;
 	
+	public String startRegister() {
+		return pageRenderingService.getRegister();
+	}
+	
 	public String register() {
 		if(loginService.register(name, prename, date, mail, password1, password2, managerflag)){
 			return pageRenderingService.getHome();

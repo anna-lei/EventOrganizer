@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,9 +27,13 @@ public class Event {
 	private boolean publicly;
 	@OneToMany(mappedBy="event")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
+	@OneToOne
+	private User user;
+	
 	
 	public Event(Integer eventid, String name, String description, String location, String date,
-			Integer numberOfTickets, boolean publicly) {
+			Integer numberOfTickets, boolean publicly, List<Reservation> reservations, User user) {
+		super();
 		this.eventid = eventid;
 		this.name = name;
 		this.description = description;
@@ -36,7 +41,8 @@ public class Event {
 		this.date = date;
 		this.numberOfTickets = numberOfTickets;
 		this.publicly = publicly;
-
+		this.reservations = reservations;
+		this.user = user;
 	}
 
 	public Integer getEventid() {
@@ -102,6 +108,16 @@ public class Event {
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 	
 	
 	

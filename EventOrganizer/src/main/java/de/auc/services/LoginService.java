@@ -24,8 +24,6 @@ public class LoginService implements Serializable{
 				return true;
 			}
 		}
-		FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der Username oder das Passwort ist nicht korrekt.", "");
-		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 		return false;
 	}
 	
@@ -49,9 +47,6 @@ public class LoginService implements Serializable{
 					return true;
 				}
 				else{
-					//Das Passwort ist zu kurz
-					registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Das Passwort muss mindestens 8 Zeichen lang sein.", "");
-					FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 					return false;
 				}	
 			}else {

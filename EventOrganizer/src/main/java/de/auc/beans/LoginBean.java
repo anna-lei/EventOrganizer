@@ -20,6 +20,17 @@ public class LoginBean {
 	@Inject
 	private PageRenderingService pageRenderingService;
 	
+	
+	public String startLogin() {
+		return pageRenderingService.getLogin();
+	}
+	
+	
+	public String logout(){
+		loginService.logout();
+		return null;
+	}
+	
 	public String login(){
 		if(loginService.login(user, password)){
 			if(false){

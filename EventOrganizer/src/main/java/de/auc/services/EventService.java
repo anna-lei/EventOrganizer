@@ -3,21 +3,28 @@ package de.auc.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
+import de.auc.model.User;
 
 @Named(value="eventService")
 @ApplicationScoped
 public class EventService {
 	private List<Event> events = new ArrayList<Event>();
+	
+	@Inject
+	private UserService userService;
 
-	public EventService() {
-		Event event1 = new Event(1, "Test1", "Hallo ich bin die Beschreibung1", "Münster", "25.07.2017 19 Uhr", 1000, true);
-		Event event2 = new Event(2, "Test2", "Hallo ich bin die Beschreibung2", "München", "18.08.2017 19 Uhr", 5000, false);
+	@PostConstruct
+	public void initEventService() {
+		Event event1 = new Event(1, "Test1", "Hallo ich bin die Beschreibung1", "Münster", "25.07.2017 19 Uhr", 1000, true, null, userService.getUserByName("a"));
+		Event event2 = new Event(2, "Test2", "Hallo ich bin die Beschreibung2", "München", "18.08.2017 19 Uhr", 5000, false, null, userService.getUserByName("a"));
 		this.addEvent(event1);
 		this.addEvent(event2);
 		
