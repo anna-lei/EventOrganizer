@@ -16,13 +16,10 @@ public class LoginBean {
 	
 	@Inject
 	private LoginService loginService;
-	
-	@Inject
-	private PageRenderingService pageRenderingService;
-	
+		
 	
 	public String startLogin() {
-		return pageRenderingService.getLogin();
+		return PageRenderingService.getLogin();
 	}
 	
 	
@@ -34,12 +31,12 @@ public class LoginBean {
 	public String login(){
 		if(loginService.login(user, password)){
 			if(false){
-				return pageRenderingService.getEventDetail();
+				return PageRenderingService.getEventDetail();
 			}else {
-				return pageRenderingService.getHome();
+				return PageRenderingService.getHome();
 			}
 		}
-		return pageRenderingService.getLogin();
+		return PageRenderingService.getLogin();
 	}
 	
 	public void setPassword(String password) {

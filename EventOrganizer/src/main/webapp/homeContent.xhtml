@@ -31,12 +31,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		rendered="#{not empty homeBean.events}" class="coloredTable">
 		<h:column>
 			<f:facet name="header">Event</f:facet>
-<!-- TODO:	Vielleicht andere Abfrage?	Hier muss auch berücksichtigt werden, dass nur bei seinem Event das angezeigt werden muss-->
-			<h:link value="#{event.name}" outcome="myEventDetail.jsf" class="link" rendered="#{loginService.activeUser.managerflag}">
+			<!-- TODO:	Vielleicht andere Abfrage?	Hier muss auch berücksichtigt werden, dass nur bei seinem Event das angezeigt werden muss-->
+			<h:link value="#{event.name}" outcome="myEventDetail.jsf"
+				class="link" rendered="#{loginService.activeUser.managerflag}">
 				<f:param name="eventid" value="#{event.eventid}" />
 			</h:link>
-	<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
-			<h:link value="#{event.name}" outcome="eventDetail.jsf" class="link" rendered="#{!loginService.activeUser.managerflag}">
+			<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
+			<h:link value="#{event.name}" outcome="eventDetail.jsf" class="link"
+				rendered="#{!loginService.activeUser.managerflag}">
 				<f:param name="eventid" value="#{event.eventid}" />
 			</h:link>
 		</h:column>
@@ -52,12 +54,13 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<f:facet name="header">Verfügbare Tickets</f:facet>
 			<h:outputText value="#{event.numberOfTickets}" />
 		</h:column>
-<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
+		<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
 		<h:column rendered="#{loginService.activeUser.managerflag}">
 			<f:facet name="header">Veröffentlicht</f:facet>
 			<h:outputText value="#{event.publicly}" />
 		</h:column>
 	</h:dataTable>
+
 
 </div>
 </body>

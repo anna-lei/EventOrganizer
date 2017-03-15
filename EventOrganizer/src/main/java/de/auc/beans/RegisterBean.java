@@ -23,24 +23,21 @@ public class RegisterBean {
 	@Inject
 	private LoginService loginService;
 	
-	@Inject
-	private PageRenderingService pageRenderingService;
-	
 	public String startRegister() {
-		return pageRenderingService.getRegister();
+		return PageRenderingService.getRegister();
 	}
 	
 	public String register() {
 		if(loginService.register(name, prename, date, mail, password1, password2, managerflag)){
-			return pageRenderingService.getHome();
+			return PageRenderingService.getHome();
 		}
-		return pageRenderingService.getRegister();
+		return PageRenderingService.getRegister();
 		
 		
 	}
 
 	public String cancel() {
-		return pageRenderingService.getLogin();
+		return PageRenderingService.getLogin();
 	}
 
 	

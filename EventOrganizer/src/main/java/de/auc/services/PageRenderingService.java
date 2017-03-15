@@ -17,40 +17,39 @@ public class PageRenderingService {
 	private static final String PAGE_MANAGER_DETAIL_JSF = "managerDetail.jsf";
 	private static final String PAGE_RESERVATION_JSF = "reservation.jsf";
 	
-	@Inject
-	private EventService eventService;
 
-	public String getManagerDetail(){
+	public static String getManagerDetail(){
 		return PAGE_MANAGER_DETAIL_JSF;
 	}
 	
-	public String getManagerReservation(){
+	public static String getManagerReservation(){
 		return PAGE_MANAGER_RESERVATION_JSF;
 	}
 	
-	public String getMyEvents() {
+	public static String getMyEvents() {
 		return PAGE_MYEVENTS_JSF;
 	}
 	
-	public String getHome() {
+	public static String getHome() {
 		return PAGE_HOME_JSF;
 	}
 	
-	public String getLogin() {
+	public static String getLogin() {
 		return PAGE_LOGIN_JSF;
 	}
 	
-	public String getRegister() {
+	public static String getRegister() {
 		return PAGE_REGISTER_JSF;
 	}
 	
-	public String getEventDetail() {
+	public static String getEventDetail() {
 		return PAGE_EVENT_DETAIL_JSF;
 		
 	}
 
-	public String getReservation() {
-		return PAGE_RESERVATION_JSF;
+	public static String getReservation(int eventid) {
+		System.out.println(PAGE_RESERVATION_JSF + "?eventid=" + eventid);
+		return PAGE_RESERVATION_JSF + "?eventid=" + eventid;
 	
 	}
 	
