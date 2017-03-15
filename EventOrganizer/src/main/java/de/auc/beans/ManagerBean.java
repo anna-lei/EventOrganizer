@@ -18,8 +18,7 @@ import de.auc.services.ManagerService;
 @Named(value="managerBean")
 @RequestScoped
 public class ManagerBean {
-	private User manager;
-	private Event event;
+		private Event event;
 	
 	@Inject
 	private ManagerService managerService;
@@ -40,14 +39,7 @@ public class ManagerBean {
 		
 	}
 
-	public User getManager() {
-		return manager;
-	}
-
-	public void setManager(User manager) {
-		this.manager = manager;
-	}
-
+	
 	public List<Event> getManagerEvents() {
 		return managerEvents;
 	}

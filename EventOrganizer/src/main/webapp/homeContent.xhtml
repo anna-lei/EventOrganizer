@@ -17,18 +17,18 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 	<h:form class="form">
 		
-		<h:inputText value="#{homeBean.searchText}" class="inputText"
+		<h:inputText value="#{eventBean.searchText}" class="inputText"
 			p:placeholder="Suche nach Event" style="margin-left: 80px;" />
-		<h:commandButton action="#{homeBean.search}" value="Suchen"
+		<h:commandButton action="#{eventBean.search}" value="Suchen"
 			class="button" />
 	</h:form>
 
-	<h:outputLabel rendered="#{empty homeBean.searchText}"
+	<h:outputLabel rendered="#{empty eventBean.searchText}"
 		style="text-decoration: underline;">Nächste Events:</h:outputLabel>
 	<h:messages for="search" id="search" class="message" />
 
-	<h:dataTable var="event" value="#{homeBean.events}"
-		rendered="#{not empty homeBean.events}" class="coloredTable">
+	<h:dataTable var="event" value="#{eventBean.events}"
+		rendered="#{not empty eventBean.events}" class="coloredTable">
 		<h:column>
 			<f:facet name="header">Event</f:facet>
 			<!-- TODO:	Vielleicht andere Abfrage?	Hier muss auch berücksichtigt werden, dass nur bei seinem Event das angezeigt werden muss-->

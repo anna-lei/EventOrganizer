@@ -14,9 +14,9 @@ import de.auc.services.EventService;
 import de.auc.services.PageRenderingService;
 
 
-@Named(value="homeBean")
+@Named(value="eventBean")
 @ApplicationScoped
-public class HomeBean {
+public class EventBean {
 	private String searchText;
 	private List<Event> events = new ArrayList<Event>();
 	
