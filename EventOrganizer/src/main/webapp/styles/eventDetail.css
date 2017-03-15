@@ -1,9 +1,40 @@
 @CHARSET "ISO-8859-1";
 
 th:nth-child(2n) {
-    padding-left: 20px;
+	padding-left: 20px;
 }
 
 td:nth-child(2n) {
-    padding-left: 20px;
+	padding-left: 20px;
+}
+
+.successPanel {
+	color: green;
+	background-color: rgb(204, 255, 204);
+	width: 40%;
+	margin-left: 30%;
+	padding: 6px;
+}
+
+.success {
+	color: green;
+}
+
+.tableCenter {
+	margin-left: 38%;
+	text-align: left;
+	width: 40%;
+}
+
+.link {
+	cursor: pointer;
+	border: solid black 0.2px;
+	border-radius: 5px;
+	background-color: white;
+	height: 25px;
+	font-size: 15px;
+	margin: 5px;
+	color: black;
+	text-decoration: none;
+	padding: 2px 8px;
 }

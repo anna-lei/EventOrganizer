@@ -10,7 +10,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getHome()}" value="Startseite" class="home"/></li>
 		</h:form>
   		<h:form rendered="#{loginService.activeUser.managerflag}">
-  			<li class="menuLi"><h:commandButton action="#{pageRenderingService.getMyEvents()}" value="Meine Veranstaltungen" class="myEvents"/></li>
+  			<li class="menuLi"><h:commandButton action="#{pageRenderingService.getMyEvents()}" value="Meine Events" class="myEvents"/></li>
 	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getManagerReservation()}" value="Reservierungen" class="reservations"/></li>
 		</h:form>  
 		<h:form rendered="#{empty loginService.activeUser}">

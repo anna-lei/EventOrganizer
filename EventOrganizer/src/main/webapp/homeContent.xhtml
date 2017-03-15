@@ -19,14 +19,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<h:outputLabel>Suche: </h:outputLabel>
 			<h:inputText value="#{homeBean.searchText}" class="inputText"
 				p:placeholder="Suchbegriff" style="margin-left: 80px;" />
-			<h:commandButton action="#{homeBean.search}" value="Suchen"
-				class="button" />
+			<h:commandButton action="#{homeBean.search}" value="Suchen" class="button" />
 		</h:form>
 
-		<h:outputLabel rendered="#{empty homeBean.searchText}"
-			style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+		<h:outputLabel rendered="#{empty homeBean.searchText}" style="text-decoration: underline;">Nächste Events:</h:outputLabel>
 		<h:messages for="search" id="search" class="message" />
-	<!-- 	Preis für ein Ticket? -->
 
 		<h:dataTable var="event" value="#{homeBean.events}"
 			rendered="#{not empty homeBean.events}" class="coloredTable">
