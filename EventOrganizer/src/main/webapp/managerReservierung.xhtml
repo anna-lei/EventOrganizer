@@ -25,9 +25,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<ui:repeat var="event" value="#{eventService.events}">
 			
-<!-- 			TODO Hier noch Name des Events -->
-				<a href="" class="link">HIer muss der Name des Events stehen</a>
-				
+				<h:link value="#{event.name}" outcome="myEventDetail.jsf" class="link">
+					<f:param name="eventid" value="#{event.eventid}" />
+				</h:link>
+							
 				<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
 				<h:outputLabel style="float: right; margin-right: 15px;">#{event.numberOfTickets} verfügbare Tickets</h:outputLabel>
 
