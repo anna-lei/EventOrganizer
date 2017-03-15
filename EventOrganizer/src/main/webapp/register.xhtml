@@ -34,7 +34,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								class="inputText" tabindex="1"></h:inputText></td>
 						<td><h:outputLabel>Email:</h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.mail}"
-								class="inputText" tabindex="4"></h:inputText></td>
+								class="inputText" tabindex="4" validator="#{userExistValidator.validate}"></h:inputText></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Nachname: </h:outputLabel></td>
@@ -42,7 +42,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								class="inputText" tabindex="2"></h:inputText></td>
 						<td><h:outputLabel>Passwort:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password1}"
-								class="inputText" tabindex="5" validator="#{passwortValidator.validateLength}">
+								class="inputText" tabindex="5" validator="#{passwordValidator.validate}">
 						</h:inputSecret></td>
 					</tr>
 					<tr>
@@ -51,7 +51,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								class="inputText" tabindex="3"></h:inputText></td>
 						<td><h:outputLabel>Passwort wiederholen:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password2}"
-								class="inputText" tabindex="6"></h:inputSecret></td>
+								class="inputText" tabindex="6" ></h:inputSecret></td>
 					</tr>
 				</table>
 				<br></br>

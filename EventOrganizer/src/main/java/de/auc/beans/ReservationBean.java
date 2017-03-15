@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,6 +32,8 @@ public class ReservationBean {
 		
 	public String reserve() {
 		if(loginService.getActiveUser()==null) {
+			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sie müssen für diese Operation angemeldet sein", "");
+			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 			return PageRenderingService.getLogin();
 		} else {
 			reservation = reservationEventService.reserve(event, selectedTickets);

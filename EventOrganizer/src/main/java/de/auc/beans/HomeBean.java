@@ -60,6 +60,9 @@ public class HomeBean {
 		return PageRenderingService.getHome();
 	}
 
+	public String login() {
+		return PageRenderingService.getLogin();
+	}
 
 	
 	

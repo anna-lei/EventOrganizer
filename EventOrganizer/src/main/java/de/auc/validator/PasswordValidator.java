@@ -10,24 +10,27 @@ import javax.faces.validator.ValidatorException;
 import de.auc.services.UserService;
 
 @ManagedBean
-public class PasswortValidator {
+public class PasswordValidator {
 	@ManagedProperty("#{userService}")
 	private UserService userService;
 
-	public void validateLength(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		FacesMessage registerMessage;
+	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		if (!value.toString().matches(".*[0-9].*")) {
 			// Das Passwort enthält keine Zahl
-			registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			System.out.println(value.toString());
+			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Das Passwort muss mindestens eine Zahl enthalten.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+			
 		}
 		if (value.toString().length() < 8) {
 			// Das Passwort ist zu kurz
-			registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Das Passwort muss mindestens 8 Zeichen lang sein.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+
 		}
+		
 		
 
 	}

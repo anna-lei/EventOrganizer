@@ -18,9 +18,7 @@ public class LoginBean {
 	private LoginService loginService;
 		
 	
-	public String startLogin() {
-		return PageRenderingService.getLogin();
-	}
+	
 	
 	
 	public String logout(){

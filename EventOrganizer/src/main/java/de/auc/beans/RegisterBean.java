@@ -2,8 +2,11 @@ package de.auc.beans;
 
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
@@ -28,10 +31,21 @@ public class RegisterBean {
 	}
 	
 	public String register() {
-		if(loginService.register(name, prename, date, mail, password1, password2, managerflag)){
-			return PageRenderingService.getHome();
+		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
+			if(password1.equals(password2)){
+				loginService.register(name, prename, date, mail, password1, password2, managerflag);
+				return PageRenderingService.getHome();
+				
+			}else {
+				FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die Passwörter stimmen nicht überein.", "");
+				FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+				return PageRenderingService.getRegister();
+			}
+		} else {
+			return PageRenderingService.getRegister();
 		}
-		return PageRenderingService.getRegister();
+		
+		
 		
 		
 	}
