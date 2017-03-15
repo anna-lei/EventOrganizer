@@ -20,12 +20,6 @@ td:nth-child(2n) {
 	color: green;
 }
 
-.tableCenter {
-	margin-left: 38%;
-	text-align: left;
-	width: 40%;
-}
-
 .link {
 	cursor: pointer;
 	border: solid black 0.2px;

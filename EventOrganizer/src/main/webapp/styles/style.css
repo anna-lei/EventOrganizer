@@ -68,3 +68,10 @@ select {
 	float: right;
 	margin-right: 19%;
 }
+
+
+.tableCenter {
+	margin-left: 38%;
+	text-align: left;
+	width: 40%;
+}

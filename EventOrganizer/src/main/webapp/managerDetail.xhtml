@@ -14,42 +14,41 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<body>
 		<head>
-<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
 		</head>
 
-		<div class="context" style="text-align: left">
+		<div class="context">
+			<f:metadata>
+				<f:viewParam name="eventid" value="#{detailBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
+			</f:metadata>
 			<h:form>
-				<h:outputText value="#{eventService.activeEvent.name}"
-					class="headline"></h:outputText>
-				<h:commandButton action="#{managerDetailBean.publish}"
-					value="Veröffentlichen" class="button"></h:commandButton>
-				<h:commandButton action="#{managerDetailBean.edit}"
-					value="Bearbeiten" class="button"></h:commandButton>
-				<br />
-				<br />
+				<h:outputText value="#{detailBean.event.name}" class="headline"></h:outputText>
+				<h:commandButton action="#{managerDetailBean.publish}" value="Veröffentlichen" class="button"/>
+				<h:commandButton action="#{managerDetailBean.edit}" value="Bearbeiten" class="button"/>
+				<br/>
+				<br/>
 
-				<table>
+				<table class="tableCenter">
 					<tr>
 						<td>Datum:</td>
-						<td><h:outputText value="#{eventService.activeEvent.date}"
-								style="padding-left: 20px;" /></td>
+						<td><h:outputText value="#{detailBean.event.date}" /></td>
 					</tr>
 					<tr>
 						<td>Ort:</td>
-						<td><h:outputText
-								value="#{eventService.activeEvent.location}"
-								style="padding-left: 20px;" /></td>
+						<td><h:outputText value="#{detailBean.event.location}"></h:outputText></td>
 					</tr>
 				</table>
-				<br />
-				<h:outputLabel>Beschreibung:</h:outputLabel>
-				<br />
-				<h:outputText value="#{eventService.activeEvent.description}"
-					style="font-size: 14px;" />
-				<br />
-				<br />
-
+				<br/>
+				
+				<div style="text-align:left; margin-left: 38%;">
+					<h:outputLabel>Beschreibung:</h:outputLabel>
+					<br/>
+					<h:outputText value="#{detailBean.event.description}" style="font-size: 14px;"/>
+					<br/>
+					<br/>
+				</div>
+				
 				<!-- 		TODO  hier müssen die verfügbaren Tickets rein geschrieben werden-->
 				<h:outputLabel>Reservierungen (#{event.numberOfTickets} verfügbare Tickets)</h:outputLabel>
 
@@ -62,7 +61,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</h:column>
 					<h:column>
 						<f:facet name="header">Anzahl Tickets</f:facet>
-						<td><h:outputText value="#{event.date}" /></td>
+						<h:outputText value="#{event.date}" />
 					</h:column>
 				</h:dataTable>
 
