@@ -5,7 +5,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -26,7 +27,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 				<h:messages class="warning" for="login" id="login" />
 
-				<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText" tabindex="1">
+				<h:inputText value="#{loginBean.user}" p:placeholder="E-Mail-Adresse" class="inputText" tabindex="1" a:autofocus="true">
 					<f:converter binding="#{userConverter}" />
 				</h:inputText>
 				<br></br>
