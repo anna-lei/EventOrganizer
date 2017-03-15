@@ -9,8 +9,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.ManyToOne;
 
 import de.auc.model.Event;
+import de.auc.model.Reservation;
 
 @Named(value="eventService")
 @ApplicationScoped
@@ -22,8 +24,10 @@ public class EventService {
 
 	@PostConstruct
 	public void initEventService() {
-		Event event1 = new Event(1, "Test1", "Hallo ich bin die Beschreibung1", "Münster", "25.07.2017 19 Uhr", 1000, true, null, userService.getUserByName("a"));
-		Event event2 = new Event(2, "Test2", "Hallo ich bin die Beschreibung2", "München", "18.08.2017 19 Uhr", 5000, false, null, userService.getUserByName("a"));
+		List<Reservation> reservations = new ArrayList<Reservation>();
+		List<Reservation> reservations1 = new ArrayList<Reservation>();
+		Event event1 = new Event(1, "Test1", "Hallo ich bin die Beschreibung1", "Münster", "25.07.2017 19 Uhr", 1000, true, reservations, userService.getUserByName("a"));
+		Event event2 = new Event(2, "Test2", "Hallo ich bin die Beschreibung2", "München", "18.08.2017 19 Uhr", 5000, false, reservations1, userService.getUserByName("a"));
 		this.addEvent(event1);
 		this.addEvent(event2);
 		

@@ -6,6 +6,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
+import de.auc.model.Event;
 import de.auc.services.EventService;
 
 
@@ -17,7 +18,15 @@ public class EventConverter implements Converter{
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		return (value == null) ? value : eventService.getEventById(Integer.parseInt(value));
+		if(value == null) {
+			return value;
+		}
+		if(value.equals("new")){
+			return new Event();
+			
+		} else {
+			return eventService.getEventById(Integer.parseInt(value));
+		}
 		
 	}
 

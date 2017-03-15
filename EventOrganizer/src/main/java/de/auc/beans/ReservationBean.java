@@ -3,6 +3,7 @@ package de.auc.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -21,7 +22,8 @@ public class ReservationBean {
 	private Event event;
 	private Integer selectedTickets = 2;
 	private Reservation reservation;
-	private List<Reservation> reservations = new ArrayList<Reservation>();
+	private List<Reservation> managerReservations = new ArrayList<Reservation>();
+
 		
 	
 	@Inject
@@ -44,16 +46,8 @@ public class ReservationBean {
 		
 	}
 	
-	public String getManagerReservations() { 
-		reservations.clear();
-		for(Reservation reservation: reservationEventService.getManagerReservations()) {
-			reservations.add(reservation);
-		}
-		return null;
-	}
-	
-	
-
+   
+   
 	public Event getEvent() {
 		return event;
 	}
@@ -78,13 +72,18 @@ public class ReservationBean {
 		this.reservation = reservation;
 	}
 
-	public List<Reservation> getReservations() {
-		return reservations;
+	public List<Reservation> getManagerReservations() {
+		return managerReservations;
 	}
 
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
+	public void setManagerReservations(List<Reservation> managerReservations) {
+		this.managerReservations = managerReservations;
 	}
+
+	
+	
+
+
 
 	
 	

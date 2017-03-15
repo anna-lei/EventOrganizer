@@ -20,6 +20,7 @@ public class Reservation {
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
+	@ManyToOne
 	@JoinColumn(name="eventid")
 	private Event event;
 	
@@ -48,12 +49,14 @@ public class Reservation {
 		this.code = code;
 	}
 
-	public Integer getNumberOfTickets() {
+	
+
+	public Integer getSelectedTickets() {
 		return selectedTickets;
 	}
 
-	public void setNumberOfTickets(Integer numberOfTickets) {
-		this.selectedTickets = numberOfTickets;
+	public void setSelectedTickets(Integer selectedTickets) {
+		this.selectedTickets = selectedTickets;
 	}
 
 	public User getUser() {

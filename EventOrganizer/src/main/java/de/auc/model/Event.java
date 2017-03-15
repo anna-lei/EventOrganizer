@@ -31,9 +31,14 @@ public class Event {
 	private User user;
 	
 	
+	
+	public Event() {
+
+	}
+
 	public Event(Integer eventid, String name, String description, String location, String date,
 			Integer numberOfTickets, boolean publicly, List<Reservation> reservations, User user) {
-		super();
+		
 		this.eventid = eventid;
 		this.name = name;
 		this.description = description;

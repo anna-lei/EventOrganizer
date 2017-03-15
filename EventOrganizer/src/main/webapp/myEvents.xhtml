@@ -31,7 +31,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<f:selectItem itemValue="#{managerStartBean.filter}"
 						itemLabel="alle" />
 				</h:selectOneMenu>
-				<h:commandButton class="button" action="#{managerStartBean.add}" value="+"/>
+				<h:link value="+" outcome="editEvent.jsf" class="link">
+					<f:param name="eventid" value="new" />
+				</h:link>
 			</h:form>
 		</div>
 		

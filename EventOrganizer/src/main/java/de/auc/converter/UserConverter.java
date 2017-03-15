@@ -17,9 +17,13 @@ public class UserConverter implements Converter{
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die E-Mail-Adresse oder das Passwort ist nicht korrekt.", "");
-		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
-		return (value == null) ? loginMessage : userService.getUserByName(value);
+		if(value == null) {
+			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die E-Mail-Adresse oder das Passwort ist nicht korrekt.", "");
+			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
+			return loginMessage;
+		}else {
+			return userService.getUserByName(value);
+		}
 	}
 
 	@Override

@@ -16,9 +16,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <div style="text-align: left; padding: 15px;">
 
 	<h:form class="form">
-		<h:outputLabel>Suche: </h:outputLabel>
+		
 		<h:inputText value="#{homeBean.searchText}" class="inputText"
-			p:placeholder="Suchbegriff" style="margin-left: 80px;" />
+			p:placeholder="Suche nach Event" style="margin-left: 80px;" />
 		<h:commandButton action="#{homeBean.search}" value="Suchen"
 			class="button" />
 	</h:form>
@@ -37,7 +37,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<f:param name="eventid" value="#{event.eventid}" />
 			</h:link>
 			<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
-			<h:link value="#{event.name}" outcome="eventDetail.jsf" class="link"
+			<h:link value="#{event.name}" outcome="reservation.jsf" class="link"
 				rendered="#{!loginService.activeUser.managerflag}">
 				<f:param name="eventid" value="#{event.eventid}" />
 			</h:link>

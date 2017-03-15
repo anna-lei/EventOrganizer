@@ -56,13 +56,7 @@ public class HomeBean {
 		this.events = events;
 	}
 	
-	public String home() {
-		return PageRenderingService.getHome();
-	}
-
-	public String login() {
-		return PageRenderingService.getLogin();
-	}
+	
 
 	
 	
