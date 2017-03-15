@@ -1,5 +1,8 @@
 package de.auc.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,6 +18,7 @@ public class ReservationBean {
 	private Event event;
 	private Integer selectedTickets;
 	private Reservation reservation;
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 		
 	
 	@Inject
@@ -28,6 +32,16 @@ public class ReservationBean {
 		return pageRenderingService.getReservation();
 		
 	}
+	
+	public String getManagerReservations() { 
+		reservations.clear();
+		for(Reservation reservation: reservationEventService.getManagerReservations()) {
+			reservations.add(reservation);
+		}
+		return null;
+	}
+	
+	
 
 	public Event getEvent() {
 		return event;

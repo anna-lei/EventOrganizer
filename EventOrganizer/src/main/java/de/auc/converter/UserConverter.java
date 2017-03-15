@@ -19,6 +19,9 @@ public class UserConverter implements Converter{
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der Username oder das Passwort ist nicht korrekt.", "");
 		FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
+		System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath());
+		FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der User existiert bereits.", "");
+		FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 		return (value == null) ? loginMessage : userService.getUserByName(value);
 	}
 

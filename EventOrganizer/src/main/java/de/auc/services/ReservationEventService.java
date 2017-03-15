@@ -4,8 +4,11 @@ package de.auc.services;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -38,10 +41,33 @@ public class ReservationEventService implements Serializable{
 	}
 	
 	public String generateCode() {
-		//TODO generierung implementieren
-		return "123456";
+		return UUID.randomUUID().toString();
 		
 	}
+
+	public List<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	public List<Reservation> getManagerReservations() {
+		List<Reservation> managerReservations = new ArrayList<Reservation>();
+		FacesMessage managerReservationMessage;
+		for (Reservation reservation: reservations) {
+			if(reservation.getEvent().getUser().equals(loginService.getActiveUser())) {
+				managerReservations.add(reservation);
+			}
+		}
+		if(managerReservations.size()==0){
+			managerReservationMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Für den angemeldeten Manager wurden keine Reservierungen gefunden...", "");
+			FacesContext.getCurrentInstance().addMessage(null, managerReservationMessage);
+		} 
+		return managerReservations;
+	}
+	
 	
 	
 
