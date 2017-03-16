@@ -47,9 +47,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</tr>
 					<tr>
 						<td><h:outputLabel>Geburtsdatum: </h:outputLabel></td>
-						<td><h:inputText value="#{registerBean.date}"
-								class="inputText" tabindex="3">
-						<f:convertDateTime pattern="dd.mm.yyyy"></f:convertDateTime>		
+						<td><h:inputText id="register" value="#{registerBean.date}"
+								class="inputText" tabindex="3" converterMessage="Das Geburtsdatum konnte nicht konvertiert werden">
+						<f:convertDateTime pattern="dd.mm.yyyy" ></f:convertDateTime>		
 						</h:inputText></td>
 						<td><h:outputLabel>Passwort wiederholen:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password2}"
@@ -57,7 +57,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</tr>
 				</table>
 				<br></br>
-				<h:messages class="warning" for="register" id="register" />
+				<h:messages class="warning" for="register" id="message"/>
 				<div class="buttonDiv">
 					<h:commandButton class="button" action="#{registerBean.cancel}" tabindex="8"
 						value="Abbrechen">
