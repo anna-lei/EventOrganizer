@@ -1,9 +1,8 @@
 package de.auc.services;
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -31,7 +30,7 @@ public class LoginService implements Serializable{
 		activeUser = null;
 	}
 	
-	public void register(String name, String prename, String date, String mail, String password1, String password2, boolean managerflag) {
+	public void register(String name, String prename, Date date, String mail, String password1, String password2, boolean managerflag) {
 					User user = new User(5, name, prename, date, mail, password1, managerflag);
 					userService.addUser(user);
 					activeUser = user;

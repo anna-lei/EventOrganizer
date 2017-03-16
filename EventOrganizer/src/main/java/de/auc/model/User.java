@@ -1,6 +1,7 @@
 package de.auc.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,14 +22,19 @@ public class User {
 	private String name;
 	private String prename;
 	@Temporal(TemporalType.TIMESTAMP)
-	private String date;
+	private Date date;
 	private String mail;
 	private String password;
 	private boolean managerflag;
 	@OneToMany(mappedBy="user")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
-	public User(Integer userid, String name, String prename, String date, String mail, String password, boolean managerflag) {
+	
+
+	
+	public User(Integer userid, String name, String prename, Date date, String mail, String password,
+			boolean managerflag) {
+		super();
 		this.userid = userid;
 		this.name = name;
 		this.prename = prename;
@@ -36,10 +42,9 @@ public class User {
 		this.mail = mail;
 		this.password = password;
 		this.managerflag = managerflag;
-
+		
 	}
 
-	
 	public Integer getUserid() {
 		return userid;
 	}
@@ -64,11 +69,12 @@ public class User {
 		this.prename = prename;
 	}
 
-	public String getDate() {
+
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

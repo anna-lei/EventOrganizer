@@ -14,7 +14,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getManagerReservation()}" value="Reservierungen" class="reservations"/></li>
 		</h:form>  
 		<h:form rendered="#{empty loginService.activeUser}">
-  			<li id="login" style="float:right"><h:commandButton action="#{headerBean.login}" value="Login" class="login"/></li>
+  			<li id="login" style="float:right"><h:commandButton action="#{pageRenderingService.getLogin()}" value="Login" class="login"/></li>
   		</h:form>
   		<h:form rendered="#{not empty loginService.activeUser}">
   			<li style="float:right"><h:commandButton action="#{headerBean.logout}" value="Logout" class="login"/></li>

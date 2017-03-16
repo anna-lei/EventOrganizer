@@ -2,6 +2,7 @@ package de.auc.services;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -15,9 +16,9 @@ public class UserService implements Serializable {
 	private List<User> users = new ArrayList<User>();	
 
 	public UserService() {
-		User user = new User(1, "Claudia", "Schaefers", "18.08.1995", "cs@jee.de",  "123", true);
-		User user1 = new User(2, "a", "a", "a", "a", "a", true);
-		User user2 = new User(3, "b", "b", "b", "b", "b", false);
+		User user = new User(1, "Claudia", "Schaefers", new Date(System.currentTimeMillis()), "cs@jee.de",  "123", true);
+		User user1 = new User(2, "a", "a",new Date(System.currentTimeMillis()), "a", "a", true);
+		User user2 = new User(3, "b", "b",new Date(System.currentTimeMillis()), "b", "b", false);
 		users.add(user);
 		users.add(user1);
 		users.add(user2);

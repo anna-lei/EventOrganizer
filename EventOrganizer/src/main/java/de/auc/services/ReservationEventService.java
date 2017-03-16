@@ -2,14 +2,9 @@ package de.auc.services;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 

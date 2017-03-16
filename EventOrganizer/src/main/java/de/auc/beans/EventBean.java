@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -32,12 +34,20 @@ public class EventBean {
 		}
 	}
 	
-	public String search() { 
+	public void search() { 
 		events.clear();
-		for(Event event: eventService.searchEvents(searchText)) {
-			events.add(event);
+		if(eventService.searchEvents(searchText).size()==0) {
+			FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Für den Suchbegriff wurden keine Events gefunden...", "");
+			FacesContext.getCurrentInstance().addMessage("search", searchMessage);
+		} else {
+			
+			for(Event event: eventService.searchEvents(searchText)) {
+				events.add(event);
+			}
+			FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden", "");
+			FacesContext.getCurrentInstance().addMessage("search", searchMessage);
 		}
-		return null;
+		
 	}
 
 	public String getSearchText() {

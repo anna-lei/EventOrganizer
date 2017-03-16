@@ -1,6 +1,8 @@
 package de.auc.beans;
 
 
+import java.util.Date;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -17,7 +19,7 @@ import de.auc.services.PageRenderingService;
 public class RegisterBean {
 	private String name;
 	private String prename;
-	private String date;
+	private Date date;
 	private String mail;
 	private String password1;
 	private String password2;
@@ -32,6 +34,7 @@ public class RegisterBean {
 	
 	public String register() {
 		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
+			
 			if(password1.equals(password2)){
 				loginService.register(name, prename, date, mail, password1, password2, managerflag);
 				return PageRenderingService.getHome();
@@ -42,6 +45,10 @@ public class RegisterBean {
 				return PageRenderingService.getRegister();
 			}
 		} else {
+			
+			for(FacesMessage facesMessage: FacesContext.getCurrentInstance().getMessageList()) {
+				
+			}
 			return PageRenderingService.getRegister();
 		}
 		
@@ -71,11 +78,11 @@ public class RegisterBean {
 		this.prename = prename;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

@@ -13,13 +13,7 @@ public class HeaderBean {
 	@Inject
 	private LoginService loginService;
 	
-	public String home() {
-		return PageRenderingService.getHome();
-	}
-
-	public String login() {
-		return PageRenderingService.getLogin();
-	}
+	
 	
 	public String logout() {
 		loginService.logout();

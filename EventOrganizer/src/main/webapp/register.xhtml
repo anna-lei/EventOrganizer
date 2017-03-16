@@ -31,7 +31,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td><h:outputLabel>Vorname: </h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.prename}"
-								class="inputText" tabindex="1"></h:inputText></td>
+								class="inputText" tabindex="1" validator="#{nameValidator.validate}"></h:inputText></td>
 						<td><h:outputLabel>Email:</h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.mail}"
 								class="inputText" tabindex="4" validator="#{userExistValidator.validate}"></h:inputText></td>
@@ -39,7 +39,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td><h:outputLabel>Nachname: </h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.name}"
-								class="inputText" tabindex="2"></h:inputText></td>
+								class="inputText" tabindex="2" validator="#{nameValidator.validate}"></h:inputText></td>
 						<td><h:outputLabel>Passwort:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password1}"
 								class="inputText" tabindex="5" validator="#{passwordValidator.validate}">
@@ -48,7 +48,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td><h:outputLabel>Geburtsdatum: </h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.date}"
-								class="inputText" tabindex="3"></h:inputText></td>
+								class="inputText" tabindex="3">
+						<f:convertDateTime pattern="dd.mm.yyyy"></f:convertDateTime>		
+						</h:inputText></td>
 						<td><h:outputLabel>Passwort wiederholen:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password2}"
 								class="inputText" tabindex="6" ></h:inputSecret></td>

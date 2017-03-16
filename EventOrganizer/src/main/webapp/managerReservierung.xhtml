@@ -30,8 +30,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</h:link>
 				<h:outputLabel style="float: right; margin-right: 15px;">#{event.numberOfTickets} verfügbare Tickets</h:outputLabel>
 
-		  		
-				<h:dataTable var="reservation" value="#{event.reservations}" class="coloredTable">
+		  		<h:outputLabel rendered="#{empty event.reservations}">Für das Event existieren leider keine Events</h:outputLabel>
+				<h:dataTable var="reservation" value="#{event.reservations}" class="coloredTable" rendered="#{not empty event.reservations}">
 					<h:column>
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{reservation.user.prename} #{reservation.user.name}" />
