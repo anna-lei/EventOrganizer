@@ -3,6 +3,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="template.xhtml">
@@ -34,7 +35,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								class="inputText" tabindex="1" validator="#{nameValidator.validate}"></h:inputText></td>
 						<td><h:outputLabel>Email:</h:outputLabel></td>
 						<td><h:inputText value="#{registerBean.mail}"
-								class="inputText" tabindex="4" validator="#{userExistValidator.validate}"></h:inputText></td>
+								class="inputText" tabindex="4" p:placeholder="abc@web.de" validator="#{userExistMailValidator.validate}"></h:inputText></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Nachname: </h:outputLabel></td>
@@ -42,14 +43,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 								class="inputText" tabindex="2" validator="#{nameValidator.validate}"></h:inputText></td>
 						<td><h:outputLabel>Passwort:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password1}"
-								class="inputText" tabindex="5" validator="#{passwordValidator.validate}">
+								class="inputText" tabindex="5"  p:placeholder="8 Zeichen, min. eine Zahl" validator="#{passwordValidator.validate}">
 						</h:inputSecret></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Geburtsdatum: </h:outputLabel></td>
 						<td><h:inputText id="register" value="#{registerBean.date}"
-								class="inputText" tabindex="3" converterMessage="Das Geburtsdatum konnte nicht konvertiert werden">
-						<f:convertDateTime pattern="dd.mm.yyyy" ></f:convertDateTime>		
+								class="inputText" tabindex="3" p:placeholder="dd.mm.yyyy" converterMessage="Das Geburtsdatum konnte nicht konvertiert werden" validator="#{birthdayValidator.validate}">
+						<f:convertDateTime  pattern="dd.MM.yyyy" ></f:convertDateTime>		
 						</h:inputText></td>
 						<td><h:outputLabel>Passwort wiederholen:</h:outputLabel></td>
 						<td><h:inputSecret value="#{registerBean.password2}"

@@ -10,7 +10,7 @@ import javax.faces.validator.ValidatorException;
 import de.auc.services.UserService;
 
 @ManagedBean
-public class UserExistValidator {
+public class UserExistMailValidator {
 	@ManagedProperty("#{userService}")
 	private UserService userService;
 	
@@ -18,6 +18,13 @@ public class UserExistValidator {
 		if(userService.getUserByName(value.toString())!=null) {
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der User mit dieser E-Mail-Adresse existiert bereits.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+		}
+		
+		if(!value.toString().matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")) {
+			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Es handelt sich um keine valide E-Mail-Adresse.", "");
+			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
+
 		}
 	}
 	
