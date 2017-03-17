@@ -3,7 +3,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -15,12 +16,21 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<head>
 			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
 			<link rel="stylesheet" type="text/css" href="styles/myEvents.css"></link>
+			<link rel="stylesheet" type="text/css" href="styles/coloredTable.css"></link>
 		</head>
 
 		<div class="context" style="text-align: left;">
 			<h:outputLabel class="headline">Meine Veranstaltungen</h:outputLabel>
 			<br /> <br />
 
+			<h:form class="form">
+
+				<h:inputText value="#{eventBean.searchText}" class="inputText"
+					p:placeholder="Suche nach Event" style="margin-left: 80px;" />
+				<h:commandButton action="#{eventBean.search}" value="Suchen"
+					class="button" />
+			</h:form>
+			
 			<h:form>
 				<h:outputText value="Veranstaltungen: "></h:outputText>
 				<h:selectOneMenu>
@@ -35,9 +45,41 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<f:param name="eventid" value="new" />
 				</h:link>
 			</h:form>
+
+			<h:outputLabel rendered="#{empty eventBean.searchText}"
+				style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+			<h:messages for="search" id="search" class="message" />
+
+			<h:dataTable var="event" value="#{eventBean.events}"
+				rendered="#{not empty eventBean.events}" class="coloredTable">
+				<h:column>
+					<f:facet name="header">Event</f:facet>
+					<h:link value="#{event.name}" outcome="myEventDetail.jsf" class="link">
+						<f:param name="eventid" value="#{event.eventid}" />
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Datum</f:facet>
+					<h:outputText value="#{event.date}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Ort</f:facet>
+					<h:outputText value="#{event.location}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Verfügbare Tickets</f:facet>
+					<h:outputText value="#{event.numberOfTickets}" />
+				</h:column>
+				<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
+				<h:column rendered="#{loginService.activeUser.managerflag}">
+					<f:facet name="header">Veröffentlicht</f:facet>
+					<h:outputText value="#{event.publicly}" />
+				</h:column>
+			</h:dataTable>
+
+
 		</div>
-		
-		<ui:include src="homeContent.xhtml" />
+
 		</body>
 
 	</ui:define>
