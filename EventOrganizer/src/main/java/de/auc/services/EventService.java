@@ -23,8 +23,8 @@ public class EventService {
 	public void initEventService() {
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		List<Reservation> reservations1 = new ArrayList<Reservation>();
-		Event event1 = new Event(1, "Test1", "Hallo ich bin die Beschreibung1", "Münster", "25.07.2017 19 Uhr", 1000, true, reservations, userService.getUserByName("a"));
-		Event event2 = new Event(2, "Test2", "Hallo ich bin die Beschreibung2", "München", "18.08.2017 19 Uhr", 5000, false, reservations1, userService.getUserByName("a"));
+		Event event1 = new Event(1, "Test1", "Hallo ich bin die Beschreibung1", "Münster", "25.07.2017 19 Uhr", 1000,10,  true,  reservations, userService.getUserByName("a"));
+		Event event2 = new Event(2, "Test2", "Hallo ich bin die Beschreibung2", "München", "18.08.2017 19 Uhr", 5000,20,  false, reservations1, userService.getUserByName("cs@jee.de"));
 		this.addEvent(event1);
 		this.addEvent(event2);
 		

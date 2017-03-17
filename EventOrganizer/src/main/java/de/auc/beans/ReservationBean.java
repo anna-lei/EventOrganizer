@@ -39,7 +39,10 @@ public class ReservationBean {
 			return PageRenderingService.getLogin();
 		} else {
 			reservation = reservationEventService.reserve(event, selectedTickets);
-			return null;
+			FacesMessage reservationMessage = 
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich für Sie reserviert mit einem Gesamtpreis von: " + selectedTickets*event.getPrice() + "€", "");
+			FacesContext.getCurrentInstance().addMessage("reservation", reservationMessage);
+			return PageRenderingService.getReservation();
 		}
 		
 		

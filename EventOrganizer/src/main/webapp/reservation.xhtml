@@ -27,11 +27,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<h:outputLabel class="headline">Verbindliche Reservierung</h:outputLabel>
 			<br/>
 			<br/>
-			<h:form rendered="#{not empty reservationBean.reservation.code}" class="successPanel">
-				<h:outputLabel class="">Vielen Dank, #{loginService.activeUser.prename} !</h:outputLabel>
-				<br />
-				<h:outputLabel>Folgende Tickets wurden erfolgreich für dich reserviert:</h:outputLabel>
-			</h:form>
+		
+				<h:messages class="successPanel" for="reservation" id="reservation" />
+			
 
 			<h:form class="tableCenter">
 				<br />
@@ -51,6 +49,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td>Beschreibung:</td>
 						<td><h:outputText value="#{reservationBean.event.description}" /></td>
+					</tr>
+					<tr>
+						<td>Preis pro Ticket:</td>
+						<td><h:outputText value="#{reservationBean.event.price}€" /></td>
 					</tr>
 					<tr>
 						<td>Anzahl Tickets:</td>

@@ -28,11 +28,8 @@ public class LoginBean {
 	
 	public String login(){
 		if(loginService.login(user, password)){
-			if(false){
-				return PageRenderingService.getEventDetail();
-			}else {
-				return PageRenderingService.getHome();
-			}
+			return PageRenderingService.getHome();
+			
 		}
 		return PageRenderingService.getLogin();
 	}

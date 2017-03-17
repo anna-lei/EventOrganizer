@@ -25,18 +25,18 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:form class="form" style="margin-left:-5px">
 				<h:inputText value="#{eventBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
-				<h:commandButton action="#{eventBean.search}" value="Suchen"
+				<h:commandButton action="#{eventBean.searchMyEvents}" value="Suchen"
 					class="button" />
 			</h:form>
 			<br />
 			<h:form>
 				<h:outputText value="Veranstaltungen: "></h:outputText>
 				<h:selectOneMenu>
-					<f:selectItem itemValue="#{managerStartBean.filter}"
+					<f:selectItem itemValue="#{managerBean.filter}"
 						itemLabel="angelegte" />
-					<f:selectItem itemValue="#{managerStartBean.filter}"
+					<f:selectItem itemValue="#{managerBean.filter}"
 						itemLabel="veröffentlichte" />
-					<f:selectItem itemValue="#{managerStartBean.filter}"
+					<f:selectItem itemValue="#{managerBean.filter}"
 						itemLabel="alle" />
 				</h:selectOneMenu>
 				<h:link value="+" outcome="editEvent.jsf" class="linkButton">

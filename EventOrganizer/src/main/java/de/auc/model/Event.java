@@ -24,6 +24,7 @@ public class Event {
 	@Temporal(TemporalType.TIMESTAMP)
 	private String date;
 	private Integer numberOfTickets;
+	private Integer price;
 	private boolean publicly;
 	@OneToMany(mappedBy="event")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
@@ -36,19 +37,24 @@ public class Event {
 
 	}
 
+	
+
 	public Event(Integer eventid, String name, String description, String location, String date,
-			Integer numberOfTickets, boolean publicly, List<Reservation> reservations, User user) {
-		
+			Integer numberOfTickets, Integer price, boolean publicly, List<Reservation> reservations, User user) {
+		super();
 		this.eventid = eventid;
 		this.name = name;
 		this.description = description;
 		this.location = location;
 		this.date = date;
 		this.numberOfTickets = numberOfTickets;
+		this.price = price;
 		this.publicly = publicly;
 		this.reservations = reservations;
 		this.user = user;
 	}
+
+
 
 	public Integer getEventid() {
 		return eventid;
@@ -120,6 +126,18 @@ public class Event {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+
+	public Integer getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 	
 	

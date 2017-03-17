@@ -18,7 +18,9 @@ import de.auc.services.ManagerService;
 @Named(value="managerBean")
 @RequestScoped
 public class ManagerBean {
-		private Event event;
+	private String searchText;
+	private Event event;
+	private String filter;
 	
 	@Inject
 	private ManagerService managerService;
@@ -27,7 +29,13 @@ public class ManagerBean {
 	
 	List<Event> managerEvents = new ArrayList<Event>();
 	
+	public void searchMyEvents() {
+		managerEvents.clear();
+		
+	}
+	
 	public List<Event> getMyEvents() {
+		managerEvents.clear();
 		return managerService.getMyEvents(loginService.getActiveUser());
 
 	}
@@ -54,6 +62,22 @@ public class ManagerBean {
 
 	public void setEvent(Event event) {
 		this.event = event;
+	}
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
+	public String getFilter() {
+		return filter;
+	}
+
+	public void setFilter(String filter) {
+		this.filter = filter;
 	}
 	
 	
