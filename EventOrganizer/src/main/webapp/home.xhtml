@@ -19,13 +19,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<div style="text-align: left; padding: 15px;">
 
-			<h:form class="form">
-				<h:inputText value="#{eventBean.searchText}" class="inputText"
-					p:placeholder="Suche nach Event" style="margin-left: 80px;" />
-				<h:commandButton action="#{eventBean.search}" value="Suchen"
-					class="button" />
+			<h:form class="form" style="margin-left:-5px">
+				<h:inputText value="#{eventBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
+				<h:commandButton action="#{eventBean.search}" value="Suchen" class="button" />
 			</h:form>
-
+			<br/>
 			<h:outputLabel rendered="#{empty eventBean.searchText}"
 				style="text-decoration: underline;">Nächste Events:</h:outputLabel>
 			<h:messages for="search" id="search" class="message" />
@@ -60,7 +58,6 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			</h:dataTable>
 
 		</div>
-
 
 	</ui:define>
 </ui:composition>

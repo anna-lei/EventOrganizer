@@ -23,14 +23,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<h:outputLabel class="headline">Meine Veranstaltungen</h:outputLabel>
 			<br /> <br />
 
-			<h:form class="form">
-
-				<h:inputText value="#{eventBean.searchText}" class="inputText"
-					p:placeholder="Suche nach Event" style="margin-left: 80px;" />
+			<h:form class="form" style="margin-left:-5px">
+				<h:inputText value="#{eventBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
 				<h:commandButton action="#{eventBean.search}" value="Suchen"
 					class="button" />
 			</h:form>
-			
+			<br />
 			<h:form>
 				<h:outputText value="Veranstaltungen: "></h:outputText>
 				<h:selectOneMenu>
@@ -41,7 +39,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<f:selectItem itemValue="#{managerStartBean.filter}"
 						itemLabel="alle" />
 				</h:selectOneMenu>
-				<h:link value="+" outcome="editEvent.jsf" class="link">
+				<h:link value="+" outcome="editEvent.jsf" class="linkButton">
 					<f:param name="eventid" value="new" />
 				</h:link>
 			</h:form>
@@ -70,8 +68,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<f:facet name="header">Verfügbare Tickets</f:facet>
 					<h:outputText value="#{event.numberOfTickets}" />
 				</h:column>
-				<!-- 	TODO:	Vielleicht andere Abfrage?	 -->
-				<h:column rendered="#{loginService.activeUser.managerflag}">
+				<h:column>
 					<f:facet name="header">Veröffentlicht</f:facet>
 					<h:outputText value="#{event.publicly}" />
 				</h:column>
