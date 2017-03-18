@@ -11,50 +11,43 @@ import javax.inject.Named;
 import de.auc.model.Event;
 import de.auc.model.User;
 
-@Named(value="managerService")
+@Named(value = "managerService")
 @SessionScoped
-public class ManagerService implements Serializable{
-	
+public class ManagerService implements Serializable {
+
 	@Inject
 	private EventService eventService;
 
 	public List<Event> getManagerEvents(User manager) {
 		List<Event> managerEvents = new ArrayList<Event>();
-		for(Event event: eventService.getEvents()){
-			if(event.getUser().getMail().equals(manager.getMail())){
+		for (Event event : eventService.getEvents()) {
+			if (event.getUser().getMail().equals(manager.getMail())) {
 				managerEvents.add(event);
 			}
 		}
 		return managerEvents;
-		
 	}
-	
+
 	public List<Event> searchManagerEvents(User manager, String searchText, String filter) {
 		List<Event> currentEvents = new ArrayList<Event>();
-		
-		
-		
-		for (Event event: eventService.getEvents()) {
-			if(event.getUser().getMail().equals(manager.getMail())){
-				if(filter==null){
-					if(event.getName().toLowerCase().contains(searchText.toLowerCase())) {
+
+		for (Event event : eventService.getEvents()) {
+			if (event.getUser().getMail().equals(manager.getMail())) {
+				if (filter == null) {
+					if (event.getName().toLowerCase().contains(searchText.toLowerCase())) {
 						currentEvents.add(event);
 					}
-				} else if(event.getName().toLowerCase().contains(searchText.toLowerCase()) && event.isPublicly()==Boolean.parseBoolean(filter)) {
+				} else if (event.getName().toLowerCase().contains(searchText.toLowerCase())
+						&& event.isPublicly() == Boolean.parseBoolean(filter)) {
 					currentEvents.add(event);
 				}
 			}
-			
 		}
-		
 		return currentEvents;
-		
-		
 	}
 
 	public void publish(Event event) {
 		event.setPublicly(true);
-		
 	}
-	
+
 }

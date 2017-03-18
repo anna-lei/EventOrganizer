@@ -32,13 +32,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				rendered="#{not empty eventBean.events}" class="coloredTable">
 				<h:column>
 					<f:facet name="header">Event</f:facet>
-					<!-- TODO:	Vielleicht andere Abfrage?	Hier muss auch berücksichtigt werden, dass nur bei seinem Event das angezeigt werden muss-->
 					
 					<h:outputLink  value="#{eventDetailBean.eventDetails(event.eventid)}" class="link">
 						<f:param name="eventid" value="#{event.eventid}" />#{event.name}
 					</h:outputLink>
-					
-					
 					
 				</h:column>
 				<h:column>

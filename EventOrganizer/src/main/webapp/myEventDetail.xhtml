@@ -24,13 +24,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			</f:metadata>
 			<h:form id="publishform">
 				<h:outputText value="#{managerBean.event.name}" class="headline"></h:outputText>
-				<h:link value="Bearbeiten" outcome="editEvent.jsf" class="link" rendered="#{!managerBean.event.publicly}">
+				<h:link value="Bearbeiten" outcome="editEvent.jsf" class="linkButton" rendered="#{!managerBean.event.publicly}">
 					<f:param name="eventid" value="#{managerBean.event.eventid}" />
 				</h:link>
+				
 				<h:commandButton action="#{managerBean.publish}" rendered="#{!managerBean.event.publicly}" value="Veröffentlichen" class="button">
-				<f:param name="eventid" value="#{managerBean.event.eventid}" /></h:commandButton>
+					<f:param name="eventid" value="#{managerBean.event.eventid}" />
+				</h:commandButton>
 				<h:messages class="success" for="publish" id="publish" />
-				<br/>
 				<br/>
 
 				<table class="tableCenter">

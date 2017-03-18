@@ -34,13 +34,13 @@ public class ReservationBean {
 		
 	public String reserve() {
 		if(loginService.getActiveUser()==null) {
-			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sie müssen für diese Operation angemeldet sein", "");
+			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sie müssen für diese Operation angemeldet sein.", "");
 			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 			return PageRenderingService.getLogin();
 		} else {
 			reservation = reservationEventService.reserve(event, selectedTickets);
 			FacesMessage reservationMessage = 
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich für Sie reserviert mit einem Gesamtpreis von: " + selectedTickets*event.getPrice() + "€", "");
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich mit einem Gesamtpreis von " + selectedTickets*event.getPrice() + "€ für Sie reserviert.", "");
 			FacesContext.getCurrentInstance().addMessage("reservation", reservationMessage);
 			return PageRenderingService.getReservation();
 		}
