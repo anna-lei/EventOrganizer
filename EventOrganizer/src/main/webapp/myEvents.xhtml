@@ -24,32 +24,34 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<br /> <br />
 
 			<h:form class="form" style="margin-left:-5px">
-				<h:inputText value="#{eventBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
-				<h:commandButton action="#{eventBean.searchMyEvents}" value="Suchen"
+				<h:inputText value="#{managerBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
+				<h:commandButton action="#{managerBean.searchMyEvents}" value="Suchen"
 					class="button" />
-			</h:form>
+			
 			<br />
-			<h:form>
+			
 				<h:outputText value="Veranstaltungen: "></h:outputText>
-				<h:selectOneMenu>
-					<f:selectItem itemValue="#{managerBean.filter}"
+				<h:selectOneMenu value="#{managerBean.filter}">
+					<f:selectItem itemValue="false"
 						itemLabel="angelegte" />
-					<f:selectItem itemValue="#{managerBean.filter}"
+					<f:selectItem itemValue="true"
 						itemLabel="veröffentlichte" />
-					<f:selectItem itemValue="#{managerBean.filter}"
+					<f:selectItem itemValue="#{null}"
 						itemLabel="alle" />
 				</h:selectOneMenu>
+			</h:form>
+			<h:form>
 				<h:link value="+" outcome="editEvent.jsf" class="linkButton">
 					<f:param name="eventid" value="new" />
 				</h:link>
 			</h:form>
 
-			<h:outputLabel rendered="#{empty eventBean.searchText}"
+			<h:outputLabel rendered="#{empty managerBean.searchText}"
 				style="text-decoration: underline;">Nächste Events:</h:outputLabel>
 			<h:messages for="search" id="search" class="message" />
 
-			<h:dataTable var="event" value="#{eventBean.events}"
-				rendered="#{not empty eventBean.events}" class="coloredTable">
+			<h:dataTable var="event" value="#{managerBean.managerEvents}"
+				rendered="#{not empty managerBean.managerEvents}" class="coloredTable">
 				<h:column>
 					<f:facet name="header">Event</f:facet>
 					<h:link value="#{event.name}" outcome="myEventDetail.jsf" class="link">

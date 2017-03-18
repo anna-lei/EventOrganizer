@@ -17,7 +17,6 @@ public class PasswordValidator {
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		if (!value.toString().matches(".*[0-9].*")) {
 			// Das Passwort enthält keine Zahl
-			System.out.println(value.toString());
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Das Passwort muss mindestens eine Zahl enthalten.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);

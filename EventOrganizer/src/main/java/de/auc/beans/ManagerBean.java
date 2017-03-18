@@ -29,14 +29,35 @@ public class ManagerBean {
 	
 	List<Event> managerEvents = new ArrayList<Event>();
 	
-	public void searchMyEvents() {
+	public String searchMyEvents() {
 		managerEvents.clear();
+		List<Event> currentEvents = managerService.searchManagerEvents(loginService.getActiveUser(), searchText, filter);
+		if(currentEvents.size()==0) {
+			FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Für die Suche wurden keine Events gefunden...", "");
+			FacesContext.getCurrentInstance().addMessage("search", searchMessage);
+		} else {
+			for(Event event: currentEvents) {
+				managerEvents.add(event);
+			}
+			if(!searchText.isEmpty()) {
+			FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden", "");
+			FacesContext.getCurrentInstance().addMessage("search", searchMessage);
+			}
+		}
+		
+		return null;
+		
 		
 	}
 	
-	public List<Event> getMyEvents() {
+	@PostConstruct
+	public void getMyEvents() {
 		managerEvents.clear();
-		return managerService.getMyEvents(loginService.getActiveUser());
+		for(Event event: managerService.getManagerEvents(loginService.getActiveUser())) {
+			managerEvents.add(event);
+		}
+		
+		
 
 	}
 	
@@ -79,6 +100,8 @@ public class ManagerBean {
 	public void setFilter(String filter) {
 		this.filter = filter;
 	}
+
+	
 	
 	
 	
