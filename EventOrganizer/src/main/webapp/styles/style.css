@@ -46,6 +46,7 @@ body {
 }
 
 .success {
+	padding-left: 0px;
 	color: green;
 	list-style-type: none;
 }
@@ -76,6 +77,10 @@ select {
 }
 .link {
 	color: black;
+}
+
+.link:visited{
+	color: black;	
 }
 
 .buttonDiv {

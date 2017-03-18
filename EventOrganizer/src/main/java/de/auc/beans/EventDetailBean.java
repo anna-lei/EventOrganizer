@@ -22,6 +22,8 @@ public class EventDetailBean {
 	public String eventDetails(int eventid) {
 		if (loginService.getActiveUser() != null) {
 			if (loginService.getActiveUser().isManagerflag()) {
+				System.out.println("eins: " + eventService.getEventById(eventid).getUser());
+				System.out.println("zwei " + loginService.getActiveUser());
 				if(eventService.getEventById(eventid).getUser()==loginService.getActiveUser()){
 					return PageRenderingService.getMyEventDetail();
 				}else{
