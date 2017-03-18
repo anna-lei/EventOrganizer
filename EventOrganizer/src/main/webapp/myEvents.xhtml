@@ -20,34 +20,28 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		</head>
 
 		<div class="context" style="text-align: left;">
-			<h:outputLabel class="headline">Meine Veranstaltungen</h:outputLabel>
+			<h:outputLabel class="headline">Meine Events</h:outputLabel>
 			<br /> <br />
 
-			<h:form class="form" style="margin-left:-5px">
-				<h:inputText value="#{managerBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
-				<h:commandButton action="#{managerBean.searchMyEvents}" value="Suchen"
-					class="button" />
-			
-			<br />
-			
-				<h:outputText value="Veranstaltungen: "></h:outputText>
+			<h:form class="form" >
+				<h:outputText value="Events: "></h:outputText>
 				<h:selectOneMenu value="#{managerBean.filter}">
-					<f:selectItem itemValue="false"
-						itemLabel="angelegte" />
-					<f:selectItem itemValue="true"
-						itemLabel="veröffentlichte" />
-					<f:selectItem itemValue="#{null}"
-						itemLabel="alle" />
+					<f:selectItem itemValue="false" itemLabel="angelegte" />
+					<f:selectItem itemValue="true" itemLabel="veröffentlichte" />
+					<f:selectItem itemValue="#{null}" itemLabel="alle" />
 				</h:selectOneMenu>
-			</h:form>
-			<h:form>
+			
+				<h:inputText value="#{managerBean.searchText}" class="inputText" p:placeholder="Event-Name"/>
+				<h:commandButton action="#{managerBean.searchMyEvents}" value="Filtern" class="button" />
+			
 				<h:link value="+" outcome="editEvent.jsf" class="linkButton">
 					<f:param name="eventid" value="new" />
 				</h:link>
 			</h:form>
+			
+			<br/>
 
-			<h:outputLabel rendered="#{empty managerBean.searchText}"
-				style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+			<h:outputLabel rendered="#{empty managerBean.searchText}" style="text-decoration: underline;">Nächste Events:</h:outputLabel>
 			<h:messages for="search" id="search" class="message" />
 
 			<h:dataTable var="event" value="#{managerBean.managerEvents}"
