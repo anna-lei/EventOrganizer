@@ -14,7 +14,7 @@ public class BirthdayValidator {
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         if(value==null) {
         	FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Bitte geben Sie Geburtsdatum ein.", "");
+					"Bitte geben Sie ein Geburtsdatum ein.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
         } else {
         	Date birthday = (Date)value;
@@ -22,7 +22,7 @@ public class BirthdayValidator {
             today.set(Calendar.YEAR, today.get(Calendar.YEAR)-16);
     		if(birthday.after(today.getTime())) {
     			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-    					"Zur Registrierung müssen Sie 16 Jahre alt sein.", "");
+    					"Zur Registrierung müssen Sie mindestens 16 Jahre alt sein.", "");
     			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 
     		}

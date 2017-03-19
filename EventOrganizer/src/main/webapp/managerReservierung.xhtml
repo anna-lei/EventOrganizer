@@ -33,7 +33,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputLabel rendered="#{empty event.reservations}">Für dieses Event existieren bisher keine Reservierungen.</h:outputLabel>
 				
 				<h:dataTable var="reservation" value="#{event.reservations}"
-					class="coloredTable" rendered="#{not empty event.reservations}">
+					class="coloredTable" rendered="#{not empty event.reservations}" style="margin-top: 0px;">
 					<h:column>
 						<f:facet name="header">Name</f:facet>
 						<h:outputText

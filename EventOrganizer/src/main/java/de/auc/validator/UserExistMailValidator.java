@@ -20,7 +20,7 @@ public class UserExistMailValidator {
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 		}
 		
-		if(!value.toString().matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")) {
+		if(!value.toString().matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]+\\.[a-zA-Z]+$")) {
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Es handelt sich um keine valide E-Mail-Adresse.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);

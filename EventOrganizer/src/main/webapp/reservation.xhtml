@@ -19,7 +19,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<link rel="stylesheet" type="text/css" href="styles/eventDetail.css"></link>
 		</head>
 
-		<div class="context">
+		<div class="context" style="text-align: left;">
 			<f:metadata>
 				<f:viewParam name="eventid" value="#{reservationBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden." />
 			</f:metadata>
@@ -30,47 +30,47 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		
 			<h:messages class="successPanel" for="reservation" id="reservation" />
 			
-			<h:form class="tableCenter">
+			<h:form>
 				<br />
 				<table>
 					<tr>
-						<th>Titel:</th>
+						<th class="firstColumn">Titel:</th>
 						<th><h:outputText value="#{reservationBean.event.name}" /></th>
 					</tr>
 					<tr>
-						<td>Datum:</td>
+						<td class="firstColumn">Datum:</td>
 						<td><h:outputText value="#{reservationBean.event.date}" /></td>
 					</tr>
 					<tr>
-						<td>Ort:</td>
+						<td class="firstColumn">Ort:</td>
 						<td><h:outputText value="#{reservationBean.event.location}" /></td>
 					</tr>
 					<tr>
-						<td>Beschreibung:</td>
+						<td class="firstColumn">Beschreibung:</td>
 						<td><h:outputText value="#{reservationBean.event.description}" /></td>
 					</tr>
 					<tr>
-						<td>Preis pro Ticket:</td>
+						<td class="firstColumn">Preis pro Ticket:</td>
 						<td><h:outputText value="#{reservationBean.event.price}€" /></td>
 					</tr>
 					<tr>
-						<td>Anzahl Tickets:</td>
+						<td class="firstColumn">Anzahl Tickets:</td>
 						<td>
 							<h:inputText id="selectedTickets" p:type="number" p:min="1" p:max="10" value="#{reservationBean.selectedTickets}" rendered="#{empty reservationBean.reservation.code}"/>
 							<h:outputText rendered="#{not empty reservationBean.reservation.code}" value="#{reservationBean.selectedTickets}" />
+							
+							<h:commandButton class="button" action="#{reservationBean.reserve}" value="Reservieren" rendered="#{empty reservationBean.reservation.code}">
+								<f:param name="eventid" value="#{reservationBean.event.eventid}" />
+							</h:commandButton>
+							
 						</td>
 					</tr>
 					<tr>
-						<td><h:outputLabel value="Bestätigungscode:" rendered="#{not empty reservationBean.reservation.code}" class="success" /></td>
+						<td class="firstColumn"><h:outputLabel value="Bestätigungscode:" rendered="#{not empty reservationBean.reservation.code}" class="success" /></td>
 						<td><h:outputText value="#{reservationBean.reservation.code}" rendered="#{not empty reservationBean.reservation.code}" class="success" /></td>
 					</tr>
 				</table>
 				<br />
-				
-				<h:commandButton class="button" action="#{reservationBean.reserve}" value="Reservieren" rendered="#{empty reservationBean.reservation.code}" style="margin-left: 45%;">
-					<f:param name="eventid" value="#{reservationBean.event.eventid}" />
-				</h:commandButton>
-				
 			</h:form>
 			
 		</div>
