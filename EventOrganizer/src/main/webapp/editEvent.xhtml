@@ -28,16 +28,19 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				
 				<br /> <br />
 
-				<h:form class="form">
+				<h:form id="editform" class="form">
+				<h:messages class="warning" for="edit" id="message" />
 
 					<table style="margin-left: 38%;">
 						<tr>
 							<td><h:outputLabel>Titel: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.name}" class="inputText" /></td>
+							<td><h:inputText required="true" requiredMessage="Der Titel darf nicht leer sein." value="#{managerBean.event.name}" class="inputText"/></td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Datum:</h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.date}" class="inputText" /></td>
+							<td><h:inputText value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden." validator="#{dateValidator.validate}" >
+							<f:convertDateTime pattern="dd.MM.yyyy"/>
+							</h:inputText></td>
 						</tr>
 <!-- 						<tr> -->
 <!-- 							<td><h:outputLabel>Uhrzeit: </h:outputLabel></td> -->

@@ -21,9 +21,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<div class="context">
 			<h:outputLabel class="headline">Registrierung</h:outputLabel>
-			<h:messages class="warning" for="register" id="message" />
+			
 			
 			<h:form id="registerform" class="form">
+			<h:messages class="warning" for="register" id="message" />
 				<h:selectOneRadio required="true" value="#{registerBean.managerflag}">
 					<f:selectItem itemValue="false" itemLabel="Anwender" />
 					<f:selectItem itemValue="true" itemLabel="Manager" />
