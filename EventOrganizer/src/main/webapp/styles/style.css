@@ -12,6 +12,7 @@ body {
 }
 
 .button {
+	font-family: Calibri;
 	cursor: pointer;
 	border: solid black 0.2px;
 	border-radius: 5px;
@@ -52,6 +53,7 @@ body {
 .message {
 	list-style-type: none;
 	padding: 0px;
+	color: blue;
 }
 
 .inputText {
@@ -109,4 +111,8 @@ select {
 	color: black;
 	text-decoration: none;
 	padding: 2px 8px;
+}
+
+td{
+	padding-right: 45px;
 }

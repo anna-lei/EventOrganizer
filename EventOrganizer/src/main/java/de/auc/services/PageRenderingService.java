@@ -17,6 +17,7 @@ public class PageRenderingService {
 	private static final String PAGE_RESERVATION_JSF = "reservation.jsf";
 	private static final String PAGE_MYEVENT_DETAIL_JSF = "myEventDetail.jsf";
 	private static final String PAGE_EDITEVENT_JSF = "editEvent.jsf";
+	private static final String PAGE_NEWEVENT_JSF = "newEvent.jsf";
 	
 	
 	public static String getManagerReservation(){
@@ -51,6 +52,10 @@ public class PageRenderingService {
 
 	public static String getEditEvent() {
 		return PAGE_EDITEVENT_JSF;
+	}
+	
+	public static String getNewEvent() {
+		return PAGE_NEWEVENT_JSF;
 	}
 	
 }

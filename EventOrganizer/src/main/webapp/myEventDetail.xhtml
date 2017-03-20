@@ -22,6 +22,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<f:metadata>
 				<f:viewParam name="eventid" value="#{managerBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
 			</f:metadata>
+			
 			<h:form id="publishform">
 				<h:outputText value="#{managerBean.event.name}" class="headline"></h:outputText>
 				
@@ -55,7 +56,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<br/>
 				</div>
 				
-				<h:outputLabel rendered="#{empty managerBean.event.reservations}">Es liegen noch keine Reservierungen vor (#{managerBean.event.numberOfTickets} verfügbare Tickets).</h:outputLabel>
+				<h:outputLabel rendered="#{empty managerBean.event.reservations}" class="message">Es liegen noch keine Reservierungen vor (#{managerBean.event.numberOfTickets} verfügbare Tickets).</h:outputLabel>
 				
 				<h:outputLabel rendered="#{not empty managerBean.event.reservations}">Reservierungen (noch #{managerBean.event.numberOfTickets} verfügbare Tickets)</h:outputLabel>
 

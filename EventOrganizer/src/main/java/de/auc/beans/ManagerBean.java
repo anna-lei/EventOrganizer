@@ -91,7 +91,7 @@ public class ManagerBean implements Serializable{
 			
 		} else {
 			
-			return PageRenderingService.getEditEvent();
+			return PageRenderingService.getNewEvent();
 		}
 		
 		
