@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
-import de.auc.model.User;
 import de.auc.services.LoginService;
 import de.auc.services.ManagerService;
 
@@ -70,6 +69,16 @@ public class ManagerBean {
 		} else{
 			return "Nein";
 		}
+	}
+	
+	public String save() {
+		return null;
+		
+	}
+	
+	public String add() {
+		return null;
+		
 	}
 
 	public List<Event> getManagerEvents() {

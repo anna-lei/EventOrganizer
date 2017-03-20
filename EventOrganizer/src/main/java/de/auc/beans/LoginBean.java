@@ -1,6 +1,8 @@
 package de.auc.beans;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,6 +32,10 @@ public class LoginBean {
 		if(loginService.login(user, password)){
 			return PageRenderingService.getHome();
 			
+		}
+		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
+			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die E-Mail-Adresse oder das Passwort ist nicht korrekt.", "");
+			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 		}
 		return PageRenderingService.getLogin();
 	}

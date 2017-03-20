@@ -22,8 +22,6 @@ public class ReservationEventService implements Serializable{
 	@Inject
 	private LoginService loginService;
 	
-	@Inject
-	private UserService userService;
 	
 	
 	

@@ -61,9 +61,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<div class="buttonDiv" style="margin-right: 37%;">
 						<h:commandButton class="button" action="#{editEventBean.cancel}" value="Abbrechen"/>
 						
-<!-- 		TODO: Hier muss gerendered werden, ob das Event neu angelegt wird oder gespeichert wird. -->
-						<h:commandButton rendered="#{not empty managerBean.event.name}" class="button" action="#{editEventBean.save}" value="Speichern"/>
-						<h:commandButton rendered="#{empty managerBean.event.name}" class="button" action="#{addEventBean.add}" value="Anlegen"/>
+						<h:commandButton rendered="#{not empty managerBean.event.name}" class="button" action="#{managerBean.save}" value="Speichern"/>
+						<h:commandButton rendered="#{empty managerBean.event.name}" class="button" action="#{managerBean.add}" value="Anlegen"/>
 						
 						<h:commandButton class="button" action="#{editEventBean.publish}" value="Veröffentlichen"/>
 					</div>

@@ -46,9 +46,6 @@ public class RegisterBean {
 			}
 		} else {
 			
-			for(FacesMessage facesMessage: FacesContext.getCurrentInstance().getMessageList()) {
-				
-			}
 			return PageRenderingService.getRegister();
 		}
 		
