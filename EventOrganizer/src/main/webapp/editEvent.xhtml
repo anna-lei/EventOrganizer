@@ -22,7 +22,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<f:metadata>
 				<f:viewParam name="eventid" value="#{managerBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
 			</f:metadata>
-<!-- 		TODO: Hier muss gerendered werden, ob das Event neu angelegt wird oder gespeichert wird. -->
+
 				<h:outputLabel rendered="#{not empty managerBean.event.name}" class="headline">Event bearbeiten</h:outputLabel>
 				<h:outputLabel rendered="#{empty managerBean.event.name}" class="headline">Event hinzufügen</h:outputLabel>
 				
@@ -52,6 +52,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" /></td>
 						</tr>
 						<tr>
+							<td><h:outputLabel>Preis: </h:outputLabel></td>
+							<td><h:inputText value="#{managerBean.event.price}" class="inputText" /></td>
+						</tr>
+						<tr>
 							<td><h:outputLabel>Beschreibung:</h:outputLabel></td>
 							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText" /></td>
 						</tr>
@@ -59,12 +63,18 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<br />
 
 					<div class="buttonDiv" style="margin-right: 37%;">
-						<h:commandButton class="button" action="#{editEventBean.cancel}" value="Abbrechen"/>
+						<h:outputLink  value="#{managerBean.cancel()}" class="linkButton">
+							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
+						</h:outputLink>
+						
 						
 						<h:commandButton rendered="#{not empty managerBean.event.name}" class="button" action="#{managerBean.save}" value="Speichern"/>
-						<h:commandButton rendered="#{empty managerBean.event.name}" class="button" action="#{managerBean.add}" value="Anlegen"/>
 						
-						<h:commandButton class="button" action="#{editEventBean.publish}" value="Veröffentlichen"/>
+						<h:commandLink rendered="#{empty managerBean.event.name}" class="button" action="#{managerBean.add}" value="Anlegen">
+							 <f:attribute name="eventid" value="#{managerBean.event.eventid}" />
+						</h:commandLink>
+						
+					
 					</div>
 				</h:form>
 			</div>

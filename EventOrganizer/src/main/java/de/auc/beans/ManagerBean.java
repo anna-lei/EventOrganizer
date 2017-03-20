@@ -1,10 +1,12 @@
 package de.auc.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -13,24 +15,24 @@ import javax.inject.Named;
 import de.auc.model.Event;
 import de.auc.services.LoginService;
 import de.auc.services.ManagerService;
+import de.auc.services.PageRenderingService;
 
 @Named(value = "managerBean")
-@RequestScoped
-public class ManagerBean {
+@SessionScoped
+public class ManagerBean implements Serializable{
 	private String searchText;
 	private Event event;
 	private String filter;
 
 	@Inject
 	private ManagerService managerService;
-	@Inject
-	private LoginService loginService;
+
 
 	List<Event> managerEvents = new ArrayList<Event>();
 
 	public String searchMyEvents() {
 		managerEvents.clear();
-		List<Event> currentEvents = managerService.searchManagerEvents(loginService.getActiveUser(), searchText, filter);
+		List<Event> currentEvents = managerService.searchManagerEvents(searchText, filter);
 		if (currentEvents.size() == 0) {
 			FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Für die Suche wurden keine Events gefunden...", "");
@@ -51,7 +53,7 @@ public class ManagerBean {
 	@PostConstruct
 	public void getMyEvents() {
 		managerEvents.clear();
-		for (Event event : managerService.getManagerEvents(loginService.getActiveUser())) {
+		for (Event event : managerService.getManagerEvents()) {
 			managerEvents.add(event);
 		}
 	}
@@ -71,13 +73,20 @@ public class ManagerBean {
 		}
 	}
 	
+	public String cancel() {
+		return PageRenderingService.getMyEventDetail();
+	}
+	
 	public String save() {
-		return null;
+		managerService.saveEvent(event);
+		return PageRenderingService.getMyEventDetail();
 		
 	}
 	
 	public String add() {
-		return null;
+		event = managerService.addEvent(event);
+		managerEvents = managerService.getManagerEvents();
+		return PageRenderingService.getMyEventDetail();
 		
 	}
 

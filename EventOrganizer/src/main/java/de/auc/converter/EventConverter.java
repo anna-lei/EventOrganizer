@@ -22,9 +22,11 @@ public class EventConverter implements Converter{
 			return value;
 		}
 		if(value.equals("new")){
+			System.out.println("hier zum zweiten Mal");
 			return new Event();
 			
 		} else {
+			System.out.println("richtig");
 			return eventService.getEventById(Integer.parseInt(value));
 		}
 		

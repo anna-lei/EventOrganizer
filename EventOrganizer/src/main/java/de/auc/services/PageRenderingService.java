@@ -14,14 +14,9 @@ public class PageRenderingService {
 	private static final String PAGE_HOME_JSF = "home.jsf";
 	private static final String PAGE_MYEVENTS_JSF = "myEvents.jsf";
 	private static final String PAGE_MANAGER_RESERVATION_JSF = "managerReservierung.jsf";
-	private static final String PAGE_MANAGER_DETAIL_JSF = "managerDetail.jsf";
 	private static final String PAGE_RESERVATION_JSF = "reservation.jsf";
 	private static final String PAGE_MYEVENT_DETAIL_JSF = "myEventDetail.jsf";
 	
-
-	public static String getManagerDetail(){
-		return PAGE_MANAGER_DETAIL_JSF;
-	}
 	
 	public static String getManagerReservation(){
 		return PAGE_MANAGER_RESERVATION_JSF;

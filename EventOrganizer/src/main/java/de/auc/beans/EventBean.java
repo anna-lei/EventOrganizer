@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -14,18 +14,20 @@ import de.auc.model.Event;
 import de.auc.services.EventService;
 
 @Named(value = "eventBean")
-@ApplicationScoped
+@RequestScoped
 public class EventBean {
 	private String searchText;
 	private List<Event> events = new ArrayList<Event>();
 
+	
+	
 	@Inject
 	private EventService eventService;
 
 	@PostConstruct
 	public void initEvents() {
 		events.clear();
-		for (Event event : eventService.getEvents()) {
+		for (Event event : eventService.getPubliclyEvents()) {
 			events.add(event);
 		}
 	}
