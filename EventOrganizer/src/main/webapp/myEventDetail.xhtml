@@ -45,16 +45,22 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<td>Ort:</td>
 						<td><h:outputText value="#{managerBean.event.location}"></h:outputText></td>
 					</tr>
+					<tr>
+						<td class="firstColumn">Verfügbare Tickets:</td>
+						<td><h:outputText value="#{managerBean.event.numberOfTickets}" /></td>
+					</tr>
+					<tr>
+						<td class="firstColumn">Preis pro Ticket:</td>
+						<td><h:outputText value="#{managerBean.event.price}€" /></td>
+					</tr>
+					<tr>
+						<td class="firstColumn">Beschreibung:</td>
+						<td><h:outputText value="#{managerBean.event.description}" /></td>
+					</tr>
 				</table>
 				<br/>
 				
-				<div style="text-align:left;">
-					<h:outputLabel>Beschreibung:</h:outputLabel>
-					<br/>
-					<h:outputText value="#{managerBean.event.description}" style="font-size: 14px;"/>
-					<br/>
-					<br/>
-				</div>
+				
 				
 				<h:outputLabel rendered="#{empty managerBean.event.reservations}" class="message">Es liegen noch keine Reservierungen vor (#{managerBean.event.numberOfTickets} verfügbare Tickets).</h:outputLabel>
 				
