@@ -26,4 +26,5 @@ dependencies {
 	providedCompile 'com.sun.faces:jsf-api:2.2.10'
 	compile 'org.hibernate:hibernate-core:5.2.8.Final'
 	providedCompile 'javax.enterprise:cdi-api:1.2'
+	compile "com.h2database:h2:1.4.192"
 }

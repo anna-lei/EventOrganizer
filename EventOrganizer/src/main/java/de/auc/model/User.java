@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,12 +19,14 @@ import javax.persistence.TemporalType;
 @Table(name="USER")
 public class User {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer userid;
 	private String name;
 	private String prename;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
+	
+	@Column(unique= true)
 	private String mail;
 	private String password;
 	private boolean managerflag;
@@ -42,7 +46,6 @@ public class User {
 		this.mail = mail;
 		this.password = password;
 		this.managerflag = managerflag;
-		
 	}
 
 	public Integer getUserid() {
@@ -68,7 +71,6 @@ public class User {
 	public void setPrename(String prename) {
 		this.prename = prename;
 	}
-
 
 	public Date getDate() {
 		return date;
@@ -102,8 +104,6 @@ public class User {
 		this.reservations = reservations;
 	}
 
-	
-
 	public boolean isManagerflag() {
 		return managerflag;
 	}
@@ -112,8 +112,4 @@ public class User {
 		this.managerflag = managerflag;
 	}	
 	
-	
-
-
-
 }

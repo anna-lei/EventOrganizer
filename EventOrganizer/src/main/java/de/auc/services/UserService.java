@@ -5,14 +5,39 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import de.auc.model.User;
 
 @Named(value="userService")
 @SessionScoped
 public class UserService implements Serializable {
+	
+	@Inject
+	private EntityManager entityManager;
+	
+	@Produces
+	@ApplicationScoped
+	EntityManager createEntityManager(){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2");
+		return emf.createEntityManager();
+	}
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
 	private List<User> users = new ArrayList<User>();	
 
 	public UserService() {
