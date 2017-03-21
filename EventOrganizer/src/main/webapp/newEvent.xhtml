@@ -27,9 +27,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputLabel class="headline">Event hinzufügen</h:outputLabel>
 				<br/> <br/>
 
-				<h:form id="form" class="form">
-					<h:messages class="warning" for="edit" id="edit"/>
-					<h:messages class="warning"/>
+				<h:form id="editform" class="form"> 
+					<h:messages class="warning" for="edit" id="message"/>
 
 					<table>
 						<tr>
@@ -41,9 +40,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Datum:</h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden." validator="#{dateValidator.validate}" >
-								<f:convertDateTime pattern="dd.MM.yyyy"/>
-							</h:inputText></td>
+							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy" validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy">
+									<f:convertDateTime pattern="dd.MM.yyyy"/>
+								</h:inputText></td>
 						</tr>
 <!-- 						<tr> -->
 <!-- 							<td><h:outputLabel>Uhrzeit: </h:outputLabel></td> -->

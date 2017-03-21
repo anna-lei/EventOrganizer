@@ -4,7 +4,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -26,23 +27,22 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<br/> <br/>
 
 				<h:form id="editform" class="form">
-					<h:messages class="warning" for="edit" id="edit"/>
-					<h:messages class="warning"/>
-					
+					<h:messages class="warning" for="edit" id="message"/>
+								
 
 					<table>
 						<tr>
 							<td><h:outputLabel>Titel: </h:outputLabel></td>
-							<td><h:inputText  validatorMessage="Der Titel muss gefüllt sein und maximal 50 Zeichen umfassen."  value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
+							<td><h:inputText validatorMessage="Der Titel muss gefüllt sein und maximal 50 Zeichen umfassen."  value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
 									<f:validateLength minimum="1" maximum="50" />
 								</h:inputText>
 							</td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Datum:</h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden." validator="#{dateValidator.validate}" >
-							<f:convertDateTime pattern="dd.MM.yyyy"/>
-							</h:inputText></td>
+							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy" validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy">
+									<f:convertDateTime pattern="dd.MM.yyyy"/>
+								</h:inputText></td>
 						</tr>
 <!-- 						<tr> -->
 <!-- 							<td><h:outputLabel>Uhrzeit: </h:outputLabel></td> -->
@@ -55,12 +55,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<tr>
 							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
 							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln.">
-							<f:convertNumber pattern="###.###" maxFractionDigits="0" /> </h:inputText></td>
+							<f:convertNumber maxFractionDigits="0" /> </h:inputText></td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
 							<td><h:inputText value="#{managerBean.event.price}" class="inputText" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben sowie höchstens eine vierstellige Summe betragen." >
-							<f:convertNumber pattern="####,##" maxFractionDigits="2" minFractionDigits="2" maxIntegerDigits="4" /></h:inputText></td>
+							<f:convertNumber maxFractionDigits="2" minFractionDigits="2" /></h:inputText></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>

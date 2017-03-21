@@ -18,10 +18,11 @@ public class DateValidator {
 			FacesContext.getCurrentInstance().addMessage("editform:edit", editMessage);
         } else {
         	Date date = (Date)value;
+     
             Calendar today = Calendar.getInstance();
     		if(date.before(today.getTime())) {
     			FacesMessage editMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-    					"Das Event muss in der Zukungt liegen.", "");
+    					"Das Event muss in der Zukunft liegen und im folgenden Format angegeben werden: dd.MM.yyyy", "");
     			FacesContext.getCurrentInstance().addMessage("editform:edit", editMessage);
 
     		}
