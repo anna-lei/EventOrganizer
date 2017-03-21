@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,6 +29,7 @@ public class LoginService implements Serializable{
 	
 	public void logout() {
 		activeUser = null;
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
 	public void register(String name, String prename, Date date, String mail, String password1, String password2, boolean managerflag) {

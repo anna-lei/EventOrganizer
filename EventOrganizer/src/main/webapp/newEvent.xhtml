@@ -28,12 +28,16 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<br/> <br/>
 
 				<h:form id="form" class="form">
-					<h:messages class="warning" for="edit" id="message" />
+					<h:messages class="warning" for="edit" id="edit"/>
+					<h:messages class="warning"/>
 
 					<table>
 						<tr>
 							<td><h:outputLabel>Titel: </h:outputLabel></td>
-							<td><h:inputText required="true" requiredMessage="Der Titel darf nicht leer sein." value="#{managerBean.event.name}" class="inputText" a:autofocus="true"/></td>
+							<td><h:inputText  validatorMessage="Der Titel muss gefüllt sein und maximal 50 Zeichen umfassen."  value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
+									<f:validateLength minimum="1" maximum="50" />
+								</h:inputText>
+							</td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Datum:</h:outputLabel></td>
@@ -51,15 +55,19 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" /></td>
+							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln.">
+							<f:convertNumber pattern="###.###" maxFractionDigits="0" /> </h:inputText></td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.price}" class="inputText" /></td>
+							<td><h:inputText value="#{managerBean.event.price}" class="inputText" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben sowie höchstens eine vierstellige Summe betragen." >
+							<f:convertNumber pattern="####,##" maxFractionDigits="2" minFractionDigits="2" maxIntegerDigits="4" /></h:inputText></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>
-							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText"  style="min-width: 500px; min-height: 150px;"/></td>
+							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText"  style="min-width: 500px; min-height: 150px;" validatorMessage="Die Beschreibung muss gefüllt sein und maximal 500 Zeichen umfassen.">
+							<f:validateLength minimum="1" maximum="500" />
+							</h:inputTextarea></td>
 						</tr>
 					</table>
 					<br />

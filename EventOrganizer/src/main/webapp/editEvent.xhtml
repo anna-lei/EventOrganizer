@@ -64,7 +64,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>
-							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText" style="min-width: 500px; min-height: 150px;"/></td>
+							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText" style="min-width: 500px; min-height: 150px;" validatorMessage="Die Beschreibung muss gefüllt sein und maximal 500 Zeichen umfassen.">
+							<f:validateLength minimum="1" maximum="500" /></h:inputTextarea></td>
 						</tr>
 					</table>
 					<br />

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -14,16 +13,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
-import de.auc.services.LoginService;
 import de.auc.services.ManagerService;
 import de.auc.services.PageRenderingService;
 
 @Named(value = "managerBean")
-@ViewScoped
+@SessionScoped
 public class ManagerBean implements Serializable{
 	private String searchText;
 	private Event event;
 	private String filter;
+	
 
 	@Inject
 	private ManagerService managerService;
