@@ -25,7 +25,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputLabel class="headline">Event bearbeiten</h:outputLabel>
 				<br/> <br/>
 
-				<h:form id="editform" class="form">
+				<h:form id="form" class="form">
 					<h:messages class="warning" for="edit" id="message" />
 
 					<table>
@@ -49,11 +49,13 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" /></td>
+							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln.">
+							<f:convertNumber pattern="###.###" maxFractionDigits="0" /> </h:inputText></td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.price}" class="inputText" /></td>
+							<td><h:inputText value="#{managerBean.event.price}" class="inputText" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben sowie höchstens eine vierstellige Summe betragen." >
+							<f:convertNumber pattern="#.###,##" maxFractionDigits="2" minFractionDigits="2" maxIntegerDigits="4" /></h:inputText></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>

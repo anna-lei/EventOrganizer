@@ -7,18 +7,18 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	
 	<ul class="menuUl">
 		<h:form>
-	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getHome()}" value="Startseite" class="home"/></li>
+	  		<li class="menuLi"><h:commandButton action="#{headerBean.home}" value="Startseite" class="home"/></li>
 		</h:form>
-  		<h:form rendered="#{loginService.activeUser.managerflag}">
-  			<li class="menuLi"><h:commandButton action="#{pageRenderingService.getMyEvents()}" value="Meine Events" class="myEvents"/></li>
-	  		<li class="menuLi"><h:commandButton action="#{pageRenderingService.getManagerReservation()}" value="Reservierungen" class="reservations"/></li>
+  		<h:form rendered="#{headerBean.addManagerMenu()}">
+  			<li class="menuLi"><h:commandButton action="#{headerBean.managerEvents}" value="Meine Events" class="myEvents"/></li>
+	  		<li class="menuLi"><h:commandButton action="#{headerBean.managerReservations}" value="Reservierungen" class="reservations"/></li>
 		</h:form>  
-		<h:form rendered="#{empty loginService.activeUser}">
-  			<li id="login" style="float:right"><h:commandButton action="#{pageRenderingService.getLogin()}" value="Login" class="login"/></li>
+		<h:form rendered="#{empty headerBean.loginService.activeUser}">
+  			<li id="login" style="float:right"><h:commandButton action="#{headerBean.login}" value="Login" class="login"/></li>
   		</h:form>
-  		<h:form rendered="#{not empty loginService.activeUser}">
+  		<h:form rendered="#{not empty headerBean.loginService.activeUser}">
   			<li style="float:right"><h:commandButton action="#{headerBean.logout}" value="Logout" class="login"/></li>
-			<li class="name"><h:outputLabel value="Hallo #{loginService.activeUser.prename}!"/></li>
+			<li class="name"><h:outputLabel value="Hallo #{headerBean.loginService.activeUser.prename}!"/></li>
   		</h:form>
 	</ul>
 
