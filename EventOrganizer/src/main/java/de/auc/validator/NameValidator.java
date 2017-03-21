@@ -15,7 +15,7 @@ public class NameValidator {
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 
 		}
-		if(!value.toString().matches("[a-zA-Z]+")) {
+		if(!value.toString().matches("[a-zA-ZäöüÄÖÜßéÉèÈ]+")) {
 			
 			for(FacesMessage message: FacesContext.getCurrentInstance().getMessageList()) {
 				if(message.getSummary().equals("Der Name darf nur Buchstaben enthalten.")) {

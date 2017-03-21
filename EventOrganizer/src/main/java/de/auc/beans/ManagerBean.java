@@ -78,8 +78,15 @@ public class ManagerBean implements Serializable{
 	}
 	
 	public String save() {
-		managerService.saveEvent(event);
-		return PageRenderingService.getMyEventDetail();
+		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
+			managerService.saveEvent(event);
+			return PageRenderingService.getMyEventDetail();
+			
+		} else {
+			
+			return PageRenderingService.getEditEvent();
+		}
+		
 		
 	}
 	
