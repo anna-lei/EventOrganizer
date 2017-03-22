@@ -1,5 +1,6 @@
 package de.auc.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +9,11 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
+import de.auc.services.LoginService;
 import de.auc.services.ManagerService;
 import de.auc.services.PageRenderingService;
 
@@ -23,9 +24,11 @@ public class ManagerBean implements Serializable{
 	private Event event;
 	private String filter;
 	
-
 	@Inject
 	private ManagerService managerService;
+	
+	@Inject
+	private LoginService loginService;
 
 
 	List<Event> managerEvents = new ArrayList<Event>();
@@ -51,10 +54,32 @@ public class ManagerBean implements Serializable{
 	}
 
 	@PostConstruct
-	public void getMyEvents() {
-		managerEvents.clear();
-		for (Event event : managerService.getManagerEvents()) {
-			managerEvents.add(event);
+	public void doManagerActions() {
+		
+		if(loginService.getActiveUser()==null) {
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getHome());
+				FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(!loginService.getActiveUser().isManagerflag()) {
+			try {
+
+				FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getHome());
+				FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+				
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			managerEvents.clear();
+			for (Event event : managerService.getManagerEvents()) {
+				managerEvents.add(event);
+			}
+			
 		}
 	}
 
