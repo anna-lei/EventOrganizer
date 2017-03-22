@@ -47,7 +47,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</tr>
 					<tr>
 						<td class="firstColumn">Verfügbare Tickets:</td>
-						<td><h:outputText value="#{managerBean.event.numberOfTickets}" /></td>
+						<td><h:outputText value="#{managerBean.event.numberOfTickets}"><f:convertNumber/></h:outputText></td>
 					</tr>
 					<tr>
 						<td class="firstColumn">Preis pro Ticket in €:</td>

@@ -48,7 +48,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</h:column>
 				<h:column>
 					<f:facet name="header">Verfügbare Tickets</f:facet>
-					<h:outputText value="#{event.numberOfTickets}" />
+					<h:outputText value="#{event.numberOfTickets}" ><f:convertNumber/></h:outputText>
 				</h:column>
 			</h:dataTable>
 

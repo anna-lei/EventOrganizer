@@ -28,7 +28,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:link value="#{event.name}" outcome="myEventDetail.jsf" class="link">
 					<f:param name="eventid" value="#{event.eventid}" />
 				</h:link>
-				<h:outputLabel style="float: right; margin-right: 15px;">#{event.numberOfTickets} verfügbare Tickets</h:outputLabel>
+				<h:outputLabel style="float: right; margin-right: 15px;" value="#{event.numberOfTickets}"><f:convertNumber/> verfügbare Tickets</h:outputLabel>
 				<br/><br/>
 				<h:outputLabel rendered="#{empty event.reservations}" class="message">Für dieses Event existieren bisher keine Reservierungen.</h:outputLabel>
 				

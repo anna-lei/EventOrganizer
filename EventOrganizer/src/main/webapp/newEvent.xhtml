@@ -29,44 +29,42 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputLabel class="headline">Event hinzufügen</h:outputLabel>
 				<br/> <br/>
 
-				<h:form id="editform" class="form"> 
-					<h:messages class="warning" for="edit" id="message"/>
+				<h:form class="form">
+					<h:messages class="warning"/>
 
 					<table>
 						<tr>
-							<td><h:outputLabel>Titel: </h:outputLabel></td>
-							<td><h:inputText  validatorMessage="Der Titel muss gefüllt sein und maximal 50 Zeichen umfassen."  value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
+							<td class="firstColumn"><h:outputLabel>Titel: </h:outputLabel></td>
+							<td><h:inputText validatorMessage="Der Titel muss gefüllt sein und maximal 50 Zeichen umfassen."  value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
 									<f:validateLength minimum="1" maximum="50" />
 								</h:inputText>
 							</td>
 						</tr>
 						<tr>
-							<td><h:outputLabel>Datum:</h:outputLabel></td>
+							<td class="firstColumn"><h:outputLabel>Datum:</h:outputLabel></td>
 							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy" validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy">
 									<f:convertDateTime pattern="dd.MM.yyyy"/>
 								</h:inputText></td>
 						</tr>
 <!-- 						<tr> -->
-<!-- 							<td><h:outputLabel>Uhrzeit: </h:outputLabel></td> -->
+<!-- 							<td class="firstColumn"><h:outputLabel>Uhrzeit: </h:outputLabel></td> -->
 <!-- 							<td><h:inputText value="#{editEventBean.time}" class="inputText" /></td> -->
 <!-- 						</tr> -->
 						<tr>
-							<td><h:outputLabel>Ort:</h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.location}" class="inputText" /></td>
+							<td class="firstColumn"><h:outputLabel class="firstColumn">Ort:</h:outputLabel></td>
+							<td><h:inputText required="true" requiredMessage="Es muss ein Ort angegeben werden." value="#{managerBean.event.location}" class="inputText" /></td>
 						</tr>
 						<tr>
-							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-							<td><h:inputText p:type="number" p:min="1" value="#{managerBean.event.numberOfTickets}" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln."/></td>
+							<td class="firstColumn"><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
+							<td><h:inputText required="true" p:type="number"  p:min="1" value="#{managerBean.event.numberOfTickets}" requiredMessage="Es muss sich um eine ganze Zahl an Tickets handeln." class="inputText"/></td>
 						</tr>
 						<tr>
-							<td><h:outputLabel>Preis: </h:outputLabel></td>
-							<td><h:inputText pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben."/></td>
+							<td class="firstColumn"><h:outputLabel>Preis pro Ticket in €: </h:outputLabel></td>
+							<td><h:inputText required="true" pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" requiredMessage="Der Preis muss angegeben werden und maximal zwei Nachkomma-Stellen haben." class="inputText"/></td>
 						</tr>
 						<tr>
-							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>
-							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText"  style="min-width: 500px; min-height: 150px;" validatorMessage="Die Beschreibung muss gefüllt sein und maximal 500 Zeichen umfassen.">
-							<f:validateLength minimum="1" maximum="500" />
-							</h:inputTextarea></td>
+							<td  class="firstColumn"><h:outputLabel>Beschreibung:</h:outputLabel></td>
+							<td><h:inputTextarea required="true" value="#{managerBean.event.description}" class="inputText" style="min-width: 500px; min-height: 150px;" requiredMessage="Die Beschreibung muss gefüllt sein."/></td>
 						</tr>
 					</table>
 					<br />
@@ -78,7 +76,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
 						
-						<h:commandLink rendered="#{empty managerBean.event.name}" class="linkButton" action="#{managerBean.add}" value="Anlegen">
+						<h:commandLink class="linkButton" action="#{managerBean.add}" value="Anlegen">
 							 <f:attribute name="eventid" value="#{managerBean.event.eventid}" />
 						</h:commandLink>
 					</div>

@@ -1,5 +1,6 @@
 package de.auc.beans;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,8 +19,8 @@ import de.auc.services.PageRenderingService;
 import de.auc.services.ReservationEventService;
 
 @Named(value="reservationBean")
-@RequestScoped
-public class ReservationBean {
+@ViewScoped
+public class ReservationBean implements Serializable{
 	private Event event;
 	private Integer selectedTickets = 2;
 	private Reservation reservation;
@@ -37,17 +39,21 @@ public class ReservationBean {
 			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sie müssen für diese Operation angemeldet sein.", "");
 			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 			return PageRenderingService.getLogin();
-		} else {
+		} else if (event.getNumberOfTickets()<selectedTickets){
+			FacesMessage reservationMessage = 
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Es sind nur " + event.getNumberOfTickets() + " Tickets verfügbar.", "");
+			FacesContext.getCurrentInstance().addMessage("reservationForm:reservation", reservationMessage);
+			return null;
+		}else{
 			NumberFormat nf = NumberFormat.getInstance();
 			nf.setMinimumFractionDigits(2);
 			nf.setMaximumFractionDigits(2);
 			String sumPrice = nf.format(selectedTickets*event.getPrice());
-			System.out.println(sumPrice);
 			reservation = reservationEventService.reserve(event, selectedTickets);
 			FacesMessage reservationMessage = 
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich mit einem Gesamtpreis von " + sumPrice + "€ für Sie reserviert.", "");
 			FacesContext.getCurrentInstance().addMessage("reservation", reservationMessage);
-			return PageRenderingService.getReservation();
+			return null;
 		}
 		
 		
