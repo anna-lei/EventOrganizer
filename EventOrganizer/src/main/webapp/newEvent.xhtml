@@ -4,7 +4,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -54,8 +55,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.numberOfTickets}" class="inputText" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln.">
-							<f:convertNumber pattern="###.###" maxFractionDigits="0" /> </h:inputText></td>
+							<td><h:inputText p:type="number" p:min="1" value="#{managerBean.event.numberOfTickets}" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln."/></td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
@@ -78,7 +78,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
 						
-						<h:commandLink rendered="#{empty managerBean.event.name}" class="button" action="#{managerBean.add}" value="Anlegen">
+						<h:commandLink rendered="#{empty managerBean.event.name}" class="buttonLink" action="#{managerBean.add}" value="Anlegen">
 							 <f:attribute name="eventid" value="#{managerBean.event.eventid}" />
 						</h:commandLink>
 					</div>
