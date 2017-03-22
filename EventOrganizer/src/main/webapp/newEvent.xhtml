@@ -78,7 +78,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
 						
-						<h:commandLink rendered="#{empty managerBean.event.name}" class="buttonLink" action="#{managerBean.add}" value="Anlegen">
+						<h:commandLink rendered="#{empty managerBean.event.name}" class="linkButton" action="#{managerBean.add}" value="Anlegen">
 							 <f:attribute name="eventid" value="#{managerBean.event.eventid}" />
 						</h:commandLink>
 					</div>

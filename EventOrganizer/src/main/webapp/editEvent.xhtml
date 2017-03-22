@@ -27,6 +27,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:outputLabel class="headline">Event bearbeiten</h:outputLabel>
 				<br/> <br/>
 
+
+				<h:messages class="warning"/>
 				<h:form id="editform" class="form">
 					<h:messages class="warning" for="edit" id="message"/>
 								
@@ -55,16 +57,17 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-							<td><h:inputText p:type="number"  p:min="1" value="#{managerBean.event.numberOfTickets}" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln."/></td>
+							<td><h:inputText required="true" p:type="number"  p:min="1" value="#{managerBean.event.numberOfTickets}" converterMessage="Es muss sich um eine ganze Zahl an Tickets handeln."/></td>
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
-							<td><h:inputText pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben."/></td>
+							<td><h:inputText required="true" pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" converterMessage="Der Preis muss angegeben werden und maximal zwei Nachkomma-Stellen haben."/></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>
-							<td><h:inputTextarea value="#{managerBean.event.description}" class="inputText" style="min-width: 500px; min-height: 150px;" validatorMessage="Die Beschreibung muss gefüllt sein und maximal 500 Zeichen umfassen.">
-							<f:validateLength minimum="1" maximum="500" /></h:inputTextarea></td>
+							<td><h:inputTextarea required="true" value="#{managerBean.event.description}" class="inputText" style="min-width: 500px; min-height: 150px;" validatorMessage="Die Beschreibung muss gefüllt sein und maximal 500 Zeichen umfassen.">
+									<f:validateLength minimum="1" maximum="500" />
+								</h:inputTextarea></td>
 						</tr>
 					</table>
 					<br />
