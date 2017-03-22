@@ -66,7 +66,7 @@ public class ManagerService implements Serializable{
 
 	public Event addEvent(Event event) {
 		//TODO Id
-		Event newEvent = new Event(event.getName(), event.getDescription(), event.getLocation(), event.getDate(), event.getNumberOfTickets(), event.getPrice(),  false,  new ArrayList<Reservation>(), loginService.getActiveUser());
+		Event newEvent = new Event(event.getName(), event.getDescription(), event.getLocation(), event.getDate(), event.getNumberOfTickets(), event.getPrice(),  false,  loginService.getActiveUser());
 		eventService.addEvent(newEvent);
 		return newEvent;
 		

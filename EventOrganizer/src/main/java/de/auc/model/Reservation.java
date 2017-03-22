@@ -10,11 +10,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="RESERVATION")
+@Table(name="reservation")
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@OneToMany(mappedBy="user_id")
 	private Integer id;
 	private String code;
 	private Integer selectedTickets;
@@ -30,9 +29,8 @@ public class Reservation {
 	}
 	
 	
-	public Reservation(Integer id, String code, Integer numberOfTickets, User user, Event event) {
+	public Reservation(String code, Integer numberOfTickets, User user, Event event) {
 		super();
-		this.id = id;
 		this.code = code;
 		this.selectedTickets = numberOfTickets;
 		this.user = user;

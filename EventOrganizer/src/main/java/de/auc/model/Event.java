@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,7 +42,8 @@ public class Event {
 	
 	@OneToMany(mappedBy="event")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="userid")
 	private User user;
 
 	
@@ -49,7 +52,7 @@ public class Event {
 	}
 
 	public Event( String name, String description, String location, Date date,
-			Integer numberOfTickets, Double price, boolean publicly, List<Reservation> reservations, User user) {
+			Integer numberOfTickets, Double price, boolean publicly, User user) {
 		super();
 		this.name = name;
 		this.description = description;
