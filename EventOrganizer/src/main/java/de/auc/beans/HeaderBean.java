@@ -1,5 +1,7 @@
 package de.auc.beans;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -9,7 +11,7 @@ import de.auc.services.PageRenderingService;
 
 @Named(value="headerBean")
 @ApplicationScoped
-public class HeaderBean {
+public class HeaderBean implements Serializable{
 	@Inject
 	private LoginService loginService;
 	
@@ -30,8 +32,10 @@ public class HeaderBean {
 	public boolean addManagerMenu() {
 		if(loginService.getActiveUser()==null) {
 			return false;
+		} else {
+			return loginService.getActiveUser().isManagerflag();
 		}
-		return loginService.getActiveUser().isManagerflag();
+		
 	}
 	
 	public String managerEvents() {

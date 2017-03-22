@@ -3,7 +3,6 @@
 <resources>
   
   <jdbc-connection-pool datasource-classname="org.h2.jdbcx.JdbcDataSource" name="h2-pool" res-type="javax.sql.DataSource">
-<!--   TODO  socnet durch Datenbankname erstzen-->
     <property name="URL" value="jdbc:h2:tcp://localhost/~/eventOrganizer;AUTO_SERVER=TRUE;MVCC=TRUE"/>
     <property name="User" value="sa"/>
     <property name="Password" value=""/>

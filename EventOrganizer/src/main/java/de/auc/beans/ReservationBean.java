@@ -21,6 +21,7 @@ import de.auc.services.ReservationEventService;
 @Named(value="reservationBean")
 @ViewScoped
 public class ReservationBean implements Serializable{
+	
 	private Event event;
 	private Integer selectedTickets = 2;
 	private Reservation reservation;

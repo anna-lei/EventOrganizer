@@ -1,12 +1,14 @@
 package de.auc.services;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named(value="pageRenderingService")
 @ApplicationScoped
-public class PageRenderingService {
+public class PageRenderingService implements Serializable{
 	
 	
 	private static final String PAGE_REGISTER_JSF = "register.jsf";

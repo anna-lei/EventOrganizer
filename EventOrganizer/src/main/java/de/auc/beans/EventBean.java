@@ -1,5 +1,6 @@
 package de.auc.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,8 @@ import de.auc.services.EventService;
 
 @Named(value = "eventBean")
 @RequestScoped
-public class EventBean {
+public class EventBean implements Serializable {
+	
 	private String searchText;
 	private List<Event> events = new ArrayList<Event>();
 
@@ -27,7 +29,8 @@ public class EventBean {
 	@PostConstruct
 	public void initEvents() {
 		events.clear();
-		for (Event event : eventService.getPubliclyEvents()) {
+		List<Event> publiclyEvents = eventService.getPubliclyEvents();
+		for (Event event : publiclyEvents) {
 			events.add(event);
 		}
 	}

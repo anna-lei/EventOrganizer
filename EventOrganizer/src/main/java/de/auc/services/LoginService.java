@@ -33,7 +33,7 @@ public class LoginService implements Serializable{
 	}
 	
 	public void register(String name, String prename, Date date, String mail, String password1, String password2, boolean managerflag) {
-					User user = new User(5, name, prename, date, mail, password1, managerflag);
+					User user = new User(name, prename, date, mail, password1, managerflag);
 					userService.addUser(user);
 					activeUser = user;
 			

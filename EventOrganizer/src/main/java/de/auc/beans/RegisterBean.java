@@ -1,6 +1,7 @@
 package de.auc.beans;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.enterprise.context.RequestScoped;
@@ -16,7 +17,7 @@ import de.auc.services.PageRenderingService;
 
 @Named(value="registerBean")
 @RequestScoped
-public class RegisterBean {
+public class RegisterBean implements Serializable{
 	private String name;
 	private String prename;
 	private Date date;

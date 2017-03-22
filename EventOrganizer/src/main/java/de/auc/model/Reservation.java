@@ -25,6 +25,11 @@ public class Reservation {
 	@JoinColumn(name="eventid")
 	private Event event;
 	
+	public Reservation() {
+		
+	}
+	
+	
 	public Reservation(Integer id, String code, Integer numberOfTickets, User user, Event event) {
 		super();
 		this.id = id;

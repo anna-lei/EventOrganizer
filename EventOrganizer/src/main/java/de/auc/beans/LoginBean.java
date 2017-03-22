@@ -1,5 +1,7 @@
 package de.auc.beans;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -12,7 +14,7 @@ import de.auc.services.PageRenderingService;
 
 @Named(value="loginBean")
 @RequestScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
 	private String password;
 	private User user;
 	

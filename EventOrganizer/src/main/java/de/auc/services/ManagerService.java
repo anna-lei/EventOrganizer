@@ -1,5 +1,6 @@
 package de.auc.services;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import de.auc.model.Reservation;
 
 @Named(value = "managerService")
 @RequestScoped
-public class ManagerService{
+public class ManagerService implements Serializable{
 
 	@Inject
 	private EventService eventService;
@@ -65,7 +66,7 @@ public class ManagerService{
 
 	public Event addEvent(Event event) {
 		//TODO Id
-		Event newEvent = new Event(100, event.getName(), event.getDescription(), event.getLocation(), event.getDate(), event.getNumberOfTickets(), event.getPrice(),  false,  new ArrayList<Reservation>(), loginService.getActiveUser());
+		Event newEvent = new Event(event.getName(), event.getDescription(), event.getLocation(), event.getDate(), event.getNumberOfTickets(), event.getPrice(),  false,  new ArrayList<Reservation>(), loginService.getActiveUser());
 		eventService.addEvent(newEvent);
 		return newEvent;
 		

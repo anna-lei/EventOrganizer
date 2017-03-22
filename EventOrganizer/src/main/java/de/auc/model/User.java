@@ -16,30 +16,35 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name="USER")
+@Table(name="user")
 public class User {
 	@Id
+	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer userid;
+	@Column
 	private String name;
+	@Column
 	private String prename;
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column
 	private Date date;
 	
 	@Column(unique= true)
 	private String mail;
+	@Column
 	private String password;
+	@Column
 	private boolean managerflag;
-	@OneToMany(mappedBy="user")
-	private List<Reservation> reservations = new ArrayList<Reservation>();
-	
-	
 
 	
-	public User(Integer userid, String name, String prename, Date date, String mail, String password,
+	public User() {
+		
+	}
+
+	
+	public User(String name, String prename, Date date, String mail, String password,
 			boolean managerflag) {
 		super();
-		this.userid = userid;
 		this.name = name;
 		this.prename = prename;
 		this.date = date;
@@ -94,14 +99,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Reservation> getReservations() {
-		return reservations;
-	}
-
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
 	}
 
 	public boolean isManagerflag() {

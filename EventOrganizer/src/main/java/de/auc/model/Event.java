@@ -1,8 +1,10 @@
 package de.auc.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,36 +16,41 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="EVENT")
+@Table(name="event")
 public class Event {
 	@Id
+	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer eventid;
+	@Column
 	private String name;
+	@Column
 	private String description;
+	@Column
 	private String location;
-	@Temporal(TemporalType.TIMESTAMP)
-	private String date;
+	@Column
+	private Date date;
+	@Column
 	private Integer numberOfTickets;
+	@Column
 	private Double price;
+	@Column
 	private boolean publicly;
+	
+	
 	@OneToMany(mappedBy="event")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 	@OneToOne
 	private User user;
-	
-	
+
 	
 	public Event() {
 
 	}
 
-	
-
-	public Event(Integer eventid, String name, String description, String location, String date,
+	public Event( String name, String description, String location, Date date,
 			Integer numberOfTickets, Double price, boolean publicly, List<Reservation> reservations, User user) {
 		super();
-		this.eventid = eventid;
 		this.name = name;
 		this.description = description;
 		this.location = location;
@@ -55,8 +62,7 @@ public class Event {
 		this.user = user;
 	}
 
-
-
+	
 	public Integer getEventid() {
 		return eventid;
 	}
@@ -89,11 +95,11 @@ public class Event {
 		this.location = location;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -129,27 +135,12 @@ public class Event {
 		this.user = user;
 	}
 
-
-
 	public Double getPrice() {
 		return price;
 	}
 
-
-
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

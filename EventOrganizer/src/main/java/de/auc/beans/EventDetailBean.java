@@ -1,5 +1,7 @@
 package de.auc.beans;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,8 +12,9 @@ import de.auc.services.PageRenderingService;
 
 @Named(value = "eventDetailBean")
 @RequestScoped
-public class EventDetailBean {
+public class EventDetailBean implements Serializable {
 
+	
 	@Inject
 	private LoginService loginService;
 	
