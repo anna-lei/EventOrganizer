@@ -50,8 +50,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<td><h:outputText value="#{managerBean.event.numberOfTickets}" /></td>
 					</tr>
 					<tr>
-						<td class="firstColumn">Preis pro Ticket:</td>
-						<td><h:outputText value="#{managerBean.event.price}€" /></td>
+						<td class="firstColumn">Preis pro Ticket in €:</td>
+						<td><h:outputText value="#{managerBean.event.price}" >
+						<f:convertNumber minFractionDigits="2" /></h:outputText></td>
 					</tr>
 					<tr>
 						<td class="firstColumn">Beschreibung:</td>

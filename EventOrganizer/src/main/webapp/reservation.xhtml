@@ -50,13 +50,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<td><h:outputText value="#{reservationBean.event.description}" /></td>
 					</tr>
 					<tr>
-						<td class="firstColumn">Preis pro Ticket:</td>
-						<td><h:outputText value="#{reservationBean.event.price}€" /></td>
+						<td class="firstColumn">Preis pro Ticket in €:</td>
+						<td><h:outputText value="#{reservationBean.event.price}" >
+						<f:convertNumber minFractionDigits="2" /></h:outputText></td>
 					</tr>
 					<tr>
 						<td class="firstColumn">Anzahl Tickets:</td>
 						<td>
-							<h:inputText id="selectedTickets" p:type="number" p:min="1" p:max="10" value="#{reservationBean.selectedTickets}" rendered="#{empty reservationBean.reservation.code}"/>
+							<h:inputText id="selectedTickets" p:type="number"  p:min="1" p:max="10" value="#{reservationBean.selectedTickets}" rendered="#{empty reservationBean.reservation.code}"/>
 							<h:outputText rendered="#{not empty reservationBean.reservation.code}" value="#{reservationBean.selectedTickets}" />
 							
 							<h:commandButton class="button" action="#{reservationBean.reserve}" value="Reservieren" rendered="#{empty reservationBean.reservation.code}">

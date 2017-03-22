@@ -1,5 +1,6 @@
 package de.auc.beans;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +38,14 @@ public class ReservationBean {
 			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 			return PageRenderingService.getLogin();
 		} else {
+			NumberFormat nf = NumberFormat.getInstance();
+			nf.setMinimumFractionDigits(2);
+			nf.setMaximumFractionDigits(2);
+			String sumPrice = nf.format(selectedTickets*event.getPrice());
+			System.out.println(sumPrice);
 			reservation = reservationEventService.reserve(event, selectedTickets);
 			FacesMessage reservationMessage = 
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich mit einem Gesamtpreis von " + selectedTickets*event.getPrice() + "€ für Sie reserviert.", "");
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich mit einem Gesamtpreis von " + sumPrice + "€ für Sie reserviert.", "");
 			FacesContext.getCurrentInstance().addMessage("reservation", reservationMessage);
 			return PageRenderingService.getReservation();
 		}
