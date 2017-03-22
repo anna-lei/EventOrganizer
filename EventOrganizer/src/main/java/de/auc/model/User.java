@@ -35,7 +35,8 @@ public class User {
 	private String password;
 	@Column
 	private boolean managerflag;
-
+	@OneToMany(mappedBy="user")
+	private List<Event> events = new ArrayList<Event>();
 	
 	public User() {
 		

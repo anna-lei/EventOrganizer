@@ -17,6 +17,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
@@ -44,8 +45,10 @@ public class EventService implements Serializable {
 			User user1 = new User("a", "a", new Date(System.currentTimeMillis()), "a", "a", true);
 			List<Reservation> reservations = new ArrayList<Reservation>();
 
-			Event event1 = new Event("Test1", "Hallo ich bin die Beschreibung1", "Münster", new Date(2017, 8, 15), 1000,
-					10.01, false, user1);
+			 Calendar today = Calendar.getInstance();
+	            today.set(2017,0,15);
+			Event event1 = new Event("Test1", "Hallo ich bin die Beschreibung1", "Münster", today.getTime(), 1000,
+					10.01, true, user1);
 			Reservation reservation1 = new Reservation("ABC", 10, user, event1);
 			reservations.add(reservation1);
 			entityManager.getTransaction().begin();
@@ -70,29 +73,37 @@ public class EventService implements Serializable {
 		}
 	}
 
+	
 	public List<Event> searchEvents(String searchText) {
 		List<Event> currentEvents = new ArrayList<Event>();
 
-		for (Event event : getPubliclyEvents()) {
-			if (event.getName().toLowerCase().contains(searchText.toLowerCase())) {
-				currentEvents.add(event);
-			}
+		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.publicly=true and e.name LIKE :search",
+				Event.class);
+		query.setParameter("search", "%"+searchText+"%");
+		try {
+			currentEvents = query.getResultList();
+			return currentEvents;
+		} catch (NoResultException e) {
+			return null;
 		}
-
-		return currentEvents;
+	
 
 	}
 
+	
 	public List<Event> getPubliclyEvents() {
+		
 		List<Event> currentEvents = new ArrayList<Event>();
 
-		for (Event event : events) {
-			if (event.isPublicly()) {
-				currentEvents.add(event);
-			}
+		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.publicly=true",
+				Event.class);
+		
+		try {
+			currentEvents = query.getResultList();
+			return currentEvents;
+		} catch (NoResultException e) {
+			return null;
 		}
-
-		return currentEvents;
 	}
 
 	public void addEvent(Event event) {
@@ -117,7 +128,7 @@ public class EventService implements Serializable {
 		return null;
 	}
 
-	@Transactional
+	
 	public boolean getContentTables() {
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
 		try {

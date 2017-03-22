@@ -38,14 +38,12 @@ public class Event {
 	private Double price;
 	@Column
 	private boolean publicly;
-	
-	
-	@OneToMany(mappedBy="event")
-	private List<Reservation> reservations = new ArrayList<Reservation>();
+		
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
-
+	@OneToMany(mappedBy="event")
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 	
 	public Event() {
 
@@ -61,7 +59,6 @@ public class Event {
 		this.numberOfTickets = numberOfTickets;
 		this.price = price;
 		this.publicly = publicly;
-		this.reservations = reservations;
 		this.user = user;
 	}
 

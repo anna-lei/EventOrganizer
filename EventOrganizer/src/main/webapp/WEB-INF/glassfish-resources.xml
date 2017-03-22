@@ -3,7 +3,7 @@
 <resources>
   
   <jdbc-connection-pool datasource-classname="org.h2.jdbcx.JdbcDataSource" name="h2-pool" res-type="javax.sql.DataSource">
-    <property name="URL" value="jdbc:h2:tcp://localhost/~/eventOrganizer;AUTO_SERVER=TRUE;MVCC=TRUE"/>
+    <property name="URL" value="jdbc:h2:tcp://localhost/~/eventOrganizer;AUTO_SERVER=TRUE;MVCC=TRUE;IGNORECASE=TRUE"/>
     <property name="User" value="sa"/>
     <property name="Password" value=""/>
     <property name="driverClass" value="org.h2.Driver"/>
