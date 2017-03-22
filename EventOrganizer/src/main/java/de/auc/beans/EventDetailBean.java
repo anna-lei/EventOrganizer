@@ -18,7 +18,6 @@ public class EventDetailBean {
 	@Inject
 	private EventService eventService;
 
-
 	public String eventDetails(int eventid) {
 		if (loginService.getActiveUser() != null) {
 			if (loginService.getActiveUser().isManagerflag()) {
@@ -34,5 +33,7 @@ public class EventDetailBean {
 			return PageRenderingService.getReservation();
 		}
 	}
+	
+	
 
 }

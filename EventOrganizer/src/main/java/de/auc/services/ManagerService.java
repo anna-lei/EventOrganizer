@@ -1,21 +1,18 @@
 package de.auc.services;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
-import de.auc.model.User;
 
 @Named(value = "managerService")
-@SessionScoped
-public class ManagerService implements Serializable{
+@RequestScoped
+public class ManagerService{
 
 	@Inject
 	private EventService eventService;
