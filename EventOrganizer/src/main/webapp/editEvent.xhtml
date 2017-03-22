@@ -5,7 +5,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -58,8 +59,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.price}" class="inputText" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben." >
-							<f:convertNumber maxFractionDigits="2" minFractionDigits="2" /></h:inputText></td>
+							<td><h:inputText pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben."/></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>

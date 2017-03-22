@@ -59,8 +59,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td><h:outputLabel>Preis: </h:outputLabel></td>
-							<td><h:inputText value="#{managerBean.event.price}" class="inputText" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben." >
-							<f:convertNumber pattern="####,##" maxFractionDigits="2" minFractionDigits="2" maxIntegerDigits="4" /></h:inputText></td>
+							<td><h:inputText pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" converterMessage="Der Preis muss zwei Nachkomma-Stellen haben."/></td>
 						</tr>
 						<tr>
 							<td style="vertical-align:top;"><h:outputLabel>Beschreibung:</h:outputLabel></td>
