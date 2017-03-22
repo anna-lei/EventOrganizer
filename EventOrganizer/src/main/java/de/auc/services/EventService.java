@@ -11,12 +11,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
