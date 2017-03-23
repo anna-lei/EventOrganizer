@@ -111,8 +111,6 @@ public class EventService implements Serializable {
 		entityManager.getTransaction().begin();
 		entityManager.persist(event);
 		entityManager.getTransaction().commit();
-		
-//		events.add(event);
 	}
 
 	

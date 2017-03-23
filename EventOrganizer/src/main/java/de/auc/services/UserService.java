@@ -23,14 +23,6 @@ public class UserService implements Serializable {
 
 	public UserService() {
 		
-		
-//		User user2 = new User("b", "b",new Date(System.currentTimeMillis()), "b", "b", false);
-//		
-//		users.add(user2);
-//		entityManager.getTransaction().begin();
-//		entityManager.persist(user1);
-//		entityManager.getTransaction().commit();
-//		
 	}
 	
 	
@@ -39,10 +31,12 @@ public class UserService implements Serializable {
 		return user.getMail();
 	}
 	
+	/**
+	 * Fügt einen neuen User hinzu.
+	 * @param user
+	 */
 	@Transactional
 	public void addUser(User user) {
-//		users.add(user);
-		
 		entityManager.getTransaction().begin();
 		entityManager.persist(user);
 		entityManager.getTransaction().commit();

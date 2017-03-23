@@ -7,16 +7,22 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 import de.auc.model.Event;
-import de.auc.model.Reservation;
+import de.auc.model.User;
 
 @Named(value = "managerService")
 @RequestScoped
 public class ManagerService implements Serializable{
-
+	
 	private static final long serialVersionUID = 2822982036287415573L;
 
+	@Inject
+	private EntityManager entityManager;
+	
 	@Inject
 	private EventService eventService;
 	
@@ -33,6 +39,7 @@ public class ManagerService implements Serializable{
 		return managerEvents;
 	}
 
+	//TODO: Muss das überarbeitet werden??
 	public List<Event> searchManagerEvents(String searchText, String filter) {
 		List<Event> currentEvents = new ArrayList<Event>();
 
@@ -51,10 +58,15 @@ public class ManagerService implements Serializable{
 		return currentEvents;
 	}
 
+	//TODO SQL -> richtig
 	public void publish(Event event) {
 		event.setPublicly(true);
+//		TypedQuery<Event> query = entityManager.createQuery("UPDATE Event e SET e.publicly = true WHERE e.eventid =:id", Event.class);
+//		query.setParameter("id", event.getEventid());
 	}
 
+	
+	//TODO SQL
 	public void saveEvent(Event event) {
 		Event currentEvent = eventService.getEventById(event.getEventid());
 		currentEvent.setPrice(event.getPrice());
@@ -67,11 +79,9 @@ public class ManagerService implements Serializable{
 	}
 
 	public Event addEvent(Event event) {
-		//TODO Id
 		Event newEvent = new Event(event.getName(), event.getDescription(), event.getLocation(), event.getDate(), event.getNumberOfTickets(), event.getPrice(),  false,  loginService.getActiveUser());
 		eventService.addEvent(newEvent);
 		return newEvent;
-		
 	}
 
 }

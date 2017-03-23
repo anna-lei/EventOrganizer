@@ -12,8 +12,10 @@ import de.auc.model.User;
 @Named(value="loginService")
 @SessionScoped
 public class LoginService implements Serializable{
-
+	private static final long serialVersionUID = 9199053082352550746L;
+	
 	private User activeUser;
+	
 	@Inject
 	private UserService userService;
 	
@@ -32,13 +34,12 @@ public class LoginService implements Serializable{
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
-	public void register(String name, String prename, Date date, String mail, String password1, String password2, boolean managerflag) {
-					User user = new User(name, prename, date, mail, password1, managerflag);
-					userService.addUser(user);
-					activeUser = user;
-			
-		
-		
+	public void register(String name, String prename, Date date, String mail, String password1, String password2,
+			boolean managerflag) {
+		User user = new User(name, prename, date, mail, password1, managerflag);
+		userService.addUser(user);
+		activeUser = user;
+
 	}
 
 	public User getActiveUser() {

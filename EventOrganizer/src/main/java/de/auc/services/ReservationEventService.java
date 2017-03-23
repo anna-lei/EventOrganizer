@@ -15,7 +15,8 @@ import de.auc.model.Reservation;
 @RequestScoped
 public class ReservationEventService implements Serializable{
 	
-	
+	private static final long serialVersionUID = -663880328193053308L;
+
 	@Inject
 	private EventService eventService;
 	
@@ -23,10 +24,7 @@ public class ReservationEventService implements Serializable{
 	private LoginService loginService;
 	
 	
-	
-	
 	public Reservation reserve(Event event, Integer selectedTickets) {
-
 		eventService.getEventById(event.getEventid()).setNumberOfTickets(eventService.getEventById(event.getEventid()).getNumberOfTickets()-selectedTickets);
 		//TODO Reservierungsid
 		Reservation reservation = new Reservation(generateCode(), selectedTickets, loginService.getActiveUser(), event);
