@@ -15,6 +15,8 @@ import de.auc.model.Reservation;
 @RequestScoped
 public class ManagerService implements Serializable{
 
+	private static final long serialVersionUID = 2822982036287415573L;
+
 	@Inject
 	private EventService eventService;
 	
