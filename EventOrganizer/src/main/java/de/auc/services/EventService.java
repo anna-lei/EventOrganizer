@@ -19,6 +19,12 @@ import de.auc.model.Event;
 import de.auc.model.Reservation;
 import de.auc.model.User;
 
+/**
+ * Eventservice, der alle Services in Bezug auf das Event enthält.
+ * Suche nach Events, hinzufügen, bearbeiten usw.
+ * @author anwender
+ *
+ */
 @Named(value = "eventService")
 @ApplicationScoped
 public class EventService implements Serializable {

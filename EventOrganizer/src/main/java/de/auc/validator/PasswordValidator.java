@@ -8,7 +8,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import de.auc.services.UserService;
-
+/**
+ * Validierung des Passworts eines Users
+ *
+ */
 @ManagedBean
 public class PasswordValidator {
 	@ManagedProperty("#{userService}")

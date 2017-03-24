@@ -9,7 +9,10 @@ import javax.faces.convert.Converter;
 import de.auc.model.Event;
 import de.auc.services.EventService;
 
-
+/**
+ * Dieser Converter sucht zu einer ID das Event und gibt das Objekt zurück.
+ *
+ */
 @ManagedBean
 public class EventConverter implements Converter{
 
@@ -22,12 +25,11 @@ public class EventConverter implements Converter{
 		if(value == null) {
 			return value;
 		}
+		//Dieser Fall wird für ein neues Event genutzt. Das leere Event wird dann durch die entsprechende JSF-Seite gefüllt.
 		if(value.equals("new")){
-			System.out.println("hier zum zweiten Mal");
 			return new Event();
 			
 		} else {
-			System.out.println("richtig");
 			return eventService.getEventById(Integer.parseInt(value));
 		}
 		

@@ -6,6 +6,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+/**
+ * F¸r den Vornamen und den Nachnamen eines Users sind nur Buchstaben vorgesehen
+ *
+ */
 @ManagedBean
 public class NameValidator {
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
@@ -15,6 +19,7 @@ public class NameValidator {
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 
 		}
+		//Regex bezogen auf die zul‰ssigen Buchstaben
 		if(!value.toString().matches("[a-zA-Z‰ˆ¸ƒ÷‹ﬂÈ…Ë»]+")) {
 			
 			for(FacesMessage message: FacesContext.getCurrentInstance().getMessageList()) {

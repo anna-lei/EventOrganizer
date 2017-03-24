@@ -14,18 +14,26 @@ import javax.inject.Named;
 import de.auc.model.Event;
 import de.auc.services.EventService;
 
+/**
+ * Diese Bean ist zugehörig zur Startseite 
+ * und befüllt beispielsweise die Liste der aktuellen Events
+ * sowie die Implementierung der Suche auf der Startseite * 
+ *
+ */
 @Named(value = "eventBean")
 @RequestScoped
 public class EventBean implements Serializable {
 	
+	private static final long serialVersionUID = 5568201321204202019L;
 	private String searchText;
 	private List<Event> events = new ArrayList<Event>();
-
-	
 	
 	@Inject
 	private EventService eventService;
 
+	/**
+	 * Da die Bean RequestScoped ist wird initial durch das PostConstruct die Liste der aktuellen Events gefüllt.
+	 */
 	@PostConstruct
 	public void initEvents() {
 		events.clear();
@@ -35,6 +43,10 @@ public class EventBean implements Serializable {
 		}
 	}
 
+	/**
+	 * Implementierung der Suchfunktion über den Eventservice
+	 * jedoch wird hier die jeweilige Facesmessage für den Suchbegriff erstellt.
+	 */
 	public void search() {
 		events.clear();
 		List<Event> currentEvents = eventService.searchEvents(searchText);

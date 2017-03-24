@@ -8,7 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-
+/**
+ * Validierung des Datums eines Events.
+ * Die Validerung des Formats dd.MM.yyyy wird über die JSF-Seite gesteuert.
+ */
 @ManagedBean
 public class DateValidator {
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
@@ -20,6 +23,7 @@ public class DateValidator {
         	Date date = (Date)value;
      
             Calendar today = Calendar.getInstance();
+            // Das Datum bezogen auf ein Event muss in der Zukunft liegen.
     		if(date.before(today.getTime())) {
     			FacesMessage editMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
     					"Das Event muss in der Zukunft liegen und im folgenden Format angegeben werden: dd.MM.yyyy", "");

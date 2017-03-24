@@ -34,7 +34,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:inputText value="#{managerBean.searchText}" class="inputText" p:placeholder="Event-Name"/>
 				<h:commandButton action="#{managerBean.searchMyEvents}" value="Filtern" class="button" />
 			
-				<h:link value="Event hinzufügen" outcome="newEvent.jsf" class="linkButton" style="float:right; height: 20px;">
+				<h:link value="Event hinzufügen" outcome="#{pageRenderingService.getNewEvent()}" class="linkButton" style="float:right; height: 20px;">
 					<f:param name="eventid" value="new" />
 				</h:link>
 			</h:form>
@@ -48,7 +48,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				rendered="#{not empty managerBean.managerEvents}" class="coloredTable">
 				<h:column>
 					<f:facet name="header">Event</f:facet>
-					<h:link value="#{event.name}" outcome="myEventDetail.jsf" class="link">
+					<h:link value="#{event.name}" outcome="#{pageRenderingService.getMyEventDetail()}" class="link">
 						<f:param name="eventid" value="#{event.eventid}" />
 					</h:link>
 				</h:column>

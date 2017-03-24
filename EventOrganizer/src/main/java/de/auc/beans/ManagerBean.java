@@ -17,9 +17,17 @@ import de.auc.services.LoginService;
 import de.auc.services.ManagerService;
 import de.auc.services.PageRenderingService;
 
+/**
+ * Diese Bean nützt der gesamten Abwicklung der Managementaufgaben 
+ * beziehungsweise der Vermittlung zwischen den xhtml-Seiten des Managers und dem Managerservice
+ * Aus diesem Grund handelt es sich um eine Sessionscoped Bean.
+ *
+ */
 @Named(value = "managerBean")
 @SessionScoped
 public class ManagerBean implements Serializable{
+	
+	private static final long serialVersionUID = 7058658488268761559L;
 	private String searchText;
 	private Event event;
 	private String filter;
@@ -33,6 +41,11 @@ public class ManagerBean implements Serializable{
 
 	List<Event> managerEvents = new ArrayList<Event>();
 
+	/**
+	 * In der Event-Ansicht des Managers ist es möglich nach einem Text zu suchen, jedoch auch einen Filter mitzugeben.
+	 * Diese beiden Parameter aus der View werden hier an den Managerservice übergeben.
+	 * Außerdem wird die jeweilige Facesmessage bezogen auf den Suchtext erstellt.
+	 */
 	public String searchMyEvents() {
 		managerEvents.clear();
 		List<Event> currentEvents = managerService.searchManagerEvents(searchText, filter);
@@ -53,17 +66,24 @@ public class ManagerBean implements Serializable{
 		return null;
 	}
 
+	/**
+	 * Diese Methode ist ähnlich zur Postconstruct-Methode innerhalb der Eventbean zur Initalisierung der
+	 * Trotzdem wird diese Methode auch dafür verwendet, 
+	 * um einen vermeintlichen Zugriff über die URL auf die Seiten des Managers abzufangen.
+	 */
 	@PostConstruct
 	public void doManagerActions() {
-		
+		//Bei keiner Anmeldung wird auf die Startseite verwiesen
 		if(loginService.getActiveUser()==null) {
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getHome());
+				//Löschung der Managerbean aus dem Sessionkontext
 				FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		//Ist der angemeldete User ein Standardanwender wird auch dieser auf die Startseite verwiesen und ausgeloggt.
 		else if(!loginService.getActiveUser().isManagerflag()) {
 			try {
 
@@ -83,13 +103,14 @@ public class ManagerBean implements Serializable{
 		}
 	}
 
-	public void publish() {
-		managerService.publish(event);
-		FacesMessage publishMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
-				"Das Event ist veröffentlicht und kann nicht mehr bearbeitet werden.", "");
-		FacesContext.getCurrentInstance().addMessage("publishform:publish", publishMessage);
-	}
 	
+	
+	
+	/**
+	 * Diese Methode dient ausschließlich der Anzeige, ob das Event veröffentlicht ist.
+	 * @param event
+	 * @return
+	 */
 	public String getPublicly(Event event){
 		if(event.isPublicly()){
 			return "Ja";
@@ -98,11 +119,29 @@ public class ManagerBean implements Serializable{
 		}
 	}
 	
+	/**
+	 * Die Funktion Publish wird innerhalb des Managerservices verarbeitet.
+	 * Hier wird ausschließlich die Facesmessage generiert.
+	 */
+	public void publish() {
+		managerService.publish(event);
+		FacesMessage publishMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
+				"Das Event ist veröffentlicht und kann nicht mehr bearbeitet werden.", "");
+		FacesContext.getCurrentInstance().addMessage("publishform:publish", publishMessage);
+	}
+	 
 	public String cancel() {
 		return PageRenderingService.getMyEventDetail();
 	}
 	
+	/**
+	 * Die Funktion des Speicherns wird innerhalb des Managerservices verarbeitet.
+	 * Hier wird ausschließlich die Weiterleitung auf die entsprechende JSF-Seite implementiert.
+	 * @return
+	 */
 	public String save() {
+		//Die verschiedenen Inputs werden über Validatoren geprüft und eine entsprechende Facesmessage mitgegeben. 
+		//Ist der Facescontext leer, so wird das Event gespeichert.
 		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
 			managerService.saveEvent(event);
 			return PageRenderingService.getMyEventDetail();
@@ -111,13 +150,27 @@ public class ManagerBean implements Serializable{
 			
 			return PageRenderingService.getEditEvent();
 		}
-		
-		
 	}
 	
+	/**
+	 * Die Funktion Hinzufügens wird innerhalb des Managerservices verarbeitet.
+	 * Hier wird ausschließlich die Weiterleitung auf die entsprechende JSF-Seite implementiert.
+	 * @return
+	 */
 	public String add() {
+		//Die verschiedenen Inputs werden über Validatoren geprüft und eine entsprechende Facesmessage mitgegeben. 
+		//Ist der Facescontext leer, so wird das Event hinzugefügt.
+				
 		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
+			/**
+			 * zunächst hat das hinzuzufügende Event noch keine ID, denn diese wird durch die Datenbank generiert, 
+			 * sodass das Event der Bean hier überschrieben werden muss. Erst dann ist eine korrekte Weiterleitung über die ID in der URL möglich.
+			 */
 			event = managerService.addEvent(event);
+			/**
+			 * Die Managerevents werden hier überschrieben, da es sich um eine Sessionscoped Bean handelt.
+			 * Die Postconstruct-Methode zur Befüllung der Events auf der Managerseite wird somit zu diesem Zeitpunkt nicht noch einmal aufgerufen.
+			 */
 			managerEvents = managerService.getManagerEvents();
 			return PageRenderingService.getMyEventDetail();
 			

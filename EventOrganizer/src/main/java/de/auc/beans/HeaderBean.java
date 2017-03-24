@@ -9,9 +9,16 @@ import javax.inject.Named;
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
+/**
+ * Bean, die dem Header zugehörig ist und die Weiterleitung auf andere JSF-Seiten implementiert.
+ *
+ */
 @Named(value="headerBean")
 @ApplicationScoped
 public class HeaderBean implements Serializable{
+
+	private static final long serialVersionUID = -1648932165104363219L;
+
 	@Inject
 	private LoginService loginService;
 	

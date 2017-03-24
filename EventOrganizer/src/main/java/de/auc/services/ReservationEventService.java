@@ -11,6 +11,10 @@ import javax.inject.Named;
 import de.auc.model.Event;
 import de.auc.model.Reservation;
 
+/**
+ * Dieser Service implementiert das Hinzufügen einer neuen Reservierung, die einem User und einem Event zugeordnet ist.
+ *
+ */
 @Named(value="reservationEventService")
 @RequestScoped
 public class ReservationEventService implements Serializable{
@@ -23,7 +27,13 @@ public class ReservationEventService implements Serializable{
 	@Inject
 	private LoginService loginService;
 	
-	
+	/**
+	 * Ersellung einer neuen Reservierung und Ablage in der Datenbank
+	 * sowie das Heruntersetzen der Anzahl an verfügbaren Tickets bezogen auf das Event.
+	 * @param event
+	 * @param selectedTickets
+	 * @return
+	 */
 	public Reservation reserve(Event event, Integer selectedTickets) {
 		eventService.getEventById(event.getEventid()).setNumberOfTickets(eventService.getEventById(event.getEventid()).getNumberOfTickets()-selectedTickets);
 		//TODO Reservierungsid

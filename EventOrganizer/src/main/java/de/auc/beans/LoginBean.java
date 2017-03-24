@@ -12,9 +12,15 @@ import de.auc.model.User;
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
+/**
+ * Implementierung der Login-Seite zur Weiterleitung des Users und Passworts an den LoginService
+ *
+ */
 @Named(value="loginBean")
 @RequestScoped
 public class LoginBean implements Serializable{
+
+	private static final long serialVersionUID = 8805804134820177836L;
 	private String password;
 	private User user;
 	
@@ -22,14 +28,16 @@ public class LoginBean implements Serializable{
 	private LoginService loginService;
 		
 	
-	
-	
-	
+	//TODO ich glaube die Methode wird gar nicht mehr verwendet
 	public String logout(){
 		loginService.logout();
 		return null;
 	}
 	
+	/**
+	 * Ist der User oder das Passwort falsch, sorgt diese Methode dafür, dass auf der Seite verweilt wird.
+	 * Ansonsten wird auf die Startseite verwiesen. 
+	 */
 	public String login(){
 		if(loginService.login(user, password)){
 			return PageRenderingService.getHome();
@@ -39,7 +47,7 @@ public class LoginBean implements Serializable{
 			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die E-Mail-Adresse oder das Passwort ist nicht korrekt.", "");
 			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 		}
-		return PageRenderingService.getLogin();
+		return null;
 	}
 	
 	public void setPassword(String password) {

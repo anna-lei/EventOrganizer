@@ -10,11 +10,19 @@ import de.auc.services.EventService;
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
+/**
+ * Diese Bean dient ausschlieﬂlich der Weiterleitung auf die verschiedenen Detailseiten zu einem Event.
+ * Hier wird unterschieden zwischen Manager und Anwender.
+ *
+ */
+//TODO kann diese nicht Application Scoped sein?
 @Named(value = "eventDetailBean")
 @RequestScoped
 public class EventDetailBean implements Serializable {
 
-	
+
+	private static final long serialVersionUID = 6046177730610293298L;
+
 	@Inject
 	private LoginService loginService;
 	

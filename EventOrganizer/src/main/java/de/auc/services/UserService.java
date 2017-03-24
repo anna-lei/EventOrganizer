@@ -12,6 +12,9 @@ import javax.transaction.Transactional;
 
 import de.auc.model.User;
 
+/**
+ * Implementierung der Services bezogen auf einen User.
+ */
 @Named(value="userService")
 @ApplicationScoped
 public class UserService implements Serializable {

@@ -26,7 +26,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<h:form id="publishform">
 				<h:outputText value="#{managerBean.event.name}" class="headline"></h:outputText>
 				
-				<h:link value="Bearbeiten" outcome="editEvent.jsf" class="linkButton" rendered="#{!managerBean.event.publicly}" style="margin-left: 20px;">
+				<h:link value="Bearbeiten" outcome="#{pageRenderingService.getEditEvent()}" class="linkButton" rendered="#{!managerBean.event.publicly}" style="margin-left: 20px;">
 					<f:param name="eventid" value="#{managerBean.event.eventid}" />
 				</h:link>
 				

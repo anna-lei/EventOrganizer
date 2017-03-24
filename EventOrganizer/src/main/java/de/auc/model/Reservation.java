@@ -9,6 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Implementierung der Entität Reservierung.
+ *
+ */
+
 @Entity
 @Table(name="reservation")
 public class Reservation {

@@ -6,11 +6,16 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * Dieser Service wird ausschlieﬂlich zur Weiterleitung zwischen den JSF-Seiten verwendet.
+ *
+ */
 @Named(value="pageRenderingService")
 @ApplicationScoped
 public class PageRenderingService implements Serializable{
 	
 	
+	private static final long serialVersionUID = 2155045263753301883L;
 	private static final String PAGE_REGISTER_JSF = "register.jsf";
 	private static final String PAGE_LOGIN_JSF = "login.jsf";
 	private static final String PAGE_HOME_JSF = "home.jsf";

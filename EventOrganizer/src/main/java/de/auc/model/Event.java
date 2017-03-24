@@ -17,6 +17,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Implementierung der Entität Event
+ *
+ */
 @Entity
 @Table(name="event")
 public class Event {

@@ -14,10 +14,16 @@ import javax.inject.Named;
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
-
+/**
+ * Diese Bean bezieht sich auf die Registrierungsseite und die Weiterleitung der Registrierung.
+ *
+ */
+//TODO könnte diese Viewscoped werden?
 @Named(value="registerBean")
 @RequestScoped
 public class RegisterBean implements Serializable{
+	
+	private static final long serialVersionUID = 7677618880923492523L;
 	private String name;
 	private String prename;
 	private Date date;
@@ -29,13 +35,16 @@ public class RegisterBean implements Serializable{
 	@Inject
 	private LoginService loginService;
 	
-	public String startRegister() {
-		return PageRenderingService.getRegister();
-	}
-	
+	/**
+	 * Die Registrierung wird durch den LoginService vorgenommen.
+	 * Hier wird die Facesmessage bezogen auf die Gleichheit der Passwörter erzeugt.
+	 * Die anderen werden über Validatoren erstellt.
+	 * @return
+	 */
 	public String register() {
+		//Die verschiedenen Inputs werden über Validatoren geprüft und eine entsprechende Facesmessage mitgegeben. 
+		//Ist der Facescontext leer, so wird der user durch den Service registriert.
 		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
-			
 			if(password1.equals(password2)){
 				loginService.register(name, prename, date, mail, password1, password2, managerflag);
 				return PageRenderingService.getHome();
