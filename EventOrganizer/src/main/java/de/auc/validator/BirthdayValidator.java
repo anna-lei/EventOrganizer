@@ -11,7 +11,6 @@ import javax.faces.validator.ValidatorException;
 
 /**
  * Implementierung der Validierung bezogen auf das Geburtsdatum des zu registrierenden Users.
- * @author anwender
  *
  */
 @ManagedBean

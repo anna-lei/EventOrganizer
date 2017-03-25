@@ -12,7 +12,6 @@ import de.auc.services.UserService;
 /**
  * Über die E-Mail wird der User eindeutig identifiziert.
  * Es gilt also zu überprüfen, ob die Mail bereits verwendet wurde.
- * @author anwender
  *
  */
 @ManagedBean

@@ -17,7 +17,7 @@ import de.auc.services.EventService;
 /**
  * Diese Bean ist zugehörig zur Startseite 
  * und befüllt beispielsweise die Liste der aktuellen Events
- * sowie die Implementierung der Suche auf der Startseite * 
+ * sowie die Implementierung der Suche auf der Startseite.
  *
  */
 @Named(value = "eventBean")
@@ -32,7 +32,7 @@ public class EventBean implements Serializable {
 	private EventService eventService;
 
 	/**
-	 * Da die Bean RequestScoped ist wird initial durch das PostConstruct die Liste der aktuellen Events gefüllt.
+	 * Da die Bean RequestScoped ist, wird initial durch das PostConstruct die Liste der aktuellen Events gefüllt.
 	 */
 	@PostConstruct
 	public void initEvents() {
@@ -44,7 +44,7 @@ public class EventBean implements Serializable {
 	}
 
 	/**
-	 * Implementierung der Suchfunktion über den Eventservice
+	 * Implementierung der Suchfunktion über den Eventservice,
 	 * jedoch wird hier die jeweilige Facesmessage für den Suchbegriff erstellt.
 	 */
 	public void search() {
