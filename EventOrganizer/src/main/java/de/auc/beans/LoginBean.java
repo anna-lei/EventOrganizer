@@ -26,13 +26,7 @@ public class LoginBean implements Serializable{
 	
 	@Inject
 	private LoginService loginService;
-		
-	
-	//TODO ich glaube die Methode wird gar nicht mehr verwendet
-	public String logout(){
-		loginService.logout();
-		return null;
-	}
+
 	
 	/**
 	 * Ist der User oder das Passwort falsch, sorgt diese Methode dafür, dass auf der Seite verweilt wird.

@@ -28,12 +28,6 @@ public class UserService implements Serializable {
 		
 	}
 	
-	
-	//TODO: Wird nicht benutzt oder?
-	public String getUsername(User user) {
-		return user.getMail();
-	}
-	
 	/**
 	 * Fügt einen neuen User hinzu.
 	 * @param user

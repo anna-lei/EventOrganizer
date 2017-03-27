@@ -3,7 +3,6 @@ package de.auc.services;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**

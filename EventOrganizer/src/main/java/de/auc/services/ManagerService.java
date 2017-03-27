@@ -12,7 +12,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import de.auc.model.Event;
-import de.auc.model.User;
 
 /**
  * Der Managerservice dient der Implementierung zum Hinzufügen, Bearbeiten  und Veröffentlichung eines Events.
@@ -24,6 +23,8 @@ public class ManagerService implements Serializable{
 	
 	private static final long serialVersionUID = 2822982036287415573L;
 
+	@Inject
+	private EntityManager entityManager;
 	
 	@Inject
 	private EventService eventService;
@@ -34,15 +35,19 @@ public class ManagerService implements Serializable{
 	/**
 	 * Diese Methode gibt die Events des Managers zurück, der zu diesem Zeitpunkt angemeldet ist.
 	 */
-	//TODO kein SQL?
 	public List<Event> getManagerEvents() {
 		List<Event> managerEvents = new ArrayList<Event>();
-		for (Event event : eventService.getEvents()) {
-			if (event.getUser().getMail().equals(loginService.getActiveUser().getMail())) {
-				managerEvents.add(event);
-			}
+
+		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user", Event.class);
+		query.setParameter("user", loginService.getActiveUser());
+		
+		try {
+			managerEvents = query.getResultList();
+			return managerEvents;
+		} catch (NoResultException e) {
+			return null;
 		}
-		return managerEvents;
+		
 	}
 
 	/**
@@ -51,23 +56,22 @@ public class ManagerService implements Serializable{
 	 * @param filter
 	 * @return
 	 */
-	//TODO: Muss das überarbeitet werden??
 	public List<Event> searchManagerEvents(String searchText, String filter) {
 		List<Event> currentEvents = new ArrayList<Event>();
 
-		for (Event event : eventService.getEvents()) {
-			//Prüfung des Events, ob dieses dem Manager zugehörig ist
-			if (event.getUser().getMail().equals(loginService.getActiveUser().getMail())) {
-				if (filter == null) {
-					if (event.getName().toLowerCase().contains(searchText.toLowerCase())) {
-						currentEvents.add(event);
-					}
-				//Prüfung des Events auf den Suchtext und mitgegebenen Filter in Bezug auf den Status der Veröffentlichung
-				} else if (event.getName().toLowerCase().contains(searchText.toLowerCase())
-						&& event.isPublicly() == Boolean.parseBoolean(filter)) {
+		for (Event event : getManagerEvents()) {
+
+			if (filter == null) {
+				if (event.getName().toLowerCase().contains(searchText.toLowerCase())) {
 					currentEvents.add(event);
 				}
+				// Prüfung des Events auf den Suchtext und mitgegebenen Filter
+				// in Bezug auf den Status der Veröffentlichung
+			} else if (event.getName().toLowerCase().contains(searchText.toLowerCase())
+					&& event.isPublicly() == Boolean.parseBoolean(filter)) {
+				currentEvents.add(event);
 			}
+
 		}
 		return currentEvents;
 	}

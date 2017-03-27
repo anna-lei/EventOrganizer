@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -181,10 +182,10 @@ public class EventService implements Serializable {
 			
 			/** Testdaten: Reservierung */
 			List<Reservation> reservations = new ArrayList<Reservation>();
-			Reservation reservation1 = new Reservation("l3z7e5f4-5373-42a9-b29d-193ba6eb6d74", 6, user1, event1);
-			Reservation reservation2 = new Reservation("y3d7e5f4-5373-42d9-b89d-823ea6eb6d74", 2, user1, event2);
-			Reservation reservation3 = new Reservation("c3d7e5f4-5373-4989-b29d-193ba6eb6d74", 4, user2, event5);
-			Reservation reservation4 = new Reservation("j3d7e5f4-5373-42d9-b29d-193ba6eb6d74", 5, user2, event6);
+			Reservation reservation1 = new Reservation(UUID.randomUUID().toString(), 6, user1, event1);
+			Reservation reservation2 = new Reservation(UUID.randomUUID().toString(), 2, user1, event2);
+			Reservation reservation3 = new Reservation(UUID.randomUUID().toString(), 4, user2, event5);
+			Reservation reservation4 = new Reservation(UUID.randomUUID().toString(), 5, user2, event6);
 			reservations.add(reservation1);
 			reservations.add(reservation2);
 			reservations.add(reservation3);
@@ -289,8 +290,11 @@ public class EventService implements Serializable {
 		entityManager.getTransaction().commit();
 	}
 
-	
-	//TODO: wird garnicht verwendet oder??
+	/**
+	 * Gibt das Event zum mitgegebenen Namen zurück.
+	 * @param name
+	 * @return
+	 */
 	public Event getEventByName(String name) {
 		Event event;
 		
@@ -338,23 +342,6 @@ public class EventService implements Serializable {
 			}
 		} catch (NoResultException e) {
 			return false;
-		}
-	}
-
-	//TODO: Neu erstellt, weil sonst ManagerService keine Liste bekommen hat
-	/**
-	 * Gibt alle Events aus der Datenbank zurück.
-	 * @return
-	 */
-	public List<Event> getEvents(){
-		List<Event> events = new ArrayList<Event>();
-
-		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e", Event.class);
-		try {
-			events = query.getResultList();
-			return events;
-		} catch (NoResultException e) {
-			return null;
 		}
 	}
 	

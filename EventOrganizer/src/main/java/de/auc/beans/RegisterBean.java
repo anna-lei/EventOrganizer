@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
 
@@ -18,7 +17,6 @@ import de.auc.services.PageRenderingService;
  * Diese Bean bezieht sich auf die Registrierungsseite und die Weiterleitung der Registrierung.
  *
  */
-//TODO könnte diese Viewscoped werden?
 @Named(value="registerBean")
 @RequestScoped
 public class RegisterBean implements Serializable{
@@ -57,10 +55,7 @@ public class RegisterBean implements Serializable{
 		} else {
 			
 			return PageRenderingService.getRegister();
-		}
-		
-		
-		
+		}	
 		
 	}
 
@@ -125,7 +120,5 @@ public class RegisterBean implements Serializable{
 	public void setManagerflag(boolean managerflag) {
 		this.managerflag = managerflag;
 	}
-	
-	
 	
 }

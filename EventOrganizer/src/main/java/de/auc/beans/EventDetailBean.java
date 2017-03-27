@@ -15,7 +15,6 @@ import de.auc.services.PageRenderingService;
  * Hier wird unterschieden zwischen Manager und Anwender.
  *
  */
-//TODO kann diese nicht Application Scoped sein?
 @Named(value = "eventDetailBean")
 @RequestScoped
 public class EventDetailBean implements Serializable {
@@ -45,6 +44,4 @@ public class EventDetailBean implements Serializable {
 		}
 	}
 	
-	
-
 }

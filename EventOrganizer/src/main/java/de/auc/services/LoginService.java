@@ -29,7 +29,6 @@ public class LoginService implements Serializable{
 	 * @param password
 	 * @return
 	 */
-	//TODO wie muss das umgesetzt werden?
 	public boolean login(User userToLogin, String password) {
 		if (userToLogin != null) {
 			if (password.equals(userToLogin.getPassword())) {
@@ -64,7 +63,6 @@ public class LoginService implements Serializable{
 		User user = new User(name, prename, date, mail, password1, managerflag);
 		userService.addUser(user);
 		activeUser = user;
-
 	}
 
 	public User getActiveUser() {

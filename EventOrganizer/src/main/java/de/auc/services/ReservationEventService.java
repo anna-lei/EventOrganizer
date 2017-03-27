@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
@@ -21,6 +22,9 @@ public class ReservationEventService implements Serializable{
 	
 	private static final long serialVersionUID = -663880328193053308L;
 
+	@Inject
+	private EntityManager entityManager;
+	
 	@Inject
 	private EventService eventService;
 	
@@ -42,18 +46,10 @@ public class ReservationEventService implements Serializable{
 		event.getReservations().add(reservation);
 		
 		return reservation;
-		
 	}
-	
 	
 	public String generateCode() {
 		return UUID.randomUUID().toString();
-		
 	}
-
-
-	
-	
-	
 
 }
