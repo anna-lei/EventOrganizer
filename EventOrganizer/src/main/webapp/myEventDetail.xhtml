@@ -65,7 +65,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				
 				<h:outputLabel rendered="#{empty managerBean.event.reservations}" class="message">Es liegen noch keine Reservierungen vor (#{managerBean.event.numberOfTickets} verfügbare Tickets).</h:outputLabel>
 				
-				<h:outputLabel rendered="#{not empty managerBean.event.reservations}">Reservierungen (noch #{managerBean.event.numberOfTickets} verfügbare Tickets)</h:outputLabel>
+				<h:outputLabel rendered="#{not empty managerBean.event.reservations}">Reservierungen (noch <h:outputLabel value="#{managerBean.event.numberOfTickets}"><f:convertNumber/></h:outputLabel> verfügbare Tickets)</h:outputLabel>
+
+
 
 				<h:dataTable var="reservation" value="#{managerBean.event.reservations}" 
 					class="coloredTable" rendered="#{not empty managerBean.event.reservations}">

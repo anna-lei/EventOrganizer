@@ -31,17 +31,16 @@ public class EventDetailBean implements Serializable {
 	public String eventDetails(int eventid) {
 		if (loginService.getActiveUser() != null) {
 			if (loginService.getActiveUser().isManagerflag()) {
+				System.out.println(eventid);
+				System.out.println(eventService.getEventById(eventid).getUser().getMail());
+				System.out.println(loginService.getActiveUser().getMail());
 				if(eventService.getEventById(eventid).getUser()==loginService.getActiveUser()){
 					return PageRenderingService.getMyEventDetail();
-				}else{
-					return PageRenderingService.getReservation();
 				}
-			} else {
-				return PageRenderingService.getReservation();
 			}
-		} else {
-			return PageRenderingService.getReservation();
 		}
+		return PageRenderingService.getReservation();
+		
 	}
 	
 }

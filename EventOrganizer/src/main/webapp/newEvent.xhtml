@@ -71,7 +71,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<div class="buttonDiv" style="margin-right: 55%;">
 					
 <!-- 		TODO: muss bei Abbrechen nicht dann auch zu einer anderen Seite geleitet werden? -->
-						<h:outputLink  value="#{managerBean.cancel()}" class="linkButton">
+						<h:outputLink  value="#{pageRenderingService.getMyEvents()}" class="linkButton">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
 						

@@ -10,6 +10,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import de.auc.model.Event;
 
@@ -50,6 +51,7 @@ public class ManagerService implements Serializable{
 		
 	}
 
+	//TODO: SQL
 	/**
 	 * Diese Methode implementiert die Suche, die ein Manager in Bezug auf seine Events durchführen kann.
 	 * @param searchText
@@ -59,45 +61,53 @@ public class ManagerService implements Serializable{
 	public List<Event> searchManagerEvents(String searchText, String filter) {
 		List<Event> currentEvents = new ArrayList<Event>();
 
-		for (Event event : getManagerEvents()) {
-
+		
 			if (filter == null) {
-				if (event.getName().toLowerCase().contains(searchText.toLowerCase())) {
-					currentEvents.add(event);
+				TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user and e.name LIKE :search", Event.class);
+				query.setParameter("search", "%" + searchText + "%");
+				query.setParameter("user", loginService.getActiveUser());
+				try {
+					currentEvents = query.getResultList();
+					return currentEvents;
+				} catch (NoResultException e) {
+					return null;
 				}
+			
+				
 				// Prüfung des Events auf den Suchtext und mitgegebenen Filter
 				// in Bezug auf den Status der Veröffentlichung
-			} else if (event.getName().toLowerCase().contains(searchText.toLowerCase())
-					&& event.isPublicly() == Boolean.parseBoolean(filter)) {
-				currentEvents.add(event);
-			}
+			} else {
+				TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user and e.name LIKE :search and e.publicly = :filter", Event.class);
+				query.setParameter("search", "%" + searchText + "%");
+				query.setParameter("user", loginService.getActiveUser());
+				query.setParameter("filter", Boolean.parseBoolean(filter));
+				try {
+					currentEvents = query.getResultList();
+					return currentEvents;
+				} catch (NoResultException e) {
+					return null;
+				}
+			} 
 
-		}
-		return currentEvents;
 	}
 
 	/**
 	 * Veränderung des Status eines Events innerhalb der Datenbank
 	 */
-	//TODO SQL -> richtig
 	public void publish(Event event) {
-		event.setPublicly(true);
-//		TypedQuery<Event> query = entityManager.createQuery("UPDATE Event e SET e.publicly = true WHERE e.eventid =:id", Event.class);
-//		query.setParameter("id", event.getEventid());
+		entityManager.getTransaction().begin();
+		entityManager.merge(event);
+		entityManager.getTransaction().commit();
+
 	}
 
 	/**
 	 * Speichern des Events nach Bearbeitung
 	 */
-	//TODO SQL
 	public void saveEvent(Event event) {
-		Event currentEvent = eventService.getEventById(event.getEventid());
-		currentEvent.setPrice(event.getPrice());
-		currentEvent.setDate(event.getDate());
-		currentEvent.setDescription(event.getDescription());
-		currentEvent.setLocation(event.getLocation());
-		currentEvent.setName(event.getName());
-		currentEvent.setNumberOfTickets(event.getNumberOfTickets());
+		entityManager.getTransaction().begin();
+		entityManager.merge(event);
+		entityManager.getTransaction().commit();
 		
 	}
 

@@ -69,7 +69,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<br />
 
 					<div class="buttonDiv" style="margin-right: 55%;">
-						<h:outputLink  value="#{managerBean.cancel()}" class="linkButton">
+						<h:outputLink  value="#{pageRenderingService.getMyEventDetail()}" class="linkButton">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
 						

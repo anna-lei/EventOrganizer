@@ -124,15 +124,15 @@ public class ManagerBean implements Serializable{
 	 * Hier wird ausschließlich die Facesmessage generiert.
 	 */
 	public void publish() {
+		event.setPublicly(true);
 		managerService.publish(event);
 		FacesMessage publishMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
 				"Das Event ist veröffentlicht und kann nicht mehr bearbeitet werden.", "");
 		FacesContext.getCurrentInstance().addMessage("publishform:publish", publishMessage);
+		//aufgrund von Sessionscoped wird hier das Event manuell gesetzt
+		managerEvents = managerService.getManagerEvents();
 	}
 	 
-	public String cancel() {
-		return PageRenderingService.getMyEventDetail();
-	}
 	
 	/**
 	 * Die Funktion des Speicherns wird innerhalb des Managerservices verarbeitet.

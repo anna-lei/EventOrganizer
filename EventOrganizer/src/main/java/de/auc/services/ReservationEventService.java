@@ -39,12 +39,18 @@ public class ReservationEventService implements Serializable{
 	 * @return
 	 */
 	public Reservation reserve(Event event, Integer selectedTickets) {
-		eventService.getEventById(event.getEventid()).setNumberOfTickets(eventService.getEventById(event.getEventid()).getNumberOfTickets()-selectedTickets);
-		//TODO Reservierungsid
-		Reservation reservation = new Reservation(generateCode(), selectedTickets, loginService.getActiveUser(), event);
-		//TODO Mapping zwischen Event und Reservierung
-		event.getReservations().add(reservation);
+		entityManager.getTransaction().begin();
 		
+		event.setNumberOfTickets(event.getNumberOfTickets()-selectedTickets);
+		entityManager.merge(event);
+		
+		Reservation reservation = new Reservation(generateCode(), selectedTickets, loginService.getActiveUser(), event);
+		entityManager.persist(reservation);
+		//TODO Mapping zwischen Event und Reservierung
+//		event.getReservations().add(reservation);
+		
+		entityManager.getTransaction().commit();
+	
 		return reservation;
 	}
 	
