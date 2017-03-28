@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Startseite der Anwendung, die alle aktuellen Events auflistet -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -7,6 +8,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="template.xhtml">
+<!-- Einbettung des Headers -->
 	<ui:define name="main.menu">
 		<ui:include src="header.xhtml" />
 	</ui:define>
@@ -20,25 +22,33 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<div style="text-align: left; padding: 15px;">
 
 			<h:form class="form" style="margin-left:-5px">
-				<h:inputText value="#{eventBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
+				<h:inputText p:type="search" value="#{eventBean.searchText}" class="inputText" p:placeholder="Suche nach Event"/>
 				<h:commandButton action="#{eventBean.search}" value="Suchen" class="button" />
 			</h:form>
 			<br/>
+			
 			<h:outputLabel rendered="#{empty eventBean.searchText}"
 				style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+			<!-- Ausgabe des Suchtextes -->
 			<h:messages for="search" id="search" class="message" />
 
+			<!-- Ausgabe der Events entsprechend des Suchtextes-->
 			<h:dataTable var="event" value="#{eventBean.events}"
 				rendered="#{not empty eventBean.events}" class="coloredTable">
 				<h:column>
 					<f:facet name="header">Event</f:facet>
 					
+					<!-- TODO Kommentar -->
 					<h:outputLink  rendered="#{event.getUser()==loginService.getActiveUser()}" value="#{pageRenderingService.getMyEventDetail()}" class="link">
 						<f:param name="eventid" value="#{event.eventid}" />#{event.name}
 					</h:outputLink>
 					<h:outputLink  rendered="#{event.getUser()!=loginService.getActiveUser()}" value="#{pageRenderingService.getReservation()}" class="link">
 						<f:param name="eventid" value="#{event.eventid}" />#{event.name}
 					</h:outputLink>
+				
+										
+					
+					
 					
 				</h:column>
 				<h:column>

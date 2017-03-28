@@ -7,6 +7,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
+import de.auc.model.User;
 import de.auc.services.interfaces.IUserService;
 
 /**
@@ -33,7 +34,10 @@ public class UserConverter implements Converter{
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		return null;
+		if(value == null){
+			return null;
+		}
+		return User.class.cast(value).getMail();
 	}
 
 	public IUserService getUserService() {

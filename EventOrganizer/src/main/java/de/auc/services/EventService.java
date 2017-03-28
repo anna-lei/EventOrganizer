@@ -35,7 +35,12 @@ public class EventService implements Serializable, IEventService {
 	private EntityManager entityManager;
 
 
-	
+	/**
+	 * Suchfunktion der Anwendung
+	 * Hierbei werden lediglich die Titel der veröffentlichten Events nach dem eingegebenen Suchbegriff durchsucht.
+	 * @param searchText
+	 * @return
+	 */
 	@Override
 	public List<Event> searchEvents(String searchText) {
 		List<Event> currentEvents = new ArrayList<Event>();
@@ -47,7 +52,11 @@ public class EventService implements Serializable, IEventService {
 		
 	}
 
-	
+
+	/**
+	 * Zeigt alle veröffentlichten Events an.
+	 * @return
+	 */
 	@Override
 	public List<Event> getPubliclyEvents() {
 		List<Event> currentEvents = new ArrayList<Event>();
@@ -59,7 +68,10 @@ public class EventService implements Serializable, IEventService {
 	}
 
 	
-	
+	/**
+	 * Fügt eine Event zur Datenbank hinzu.
+	 * @param event
+	 */
 	@Override
 	@Transactional
 	public void addEvent(Event event){
@@ -73,7 +85,11 @@ public class EventService implements Serializable, IEventService {
 		}
 	}
 
-	
+	/**
+	 * Gibt das Event zum mitgegebenen Namen zurück.
+	 * @param name
+	 * @return
+	 */
 	@Override
 	public Event getEventByName(String name) {
 		Event event;
@@ -88,7 +104,11 @@ public class EventService implements Serializable, IEventService {
 		}
 	}
 
-	
+	/**
+	 * Gibt das Event zu der mitgegebenen eventid zurück.
+	 * @param eventid
+	 * @return
+	 */
 	@Override
 	public Event getEventById(Integer eventid) {
 		return entityManager.find(Event.class, eventid);

@@ -140,7 +140,7 @@ public class ManagerBean implements Serializable {
 			event.setPublicly(false);
 			FacesMessage publishMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Das Event konnte nicht veröffentlicht werden", "");
-			FacesContext.getCurrentInstance().addMessage("publishform:publish", publishMessage);
+			FacesContext.getCurrentInstance().addMessage("publishform:nopublish", publishMessage);
 		}
 
 	}

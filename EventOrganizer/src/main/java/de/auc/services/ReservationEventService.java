@@ -30,7 +30,13 @@ public class ReservationEventService implements Serializable, IReservationEventS
 	@Inject
 	private ILoginService loginService;
 	
-	
+	/**
+	 * Ersellung einer neuen Reservierung und Ablage in der Datenbank
+	 * sowie das Heruntersetzen der Anzahl an verfügbaren Tickets bezogen auf das Event.
+	 * @param event
+	 * @param selectedTickets
+	 * @return
+	 */
 	@Override
 	public Reservation reserve(Event event, Integer selectedTickets) {
 		try {

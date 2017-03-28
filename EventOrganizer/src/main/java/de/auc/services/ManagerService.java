@@ -36,7 +36,9 @@ public class ManagerService implements Serializable, IManagerService{
 	@Inject
 	private ILoginService loginService;
 
-	
+	/**
+	 * Diese Methode gibt die Events des Managers zurück, der zu diesem Zeitpunkt angemeldet ist.
+	 */
 	@Override
 	public List<Event> getManagerEvents() {
 		List<Event> managerEvents = new ArrayList<Event>();
@@ -48,7 +50,12 @@ public class ManagerService implements Serializable, IManagerService{
 		
 	}
 
-	
+	/**
+	 * Diese Methode implementiert die Suche, die ein Manager in Bezug auf seine Events durchführen kann.
+	 * @param searchText
+	 * @param filter
+	 * @return
+	 */
 	@Override
 	public List<Event> searchManagerEvents(String searchText, String filter) {
 		List<Event> currentEvents = new ArrayList<Event>();
@@ -75,7 +82,9 @@ public class ManagerService implements Serializable, IManagerService{
 
 	}
 
-	
+	/**
+	 * Veränderung des Status eines Events innerhalb der Datenbank
+	 */
 	@Override
 	public boolean publish(Event event) {
 		try {
@@ -91,7 +100,9 @@ public class ManagerService implements Serializable, IManagerService{
 
 	}
 
-	
+	/**
+	 * Speichern des Events nach Bearbeitung
+	 */
 	@Override
 	public boolean saveEvent(Event event) {
 		try {
@@ -107,7 +118,9 @@ public class ManagerService implements Serializable, IManagerService{
 		
 	}
 
-	
+	/**
+	 * Hinzufügen eines neuen Events in der Datenbank
+	 */
 	@Override
 	public Event addEvent(Event event) {
 		Event newEvent = new Event(event.getName(), event.getDescription(), event.getLocation(), event.getDate(), event.getNumberOfTickets(), event.getPrice(),  false,  loginService.getActiveUser());

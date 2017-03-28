@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- HTML-Seite zur Neuanlage eines Events-->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -21,6 +22,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<div class="context" style="text-align: left;">
 			
+			<!-- in der URL befindet sich der Parameter new, sodass im Eventconverter ein leeres Event erstellt wird-->
 			<f:metadata>
 				<f:viewParam name="eventid" value="#{managerBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
 			</f:metadata>
@@ -29,6 +31,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<br/> <br/>
 
 				<h:form class="form">
+				<!-- Ausgabe der Messages der Validatoren-->
 					<h:messages class="warning"/>
 
 					<table>
@@ -45,10 +48,6 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 									<f:convertDateTime pattern="dd.MM.yyyy"/>
 								</h:inputText></td>
 						</tr>
-<!-- 						<tr> -->
-<!-- 							<td class="firstColumn"><h:outputLabel>Uhrzeit: </h:outputLabel></td> -->
-<!-- 							<td><h:inputText value="#{editEventBean.time}" class="inputText" /></td> -->
-<!-- 						</tr> -->
 						<tr>
 							<td class="firstColumn"><h:outputLabel class="firstColumn">Ort:</h:outputLabel></td>
 							<td><h:inputText required="true" requiredMessage="Es muss ein Ort angegeben werden." value="#{managerBean.event.location}" class="inputText" /></td>
@@ -70,11 +69,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 					<div class="buttonDiv" style="margin-right: 55%;">
 					
-<!-- 		TODO: muss bei Abbrechen nicht dann auch zu einer anderen Seite geleitet werden? -->
 						<h:outputLink  value="#{pageRenderingService.getMyEvents()}" class="linkButton">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
 						
+						<!-- Neuanlage des Events und gleichzeitig Weiterleitung auf die Detailseite, sodass hier ein CommandLink verwendet wird-->
 						<h:commandLink class="linkButton" action="#{managerBean.add}" value="Anlegen">
 							 <f:attribute name="eventid" value="#{managerBean.event.eventid}" />
 						</h:commandLink>

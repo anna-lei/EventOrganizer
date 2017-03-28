@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!-- Login-HTML-Seite -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
+<!-- HTML-Seite für einen Login -->
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
 		<ui:include src="header.xhtml" />
@@ -33,6 +33,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<br></br>
 				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText" tabindex="2"></h:inputSecret>
 				<br></br>
+				<!-- Weiterleitung auf die Registrierungsseite -->
 				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;" tabindex="4">Neu registrieren</a>
 				<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button" tabindex="3"></h:commandButton>
 			</h:form>

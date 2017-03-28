@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- HTML-Seite, die alle Events eines Managers zeigt-->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -25,11 +26,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:form class="form" >
 				<h:outputText value="Events: "></h:outputText>
+				<!-- Über dieses Menü ist es möglich, nach angelegten oder veröffentlichen Events zu filtern-->
+				<!-- Diese Auswahl wird über das Attribut filter mitgegeben.-->
 				<h:selectOneMenu value="#{managerBean.filter}">
 					<f:selectItem itemValue="false" itemLabel="angelegte" />
 					<f:selectItem itemValue="true" itemLabel="veröffentlichte" />
 					<f:selectItem itemValue="#{null}" itemLabel="alle" />
 				</h:selectOneMenu>
+			
 			
 				<h:inputText value="#{managerBean.searchText}" class="inputText" p:placeholder="Event-Name"/>
 				<h:commandButton action="#{managerBean.searchMyEvents}" value="Filtern" class="button" />
@@ -42,8 +46,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<br/>
 
 			<h:outputLabel rendered="#{empty managerBean.searchText}" style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+			<!-- Ausgabe des Suchtextes-->
 			<h:messages for="search" id="search" class="message" />
 
+			<!-- Ausgabe der Events entsprechend des Suchtextes und Filters-->
 			<h:dataTable var="event" value="#{managerBean.managerEvents}"
 				rendered="#{not empty managerBean.managerEvents}" class="coloredTable">
 				<h:column>

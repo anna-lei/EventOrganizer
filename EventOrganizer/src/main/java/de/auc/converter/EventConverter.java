@@ -37,7 +37,10 @@ public class EventConverter implements Converter{
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		return null;
+		if(value == null){
+			return null;
+		}
+		return Event.class.cast(value).getName();
 	}
 
 	public IEventService getEventService() {

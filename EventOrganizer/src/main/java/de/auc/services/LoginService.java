@@ -25,7 +25,12 @@ public class LoginService implements Serializable, ILoginService{
 	@Inject
 	private IUserService userService;
 	
-	
+	/**
+	 * Bei einem Login wird dieser als aktiver User gesetzt.
+	 * @param userToLogin
+	 * @param password
+	 * @return
+	 */
 	@Override
 	public boolean login(User userToLogin, String password) {
 		if (userToLogin != null) {
@@ -37,14 +42,26 @@ public class LoginService implements Serializable, ILoginService{
 		return false;
 	}
 	
-	
+	/**
+	 * Bei einem Logout wird der aktive User zurückgesetzt.
+	 */
 	@Override
 	public void logout() {
 		activeUser = null;
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
-	
+	/**
+	 * Die Registrierung wird durch den Userservice übernommen.
+	 * Hier wird der zu registrierung angemeldet und als aktiver User gesetzt.
+	 * @param name
+	 * @param prename
+	 * @param date
+	 * @param mail
+	 * @param password1
+	 * @param password2
+	 * @param managerflag
+	 */
 	@Override
 	public void register(String name, String prename, Date date, String mail, String password1, String password2,
 			boolean managerflag) {

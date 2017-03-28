@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- HTML-Seite, die den äußeren Rahmen jeder Seite bildet -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
@@ -9,13 +10,16 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<h:form>
 	  		<li class="menuLi"><h:commandButton action="#{headerBean.home}" value="Startseite" class="home"/></li>
 		</h:form>
+		<!-- Diese Menüleiste ist nur für einen angemeldeten Manager vorgesehen -->
   		<h:form rendered="#{headerBean.addManagerMenu()}">
   			<li class="menuLi"><h:commandButton action="#{headerBean.managerEvents}" value="Meine Events" class="myEvents"/></li>
 	  		<li class="menuLi"><h:commandButton action="#{headerBean.managerReservations}" value="Reservierungen" class="reservations"/></li>
 		</h:form>  
+		<!-- Hier wird der aktuelle User begrüßt -->
 		<h:form rendered="#{empty headerBean.loginService.activeUser}">
   			<li id="login" style="float:right"><h:commandButton action="#{headerBean.login}" value="Login" class="login"/></li>
   		</h:form>
+  		<!-- Prüfung, ob ein Login oder Logout-Button notwendig ist -->
   		<h:form rendered="#{not empty headerBean.loginService.activeUser}">
   			<li style="float:right"><h:commandButton action="#{headerBean.logout}" value="Logout" class="login"/></li>
 			<li class="name"><h:outputLabel value="Hallo #{headerBean.loginService.activeUser.prename}!"/></li>

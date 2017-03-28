@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!-- HTML-Seite zu den Details eines Events -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -19,21 +19,24 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		</head>
 
 		<div class="context" style="text-align:left;">
+		<!-- Das Event wird über die Metadaten aus der URL geladen -->
 			<f:metadata>
 				<f:viewParam name="eventid" value="#{managerBean.event}" converter="#{eventConverter}" converterMessage="Das Event wurde nicht gefunden" />
 			</f:metadata>
 			
 			<h:form id="publishform">
 				<h:outputText value="#{managerBean.event.name}" class="headline"></h:outputText>
-				
+				<!-- Weiterleitung auf die Seite zum Bearbeiten eines Events -->
 				<h:link value="Bearbeiten" outcome="#{pageRenderingService.getEditEvent()}" class="linkButton" rendered="#{!managerBean.event.publicly}" style="margin-left: 20px;">
 					<f:param name="eventid" value="#{managerBean.event.eventid}" />
 				</h:link>
-				
+				<!-- Möglichkeit zur Veröffentlichung eines Events -->
 				<h:commandButton action="#{managerBean.publish}" rendered="#{!managerBean.event.publicly}" value="Veröffentlichen" class="button">
 					<f:param name="eventid" value="#{managerBean.event.eventid}" />
 				</h:commandButton>
+				<!-- Ausgabe der verschiedenen Messages während des Publish-Vorgangs -->
 				<h:messages class="success" for="publish" id="publish" />
+				<h:messages class="warning" for="nopublish"/>
 				<br/>
 
 				<table>
@@ -62,12 +65,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<br/>
 				
 				
-				
+				<!-- Falls keine Reservierungen vorliegen wird ein einfaches Label ausgegeben -->
 				<h:outputLabel rendered="#{empty managerBean.event.reservations}" class="message">Es liegen noch keine Reservierungen vor (#{managerBean.event.numberOfTickets} verfügbare Tickets).</h:outputLabel>
 				
+				
+				<!-- Falls  Reservierungen vorliegen werden diese in Form einer Tabelle ausgegeben -->
 				<h:outputLabel rendered="#{not empty managerBean.event.reservations}">Reservierungen (noch <h:outputLabel value="#{managerBean.event.numberOfTickets}"><f:convertNumber/></h:outputLabel> verfügbare Tickets)</h:outputLabel>
-
-
 
 				<h:dataTable var="reservation" value="#{managerBean.event.reservations}" 
 					class="coloredTable" rendered="#{not empty managerBean.event.reservations}">

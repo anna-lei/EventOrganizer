@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 
 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- HTML-Seite zur Registrierung -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -24,7 +25,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			
 			
 			<h:form id="registerform" class="form">
+			<!-- Ausgabe der Messages der verschiedenen Validatoren -->
 			<h:messages class="warning" for="register" id="message" />
+				<!-- Über diese Radio-Buttons ist es möglich sich als Manager oder Anwender zu registrieren-->
 				<h:selectOneRadio required="true" value="#{registerBean.managerflag}">
 					<f:selectItem itemValue="false" itemLabel="Anwender" />
 					<f:selectItem itemValue="true" itemLabel="Manager" />

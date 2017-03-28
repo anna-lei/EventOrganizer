@@ -29,7 +29,10 @@ public class UserService implements Serializable, IUserService {
 		
 	}
 	
-	
+	/**
+	 * Fügt einen neuen User hinzu.
+	 * @param user
+	 */
 	@Override
 	@Transactional
 	public void addUser(User user) {
@@ -43,7 +46,11 @@ public class UserService implements Serializable, IUserService {
 		}
 	}
 	
-	
+	/**
+	 * Gibt den User zu der mitgegebenen Mail zurück.
+	 * @param mail
+	 * @return
+	 */
 	@Override
 	public User getUserByName(String mail) {
 		User user;
