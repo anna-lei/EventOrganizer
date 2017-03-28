@@ -6,7 +6,6 @@ import de.auc.model.Event;
 
 public interface IManagerService {
 
-	
 	List<Event> getManagerEvents();
 
 	List<Event> searchManagerEvents(String searchText, String filter);

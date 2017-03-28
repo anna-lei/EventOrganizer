@@ -51,7 +51,4 @@ public class EventConverter implements Converter{
 		this.eventService = eventService;
 	}
 
-
-	
-
 }

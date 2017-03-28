@@ -42,7 +42,6 @@ public class HeaderBean implements Serializable{
 		} else {
 			return loginService.getActiveUser().isManagerflag();
 		}
-		
 	}
 	
 	public String managerEvents() {
@@ -60,8 +59,5 @@ public class HeaderBean implements Serializable{
 	public void setLoginService(ILoginService loginService) {
 		this.loginService = loginService;
 	}
-	
-	
-	
 	
 }

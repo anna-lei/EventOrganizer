@@ -39,10 +39,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<f:facet name="header">Event</f:facet>
 					
 					<!-- TODO Kommentar -->
-					<h:outputLink  rendered="#{event.getUser()==loginService.getActiveUser()}" value="#{pageRenderingService.getMyEventDetail()}" class="link">
+					<h:outputLink  rendered="#{event.getUser().getMail()==loginService.getActiveUser().getMail()}" value="#{pageRenderingService.getMyEventDetail()}" class="link">
 						<f:param name="eventid" value="#{event.eventid}" />#{event.name}
 					</h:outputLink>
-					<h:outputLink  rendered="#{event.getUser()!=loginService.getActiveUser()}" value="#{pageRenderingService.getReservation()}" class="link">
+					<h:outputLink  rendered="#{event.getUser().getMail()!=loginService.getActiveUser().getMail()}" value="#{pageRenderingService.getReservation()}" class="link">
 						<f:param name="eventid" value="#{event.eventid}" />#{event.name}
 					</h:outputLink>
 				
