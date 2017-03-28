@@ -7,11 +7,11 @@ import de.auc.model.User;
 public interface ILoginService {
 
 	
-	boolean login(User userToLogin, String password);
+	boolean login(User userToLogin, Integer password);
 	
 	void logout();
 
-	void register(String name, String prename, Date date, String mail, String password1, String password2,
+	void register(String name, String prename, Date date, String mail, Integer password1, Integer password2,
 			boolean managerflag);
 
 	User getActiveUser();

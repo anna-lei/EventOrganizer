@@ -26,8 +26,8 @@ public class RegisterBean implements Serializable{
 	private String prename;
 	private Date date;
 	private String mail;
-	private String password1;
-	private String password2;
+	private Integer password1;
+	private Integer password2;
 	private boolean managerflag;
 	
 	@Inject
@@ -96,19 +96,19 @@ public class RegisterBean implements Serializable{
 		this.mail = mail;
 	}
 
-	public String getPassword1() {
+	public Integer getPassword1() {
 		return password1;
 	}
 
-	public void setPassword1(String password1) {
+	public void setPassword1(Integer password1) {
 		this.password1 = password1;
 	}
 	
-	public String getPassword2() {
+	public Integer getPassword2() {
 		return password2;
 	}
 	
-	public void setPassword2(String password2) {
+	public void setPassword2(Integer password2) {
 		this.password2 = password2;
 	}
 

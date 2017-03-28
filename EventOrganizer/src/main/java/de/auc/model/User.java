@@ -34,7 +34,7 @@ public class User {
 	@Column(unique= true)
 	private String mail;
 	@Column
-	private String password;
+	private Integer password;
 	@Column
 	private boolean managerflag;
 	@OneToMany(mappedBy="user")
@@ -45,7 +45,7 @@ public class User {
 	}
 
 	
-	public User(String name, String prename, Date date, String mail, String password,
+	public User(String name, String prename, Date date, String mail, Integer password,
 			boolean managerflag) {
 		super();
 		this.name = name;
@@ -96,11 +96,11 @@ public class User {
 		this.mail = mail;
 	}
 
-	public String getPassword() {
+	public Integer getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(Integer password) {
 		this.password = password;
 	}
 

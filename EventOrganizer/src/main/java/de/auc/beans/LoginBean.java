@@ -21,7 +21,7 @@ import de.auc.services.interfaces.ILoginService;
 public class LoginBean implements Serializable{
 
 	private static final long serialVersionUID = 8805804134820177836L;
-	private String password;
+	private Integer password;
 	private User user;
 	
 	@Inject
@@ -44,11 +44,11 @@ public class LoginBean implements Serializable{
 		return null;
 	}
 	
-	public void setPassword(String password) {
+	public void setPassword(Integer password) {
 		this.password = password;
 	}
 	
-	public String getPassword(){
+	public Integer getPassword(){
 		return password;
 	}
 	

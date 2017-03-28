@@ -64,22 +64,22 @@ public class DatabaseService implements Serializable {
 			Calendar today = Calendar.getInstance();
 
 			// TODO: Diese User nach dem Testen entfernen!
-			User testUser = new User("Claudia", "Schaefers", new Date(System.currentTimeMillis()), "cs@jee.de", "123",
+			User testUser = new User("Claudia", "Schaefers", new Date(System.currentTimeMillis()), "cs@jee.de", "123".hashCode(),
 					true);
-			User testUser1 = new User("a", "a", new Date(System.currentTimeMillis()), "a", "a", true);
-			User testUser2 = new User("b", "b", new Date(System.currentTimeMillis()), "b", "b", false);
+			User testUser1 = new User("a", "a", new Date(System.currentTimeMillis()), "a", "a".hashCode(), true);
+			User testUser2 = new User("b", "b", new Date(System.currentTimeMillis()), "b", "b".hashCode(), false);
 
 			/** Testdaten: Benutzer */
 			today.set(1976, 10, 16);
-			User manager1 = new User("Manager", "Thomas", today.getTime(), "Thomas.Manager@eventfull.de", "Event123",
+			User manager1 = new User("Manager", "Thomas", today.getTime(), "Thomas.Manager@eventfull.de", "Event123".hashCode(),
 					true);
 			today.set(1988, 4, 20);
 			User manager2 = new User("Managment", "Sabine", today.getTime(), "Sabine_Management@eventtickets.de",
-					"Tickets23", true);
+					"Tickets23".hashCode(), true);
 			today.set(1994, 7, 28);
-			User user1 = new User("Fanfull", "Karl", today.getTime(), "Fanfull-Karl@web.de", "Musik287", false);
+			User user1 = new User("Fanfull", "Karl", today.getTime(), "Fanfull-Karl@web.de", "Musik287".hashCode(), false);
 			today.set(1975, 9, 12);
-			User user2 = new User("Musikliebe", "Leona", today.getTime(), "musikliebe@gmx.de", "Leona129", false);
+			User user2 = new User("Musikliebe", "Leona", today.getTime(), "musikliebe@gmx.de", "Leona129".hashCode(), false);
 
 			/** Testdaten: Event */
 			today.set(2017, 10, 15);

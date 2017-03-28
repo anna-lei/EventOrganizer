@@ -31,7 +31,9 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<f:converter binding="#{userConverter}" />
 				</h:inputText>
 				<br></br>
-				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText" tabindex="2"></h:inputSecret>
+				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText" tabindex="2">
+				<f:converter binding="#{passwordConverter}" />
+				</h:inputSecret>
 				<br></br>
 				<!-- Weiterleitung auf die Registrierungsseite -->
 				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;" tabindex="4">Neu registrieren</a>

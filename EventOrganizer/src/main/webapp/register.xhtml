@@ -16,19 +16,20 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 		<body>
 		<head>
-			<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
-			<link rel="stylesheet" type="text/css" href="styles/register.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/style.css"></link>
+<link rel="stylesheet" type="text/css" href="styles/register.css"></link>
 		</head>
 
 		<div class="context">
 			<h:outputLabel class="headline">Registrierung</h:outputLabel>
-			
-			
+
+
 			<h:form id="registerform" class="form">
-			<!-- Ausgabe der Messages der verschiedenen Validatoren -->
-			<h:messages class="warning" for="register" id="message" />
+				<!-- Ausgabe der Messages der verschiedenen Validatoren -->
+				<h:messages class="warning" for="register" id="message" />
 				<!-- Über diese Radio-Buttons ist es möglich sich als Manager oder Anwender zu registrieren-->
-				<h:selectOneRadio required="true" value="#{registerBean.managerflag}">
+				<h:selectOneRadio required="true"
+					value="#{registerBean.managerflag}">
 					<f:selectItem itemValue="false" itemLabel="Anwender" />
 					<f:selectItem itemValue="true" itemLabel="Manager" />
 				</h:selectOneRadio>
@@ -36,36 +37,49 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<table>
 					<tr>
 						<td><h:outputLabel>Vorname: </h:outputLabel></td>
-						<td><h:inputText value="#{registerBean.prename}" class="inputText" tabindex="1"
-								validator="#{nameValidator.validate}" a:autofocus="true"/></td>
+						<td><h:inputText value="#{registerBean.prename}"
+								class="inputText" tabindex="1"
+								validator="#{nameValidator.validate}" a:autofocus="true" /></td>
 						<td><h:outputLabel>Email:</h:outputLabel></td>
-						<td><h:inputText value="#{registerBean.mail}" class="inputText" tabindex="4" p:placeholder="abc@web.de"
-								validator="#{userExistMailValidator.validate}"/></td>
+						<td><h:inputText value="#{registerBean.mail}"
+								class="inputText" tabindex="4" p:placeholder="abc@web.de"
+								validator="#{userExistMailValidator.validate}" /></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Nachname: </h:outputLabel></td>
-						<td><h:inputText value="#{registerBean.name}" class="inputText" tabindex="2"
-								validator="#{nameValidator.validate}"/></td>
+						<td><h:inputText value="#{registerBean.name}"
+								class="inputText" tabindex="2"
+								validator="#{nameValidator.validate}" /></td>
 						<td><h:outputLabel>Passwort:</h:outputLabel></td>
-						<td><h:inputSecret value="#{registerBean.password1}" class="inputText" tabindex="5"
-								p:placeholder="8 Zeichen, min. eine Zahl" validator="#{passwordValidator.validate}"/></td>
+						<td><h:inputSecret value="#{registerBean.password1}"
+								class="inputText" tabindex="5"
+								p:placeholder="8 Zeichen, min. eine Zahl"
+								validator="#{passwordValidator.validate}">
+								<f:converter binding="#{passwordConverter}" />
+							</h:inputSecret></td>
 					</tr>
 					<tr>
 						<td><h:outputLabel>Geburtsdatum: </h:outputLabel></td>
-						<td><h:inputText id="register" value="#{registerBean.date}" class="inputText" tabindex="3" 
-								p:placeholder="dd.mm.yyyy" converterMessage="Das Geburtsdatum konnte nicht konvertiert werden"
+						<td><h:inputText id="register" value="#{registerBean.date}"
+								class="inputText" tabindex="3" p:placeholder="dd.mm.yyyy"
+								converterMessage="Das Geburtsdatum konnte nicht konvertiert werden"
 								validator="#{birthdayValidator.validate}">
-								<f:convertDateTime pattern="dd.MM.yyyy"/>
+								<f:convertDateTime pattern="dd.MM.yyyy" />
 							</h:inputText></td>
 						<td><h:outputLabel>Passwort wiederholen:</h:outputLabel></td>
-						<td><h:inputSecret value="#{registerBean.password2}" class="inputText" tabindex="6"/></td>
+						<td><h:inputSecret value="#{registerBean.password2}"
+								class="inputText" tabindex="6">
+								<f:converter binding="#{passwordConverter}" />
+							</h:inputSecret></td>
 					</tr>
 				</table>
 				<br></br>
 
 				<div class="buttonDiv">
-					<h:commandButton class="button" action="#{registerBean.cancel}" tabindex="8" value="Abbrechen"/>
-					<h:commandButton class="button" action="#{registerBean.register}" tabindex="7" value="Registrieren"/>
+					<h:commandButton class="button" action="#{registerBean.cancel}"
+						tabindex="8" value="Abbrechen" />
+					<h:commandButton class="button" action="#{registerBean.register}"
+						tabindex="7" value="Registrieren" />
 				</div>
 			</h:form>
 		</div>

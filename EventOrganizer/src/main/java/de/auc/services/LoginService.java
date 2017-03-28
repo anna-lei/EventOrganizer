@@ -32,7 +32,7 @@ public class LoginService implements Serializable, ILoginService{
 	 * @return
 	 */
 	@Override
-	public boolean login(User userToLogin, String password) {
+	public boolean login(User userToLogin, Integer password) {
 		if (userToLogin != null) {
 			if (password.equals(userToLogin.getPassword())) {
 				activeUser = userToLogin;
@@ -63,7 +63,7 @@ public class LoginService implements Serializable, ILoginService{
 	 * @param managerflag
 	 */
 	@Override
-	public void register(String name, String prename, Date date, String mail, String password1, String password2,
+	public void register(String name, String prename, Date date, String mail, Integer password1, Integer password2,
 			boolean managerflag) {
 		User user = new User(name, prename, date, mail, password1, managerflag);
 		userService.addUser(user);
