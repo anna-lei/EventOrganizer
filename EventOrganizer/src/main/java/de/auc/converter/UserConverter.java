@@ -7,7 +7,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import de.auc.services.UserService;
+import de.auc.services.interfaces.IUserService;
 
 /**
  * Dieser Converter sucht su einer User-ID den User und gibt diesen als Objekt zurück.
@@ -17,7 +17,7 @@ import de.auc.services.UserService;
 public class UserConverter implements Converter{
 	
 	@ManagedProperty("#{userService}")
-	private UserService userService;
+	private IUserService userService;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -36,11 +36,11 @@ public class UserConverter implements Converter{
 		return null;
 	}
 
-	public UserService getUserService() {
+	public IUserService getUserService() {
 		return userService;
 	}
 
-	public void setUserService(UserService userService) {
+	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
 

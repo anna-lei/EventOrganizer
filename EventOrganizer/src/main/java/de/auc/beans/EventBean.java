@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.Event;
-import de.auc.services.EventService;
+import de.auc.services.interfaces.IEventService;
 
 /**
  * Diese Bean ist zugehörig zur Startseite 
@@ -29,7 +29,7 @@ public class EventBean implements Serializable {
 	private List<Event> events = new ArrayList<Event>();
 	
 	@Inject
-	private EventService eventService;
+	private IEventService eventService;
 
 	/**
 	 * Da die Bean RequestScoped ist, wird initial durch das PostConstruct die Liste der aktuellen Events gefüllt.

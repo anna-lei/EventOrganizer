@@ -7,7 +7,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import de.auc.services.UserService;
+import de.auc.services.interfaces.IUserService;
 
 /**
  * Über die E-Mail wird der User eindeutig identifiziert.
@@ -17,7 +17,7 @@ import de.auc.services.UserService;
 @ManagedBean
 public class UserExistMailValidator {
 	@ManagedProperty("#{userService}")
-	private UserService userService;
+	private IUserService userService;
 	
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		//Existiert bereits ein User mit dieser Mail
@@ -40,11 +40,11 @@ public class UserExistMailValidator {
 		}
 	}
 	
-	public UserService getUserService() {
+	public IUserService getUserService() {
 		return userService;
 	}
 
-	public void setUserService(UserService userService) {
+	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
 }

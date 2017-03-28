@@ -10,8 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
+import de.auc.services.interfaces.ILoginService;
 
 /**
  * Diese Bean bezieht sich auf die Registrierungsseite und die Weiterleitung der Registrierung.
@@ -31,7 +31,7 @@ public class RegisterBean implements Serializable{
 	private boolean managerflag;
 	
 	@Inject
-	private LoginService loginService;
+	private ILoginService loginService;
 	
 	/**
 	 * Die Registrierung wird durch den LoginService vorgenommen.

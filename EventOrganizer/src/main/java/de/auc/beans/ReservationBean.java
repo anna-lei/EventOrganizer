@@ -14,9 +14,9 @@ import javax.inject.Named;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
-import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
-import de.auc.services.ReservationEventService;
+import de.auc.services.interfaces.ILoginService;
+import de.auc.services.interfaces.IReservationEventService;
 
 /**
  * Diese Bean dient der Weiterleitung der Elemente bezogen auf die Reservierung an den Reservationservice.
@@ -35,10 +35,10 @@ public class ReservationBean implements Serializable{
 		
 	
 	@Inject
-	private ReservationEventService reservationEventService;
+	private IReservationEventService reservationEventService;
 	
 	@Inject
-	private LoginService loginService;
+	private ILoginService loginService;
 	
 	/**
 	 * Diese Methode wird durch den Button "Reservieren" aufgerufen 

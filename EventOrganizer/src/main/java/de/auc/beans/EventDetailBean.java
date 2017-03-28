@@ -6,9 +6,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.auc.services.EventService;
-import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
+import de.auc.services.interfaces.IEventService;
+import de.auc.services.interfaces.ILoginService;
 
 /**
  * Diese Bean dient ausschlieﬂlich der Weiterleitung auf die verschiedenen Detailseiten zu einem Event.
@@ -23,10 +23,10 @@ public class EventDetailBean implements Serializable {
 	private static final long serialVersionUID = 6046177730610293298L;
 
 	@Inject
-	private LoginService loginService;
+	private ILoginService loginService;
 	
 	@Inject
-	private EventService eventService;
+	private IEventService eventService;
 
 	public String eventDetails(int eventid) {
 		if (loginService.getActiveUser() != null) {

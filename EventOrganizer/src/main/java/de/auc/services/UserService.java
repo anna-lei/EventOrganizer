@@ -11,13 +11,14 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import de.auc.model.User;
+import de.auc.services.interfaces.IUserService;
 
 /**
  * Implementierung der Services bezogen auf einen User.
  */
 @Named(value="userService")
 @ApplicationScoped
-public class UserService implements Serializable {
+public class UserService implements Serializable, IUserService {
 
 	private static final long serialVersionUID = 126171421969002787L;
 
@@ -28,22 +29,22 @@ public class UserService implements Serializable {
 		
 	}
 	
-	/**
-	 * Fügt einen neuen User hinzu.
-	 * @param user
-	 */
+	
+	@Override
 	@Transactional
 	public void addUser(User user) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(user);
-		entityManager.getTransaction().commit();
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.persist(user);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+		}
 	}
 	
-	/**
-	 * Gibt den User zu der mitgegebenen Mail zurück.
-	 * @param mail
-	 * @return
-	 */
+	
+	@Override
 	public User getUserByName(String mail) {
 		User user;
 		

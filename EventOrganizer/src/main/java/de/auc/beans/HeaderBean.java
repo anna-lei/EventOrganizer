@@ -6,8 +6,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
+import de.auc.services.interfaces.ILoginService;
 
 /**
  * Bean, die dem Header zugehörig ist und die Weiterleitung auf andere JSF-Seiten implementiert.
@@ -20,7 +20,7 @@ public class HeaderBean implements Serializable{
 	private static final long serialVersionUID = -1648932165104363219L;
 
 	@Inject
-	private LoginService loginService;
+	private ILoginService loginService;
 	
 	
 	public String login() {
@@ -53,11 +53,11 @@ public class HeaderBean implements Serializable{
 		return PageRenderingService.getManagerReservation();
 	}
 
-	public LoginService getLoginService() {
+	public ILoginService getLoginService() {
 		return loginService;
 	}
 
-	public void setLoginService(LoginService loginService) {
+	public void setLoginService(ILoginService loginService) {
 		this.loginService = loginService;
 	}
 	

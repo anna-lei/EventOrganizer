@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.auc.model.User;
-import de.auc.services.LoginService;
 import de.auc.services.PageRenderingService;
+import de.auc.services.interfaces.ILoginService;
 
 /**
  * Implementierung der Login-Seite zur Weiterleitung des Users und Passworts an den LoginService
@@ -25,7 +25,7 @@ public class LoginBean implements Serializable{
 	private User user;
 	
 	@Inject
-	private LoginService loginService;
+	private ILoginService loginService;
 
 	
 	/**

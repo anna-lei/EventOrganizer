@@ -7,7 +7,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import de.auc.services.UserService;
+import de.auc.services.interfaces.IUserService;
 /**
  * Validierung des Passworts eines Users
  *
@@ -15,7 +15,7 @@ import de.auc.services.UserService;
 @ManagedBean
 public class PasswordValidator {
 	@ManagedProperty("#{userService}")
-	private UserService userService;
+	private IUserService userService;
 
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		if (!value.toString().matches(".*[0-9].*")) {
@@ -37,11 +37,11 @@ public class PasswordValidator {
 
 	}
 
-	public UserService getUserService() {
+	public IUserService getUserService() {
 		return userService;
 	}
 
-	public void setUserService(UserService userService) {
+	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
 

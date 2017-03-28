@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 import de.auc.model.Event;
-import de.auc.services.EventService;
+import de.auc.services.interfaces.IEventService;
 
 /**
  * Dieser Converter sucht zu einer ID das Event und gibt das Objekt zurück.
@@ -18,7 +18,7 @@ public class EventConverter implements Converter{
 
 	
 	@ManagedProperty("#{eventService}")
-	private EventService eventService;
+	private IEventService eventService;
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -40,11 +40,11 @@ public class EventConverter implements Converter{
 		return null;
 	}
 
-	public EventService getEventService() {
+	public IEventService getEventService() {
 		return eventService;
 	}
 
-	public void setEventService(EventService eventService) {
+	public void setEventService(IEventService eventService) {
 		this.eventService = eventService;
 	}
 

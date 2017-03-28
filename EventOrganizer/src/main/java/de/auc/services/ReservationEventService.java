@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 
 import de.auc.model.Event;
 import de.auc.model.Reservation;
+import de.auc.services.interfaces.ILoginService;
+import de.auc.services.interfaces.IReservationEventService;
 
 /**
  * Dieser Service implementiert das Hinzufügen einer neuen Reservierung, die einem User und einem Event zugeordnet ist.
@@ -18,42 +20,36 @@ import de.auc.model.Reservation;
  */
 @Named(value="reservationEventService")
 @RequestScoped
-public class ReservationEventService implements Serializable{
+public class ReservationEventService implements Serializable, IReservationEventService{
 	
 	private static final long serialVersionUID = -663880328193053308L;
 
 	@Inject
 	private EntityManager entityManager;
-	
+		
 	@Inject
-	private EventService eventService;
+	private ILoginService loginService;
 	
-	@Inject
-	private LoginService loginService;
 	
-	/**
-	 * Ersellung einer neuen Reservierung und Ablage in der Datenbank
-	 * sowie das Heruntersetzen der Anzahl an verfügbaren Tickets bezogen auf das Event.
-	 * @param event
-	 * @param selectedTickets
-	 * @return
-	 */
+	@Override
 	public Reservation reserve(Event event, Integer selectedTickets) {
-		entityManager.getTransaction().begin();
-		
-		event.setNumberOfTickets(event.getNumberOfTickets()-selectedTickets);
-		entityManager.merge(event);
-		
-		Reservation reservation = new Reservation(generateCode(), selectedTickets, loginService.getActiveUser(), event);
-		entityManager.persist(reservation);
-		//TODO Mapping zwischen Event und Reservierung
-//		event.getReservations().add(reservation);
-		
-		entityManager.getTransaction().commit();
-	
-		return reservation;
+		try {
+			entityManager.getTransaction().begin();
+			event.setNumberOfTickets(event.getNumberOfTickets()-selectedTickets);
+			entityManager.merge(event);
+			Reservation reservation = new Reservation(generateCode(), selectedTickets, loginService.getActiveUser(), event);
+			entityManager.persist(reservation);
+			entityManager.getTransaction().commit();
+			return reservation;
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
+	
+	@Override
 	public String generateCode() {
 		return UUID.randomUUID().toString();
 	}
