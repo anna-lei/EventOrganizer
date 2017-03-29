@@ -19,7 +19,7 @@ public class PageRenderingService implements Serializable{
 	private static final String PAGE_LOGIN_JSF = "login.jsf";
 	private static final String PAGE_HOME_JSF = "home.jsf";
 	private static final String PAGE_MYEVENTS_JSF = "myEvents.jsf";
-	private static final String PAGE_MANAGER_RESERVATION_JSF = "managerReservierung.jsf";
+	private static final String PAGE_MANAGER_RESERVATION_JSF = "managerReservation.jsf";
 	private static final String PAGE_RESERVATION_JSF = "reservation.jsf";
 	private static final String PAGE_MYEVENT_DETAIL_JSF = "myEventDetail.jsf";
 	private static final String PAGE_EDITEVENT_JSF = "editEvent.jsf";
