@@ -42,13 +42,12 @@ public class EventDetailBean implements Serializable {
 				} else {
 					FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getReservation()+"?eventid="+eventid);
 				}
-			}else {
+			} else {
 				FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getReservation()+"?eventid="+eventid);
 			}
-		}else {
+		} else {
 			FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getReservation()+"?eventid="+eventid);
 		}
-		
 		
 	}
 
@@ -59,7 +58,5 @@ public class EventDetailBean implements Serializable {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
-	
-	
 	
 }

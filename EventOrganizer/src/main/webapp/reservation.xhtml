@@ -41,7 +41,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</tr>
 					<tr>
 						<td class="firstColumn">Datum:</td>
-						<td><h:outputText value="#{reservationBean.event.date}" ><f:convertDateTime pattern="dd.MM.yyyy"/></h:outputText></td>
+						<td><h:outputText value="#{reservationBean.event.date}" ><f:convertDateTime timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:outputText></td>
 					</tr>
 					<tr>
 						<td class="firstColumn">Ort:</td>

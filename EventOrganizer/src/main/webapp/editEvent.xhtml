@@ -43,8 +43,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						</tr>
 						<tr>
 							<td class="firstColumn"><h:outputLabel>Datum:</h:outputLabel></td>
-							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy" validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy">
-									<f:convertDateTime pattern="dd.MM.yyyy"/>
+							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy HH:mm" validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy HH:mm">
+									<f:convertDateTime  timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/>
 								</h:inputText></td>
 						</tr>
 						<tr>

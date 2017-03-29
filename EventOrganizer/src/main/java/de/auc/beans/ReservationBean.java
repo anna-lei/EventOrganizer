@@ -5,7 +5,6 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -68,14 +67,9 @@ public class ReservationBean implements Serializable{
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vielen Dank, " + loginService.getActiveUser().getPrename() +"! Folgende Tickets wurden erfolgreich mit einem Gesamtpreis von " + sumPrice + "€ für Sie reserviert.", "");
 			FacesContext.getCurrentInstance().addMessage("reservation", reservationMessage);
 			return null;
-		}
-		
-		
-		
+		}	
 	}
 	
-   
-   
 	public Event getEvent() {
 		return event;
 	}
@@ -108,11 +102,4 @@ public class ReservationBean implements Serializable{
 		this.managerReservations = managerReservations;
 	}
 
-	
-	
-
-
-
-	
-	
 }

@@ -22,15 +22,17 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<div class="context" style="text-align: left">
 			<h:outputText value="Reservierungen" class="headline"></h:outputText>
 			<br/> <br/>
+			
 			<!-- Ausgabe der einzelnen Events des Managers -->
 			<ui:repeat var="event" value="#{managerBean.managerEvents}">
 
-				<h:link value="#{event.name}" outcome="#{pageRenderingService.PAGE_MYEVENT_DETAIL_JSF}" class="link">
+				<h:link value="#{event.name}" outcome="#{pageRenderingService.getMyEventDetail()}" class="link">
 					<f:param name="eventid" value="#{event.eventid}" />
 				</h:link>
 				<h:outputLabel style="float: right; margin-right: 15px;" value="#{event.numberOfTickets}"><f:convertNumber/> verfügbare Tickets</h:outputLabel>
 				<br/><br/>
 				<h:outputLabel rendered="#{empty event.reservations}" class="message">Für dieses Event existieren bisher keine Reservierungen.</h:outputLabel>
+				
 				<!-- Ausgabe der zugehörigen Reservierungen eben zu dem Event -->
 				<h:dataTable var="reservation" value="#{event.reservations}"
 					class="coloredTable" rendered="#{not empty event.reservations}" style="margin-top: 0px;">

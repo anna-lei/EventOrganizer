@@ -26,14 +26,17 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			
 			<h:form id="publishform">
 				<h:outputText value="#{managerBean.event.name}" class="headline"></h:outputText>
+				
 				<!-- Weiterleitung auf die Seite zum Bearbeiten eines Events -->
 				<h:link value="Bearbeiten" outcome="#{pageRenderingService.getEditEvent()}" class="linkButton" rendered="#{!managerBean.event.publicly}" style="margin-left: 20px;">
 					<f:param name="eventid" value="#{managerBean.event.eventid}" />
 				</h:link>
+				
 				<!-- Möglichkeit zur Veröffentlichung eines Events -->
 				<h:commandButton action="#{managerBean.publish}" rendered="#{!managerBean.event.publicly}" value="Veröffentlichen" class="button">
 					<f:param name="eventid" value="#{managerBean.event.eventid}" />
 				</h:commandButton>
+				
 				<!-- Ausgabe der verschiedenen Messages während des Publish-Vorgangs -->
 				<h:messages class="success" for="publish" id="publish" />
 				<h:messages class="warning" for="nopublish"/>
@@ -42,7 +45,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<table>
 					<tr>
 						<td>Datum:</td>
-						<td><h:outputText value="#{managerBean.event.date}" ><f:convertDateTime pattern="dd.MM.yyyy"/></h:outputText></td>
+						<td><h:outputText value="#{managerBean.event.date}" ><f:convertDateTime  timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:outputText></td>
 					</tr>
 					<tr>
 						<td>Ort:</td>
@@ -64,10 +67,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</table>
 				<br/>
 				
-				
 				<!-- Falls keine Reservierungen vorliegen wird ein einfaches Label ausgegeben -->
 				<h:outputLabel rendered="#{empty managerBean.event.reservations}" class="message">Es liegen noch keine Reservierungen vor (#{managerBean.event.numberOfTickets} verfügbare Tickets).</h:outputLabel>
-				
 
 				<!-- Falls  Reservierungen vorliegen werden diese in Form einer Tabelle ausgegeben -->
 				<h:outputLabel rendered="#{not empty managerBean.event.reservations}">Reservierungen (noch <h:outputLabel value="#{managerBean.event.numberOfTickets}"><f:convertNumber/></h:outputLabel> verfügbare Tickets)</h:outputLabel>

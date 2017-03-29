@@ -1,7 +1,6 @@
 package de.auc.services;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +12,6 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -81,7 +79,7 @@ public class DatabaseService implements Serializable {
 			User user2 = new User("Musikliebe", "Leona", today.getTime(), "musikliebe@gmx.de", "Leona129".hashCode(), false);
 
 			/** Testdaten: Event */
-			today.set(2017, 10, 15);
+			today.set(2017, 10, 15, 20, 30, 0);
 			Event event1 = new Event("Mario Barth: Männer sind bekloppt, aber sexy!",
 					"Ein Stück Beklopptheit macht Männer sexy! Wer könnte davon überzeugender erzählen als Mario Barth? "
 							+ "Wenn Deutschlands erfolgreichster Comedian seine Alltagsgeschichten mit unverwechselbarer Mimik zum Besten "
@@ -90,7 +88,7 @@ public class DatabaseService implements Serializable {
 							+ "seine Zuschauer. Kein Wunder, dass der Angriff auf die Lachmuskeln zwei Stunden lang nicht zu stoppen ist. "
 							+ "Mehr als 600.000 begeisterte Fans haben das aktuelle Programm „Männer sind bekloppt, aber sexy“ bereits erlebt.",
 					"Münster", today.getTime(), 1250, 39.95, true, manager1);
-			today.set(2017, 5, 8);
+			today.set(2017, 5, 8, 20, 0, 0);
 			Event event2 = new Event("Luke Mockridge: Lucky Man",
 					"Lucky Luke – wer bei diesem Namen an einen einsamen Comic-Cowboy denkt, ist hier auf der falschen Fährte. "
 							+ "„Komik-Cowboy” trifft es da wohl eher. Die Rede ist natürlich von Luke Mockridge, dem supertalentierten "
@@ -104,7 +102,7 @@ public class DatabaseService implements Serializable {
 							+ "ein neues Programm hat er schon in der Pipeline: 2017 entert er mit „Lucky Man” erneut zahlreiche Locations "
 							+ "deutschlandweit. Denn am allerliebsten bringt er sein Publikum live zum Lachen.",
 					"Dortmund", today.getTime(), 5200, 29.95, true, manager1);
-			today.set(2018, 2, 8);
+			today.set(2018, 2, 8, 21, 0, 0);
 			Event event3 = new Event("Chris Tall: Selfie von Mutti! Wenn Eltern cool sein wollen",
 					"Er ist der Shooting Star der Deutschen Comedy-Szene: Chris Tall! Mit seinem aktuellen Programm "
 							+ "\"Selfie von Mutti! Wenn Eltern cool sein wollen...\" ist der Hamburger quer durch Deutschland unterwegs "
@@ -123,7 +121,7 @@ public class DatabaseService implements Serializable {
 							+ "Denn Chris lässt die eigene Fehlbarkeit nicht aus dem Blick.Und am Ende wissen alle im Saal: Eltern sind "
 							+ "peinlich. Und Mutti ist die Beste! ",
 					"Bielefeld", today.getTime(), 2050, 28.25, false, manager1);
-			today.set(2018, 3, 25);
+			today.set(2018, 3, 25, 20, 0, 0);
 			Event event4 = new Event("Bülent Ceylan: Kronk",
 					"Die Welt geht am Stock, die Menschen sind dringend auf humoristische Behandlung angewiesen und die bekommen "
 							+ "sie direkt und in gewohnt hoher Dosis bei Bülent Ceylan's neuem Programm: „KRONK“. Vor allem Körper, Geist "
@@ -145,7 +143,7 @@ public class DatabaseService implements Serializable {
 							+ "Zwerchfell. Und das ist dann ein Wohlweh der besten Sorte und immer auch eine Behandlung, auf die jeder Patient "
 							+ "sofort anspricht!",
 					"München", today.getTime(), 900, 36.60, false, manager1);
-			today.set(2017, 9, 18);
+			today.set(2017, 9, 18, 19, 30, 0);
 			Event event5 = new Event("Helene Fischer - Live 2017/2018",
 					"Was Helene Fischer auch anfasst, es wird so golden wie ihre Haare – und dabei steht die sympathische "
 							+ "Schlager-Ikone, die schon jetzt ein eigenes Zimmer für all ihre gewonnenen Echos und Goldenen Schallplatten "
@@ -156,7 +154,7 @@ public class DatabaseService implements Serializable {
 							+ "Shows spielen - das ergibt eine epische Anzahl von 65 Live-Dates! Inzwischen hat die Sängerin sogar noch vier "
 							+ "zusätzliche Termine in Köln und Berlin Anfang 2018 bestätigt.",
 					"Hamburg", today.getTime(), 4000, 94.80, true, manager2);
-			today.set(2017, 8, 10);
+			today.set(2017, 8, 10, 20, 30, 0);
 			Event event6 = new Event("Von Wegen Lisbeth: Hallo Dispo Tour 2017",
 					"Als „aufstrebende Berliner Indie-Band“ werden sie gern von der Presse betitelt. Das kann so nicht ganz korrekt "
 							+ "sein, schließlich müssten sie dazu möglichst aus Großbritannien, Australien oder wenigstens Mühlheim an der "
@@ -171,7 +169,7 @@ public class DatabaseService implements Serializable {
 							+ "irgendwas zwischen bitterer Ironie, Großstadtmelancholie und brutaler Punchline. Außerdem immer entlarvend "
 							+ "pointiert - und natürlich immer über Mädchen.",
 					"Osnabrück", today.getTime(), 800, 19.25, true, manager2);
-			today.set(2018, 5, 16);
+			today.set(2018, 5, 16, 20, 0, 0);
 			Event event7 = new Event("Lena",
 					"Seit dem Eurovision Song Contest 2010 kennt jeder ihren Namen. Ihre Alben sind ein Garant für Gold- und "
 							+ "Platinstatus und ihre Hits sind unter den Top 10 der deutschen Singlecharts nicht mehr wegzudenken: unser "
@@ -193,7 +191,7 @@ public class DatabaseService implements Serializable {
 							+ "VOX-Musik-Event-Reihe „Sing meinen Song - Das Tauschkonzert“ mit den Gastgebern „The BossHoss“ zu sehen sein. "
 							+ "Ein aufregendes Jahr steht ihr also bevor. Zum krönenden Abschluss wird sie dann auf Tournee gehen.",
 					"Stuttgart", today.getTime(), 1500, 41.70, false, manager2);
-			today.set(2018, 3, 26);
+			today.set(2018, 3, 26, 20, 45, 0);
 			Event event8 = new Event("Clueso: Neuanfang",
 					"Wenn man seit mehr als 20 Jahren Musik macht, ist es irgendwann vielleicht Zeit für einen „Neuanfang”. Bei "
 							+ "Clueso jedenfalls ist dieser Punkt 2016 erreicht. Alles überdenken, die Weichen auf Anfang stellen, sich von "

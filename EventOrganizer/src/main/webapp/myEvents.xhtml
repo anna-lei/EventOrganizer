@@ -26,14 +26,14 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 			<h:form class="form" >
 				<h:outputText value="Events: "></h:outputText>
-				<!-- Über dieses Menü ist es möglich, nach angelegten oder veröffentlichen Events zu filtern-->
+				
+				<!-- Über diese ComboBox ist es möglich, nach angelegten oder veröffentlichten Events zu filtern.-->
 				<!-- Diese Auswahl wird über das Attribut filter mitgegeben.-->
 				<h:selectOneMenu value="#{managerBean.filter}">
 					<f:selectItem itemValue="false" itemLabel="angelegte" />
 					<f:selectItem itemValue="true" itemLabel="veröffentlichte" />
 					<f:selectItem itemValue="#{null}" itemLabel="alle" />
 				</h:selectOneMenu>
-			
 			
 				<h:inputText value="#{managerBean.searchText}" class="inputText" p:placeholder="Event-Name"/>
 				<h:commandButton action="#{managerBean.searchMyEvents}" value="Filtern" class="button" />
@@ -46,6 +46,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<br/>
 
 			<h:outputLabel rendered="#{empty managerBean.searchText}" style="text-decoration: underline;">Nächste Events:</h:outputLabel>
+			
 			<!-- Ausgabe des Suchtextes-->
 			<h:messages for="search" id="search" class="message" />
 
@@ -60,7 +61,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</h:column>
 				<h:column>
 					<f:facet name="header">Datum</f:facet>
-					<h:outputText value="#{event.date}" ><f:convertDateTime pattern="dd.MM.yyyy"/></h:outputText>
+					<h:outputText value="#{event.date}" ><f:convertDateTime timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:outputText>
 				</h:column>
 				<h:column>
 					<f:facet name="header">Ort</f:facet>
@@ -75,7 +76,6 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<h:outputText value="#{managerBean.getPublicly(event)}" />
 				</h:column>
 			</h:dataTable>
-
 
 		</div>
 

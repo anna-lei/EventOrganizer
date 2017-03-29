@@ -1,10 +1,8 @@
 package de.auc.services;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
