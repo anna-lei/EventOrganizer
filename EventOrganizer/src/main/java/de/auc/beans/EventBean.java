@@ -64,7 +64,6 @@ public class EventBean implements Serializable {
 				FacesContext.getCurrentInstance().addMessage("search", searchMessage);
 			}
 		}
-
 	}
 
 	public String getSearchText() {

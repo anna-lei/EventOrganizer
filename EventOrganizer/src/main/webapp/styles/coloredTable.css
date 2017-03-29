@@ -24,6 +24,7 @@
 .coloredTable td a {
 	display: block;
 	width: 100%;
+	color: black;
 }
 
 .coloredTable th {

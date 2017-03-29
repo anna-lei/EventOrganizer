@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
@@ -59,6 +60,7 @@ public class DatabaseService implements Serializable {
 	public void initEventOrganizerData() {
 		if (getContentTables()) {
 			Calendar today = Calendar.getInstance();
+			today.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 
 			// TODO: Diese User nach dem Testen entfernen!
 			User testUser = new User("Claudia", "Schaefers", new Date(System.currentTimeMillis()), "cs@jee.de", "123".hashCode(),

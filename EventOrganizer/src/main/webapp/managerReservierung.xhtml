@@ -26,7 +26,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 			<!-- Ausgabe der einzelnen Events des Managers -->
 			<ui:repeat var="event" value="#{managerBean.managerEvents}">
 
-				<h:link value="#{event.name}" outcome="#{pageRenderingService.getMyEventDetail()}" class="link">
+				<h:link value="#{event.name}" outcome="#{pageRenderingService.getMyEventDetail()}" class="link" style="color:black">
 					<f:param name="eventid" value="#{event.eventid}" />
 				</h:link>
 				<h:outputLabel style="float: right; margin-right: 15px;" value="#{event.numberOfTickets}"><f:convertNumber/> verfügbare Tickets</h:outputLabel>
