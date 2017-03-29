@@ -266,15 +266,23 @@ public class DatabaseService implements Serializable {
 				entityManager.persist(reservation1);
 				entityManager.persist(reservation1.getEvent());
 				entityManager.persist(reservation1.getUser());
+				reservation1.getEvent().setNumberOfTickets(reservation1.getEvent().getNumberOfTickets()-reservation1.getSelectedTickets());
+				entityManager.merge(reservation1.getEvent());
 				entityManager.persist(reservation2);
 				entityManager.persist(reservation2.getEvent());
 				entityManager.persist(reservation2.getUser());
+				reservation2.getEvent().setNumberOfTickets(reservation2.getEvent().getNumberOfTickets()-reservation2.getSelectedTickets());
+				entityManager.merge(reservation2.getEvent());
 				entityManager.persist(reservation3);
 				entityManager.persist(reservation3.getEvent());
 				entityManager.persist(reservation3.getUser());
+				reservation3.getEvent().setNumberOfTickets(reservation3.getEvent().getNumberOfTickets()-reservation3.getSelectedTickets());
+				entityManager.merge(reservation3.getEvent());
 				entityManager.persist(reservation4);
 				entityManager.persist(reservation4.getEvent());
 				entityManager.persist(reservation4.getUser());
+				reservation4.getEvent().setNumberOfTickets(reservation4.getEvent().getNumberOfTickets()-reservation4.getSelectedTickets());
+				entityManager.merge(reservation4.getEvent());
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
 				entityManager.getTransaction().rollback();
