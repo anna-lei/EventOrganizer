@@ -41,8 +41,7 @@ public class DatabaseService implements Serializable {
 	/**
 	 * Überprüft, ob Inhalte in der Datenbank vorhanden sind. Beispielhaft wird
 	 * die Tabelle User durchsucht. Ist diese gefüllt, kann davon ausgegangen
-	 * werden, dass auch Events existieren aufgrund der obigen
-	 * PostConstruct-Methode.
+	 * werden, dass auch Events existieren aufgrund der PostConstruct-Methode.
 	 * 
 	 * @return
 	 */

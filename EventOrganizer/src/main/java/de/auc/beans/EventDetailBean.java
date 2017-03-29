@@ -1,11 +1,14 @@
 package de.auc.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import de.auc.model.Event;
 import de.auc.services.PageRenderingService;
 import de.auc.services.interfaces.IEventService;
 import de.auc.services.interfaces.ILoginService;
@@ -21,6 +24,7 @@ public class EventDetailBean implements Serializable {
 
 
 	private static final long serialVersionUID = 6046177730610293298L;
+	private Event event;
 
 	@Inject
 	private ILoginService loginService;
@@ -28,19 +32,34 @@ public class EventDetailBean implements Serializable {
 	@Inject
 	private IEventService eventService;
 
-	public String eventDetails(int eventid) {
+	public void eventDetails() throws IOException {
+		int eventid = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("eventid"));
 		if (loginService.getActiveUser() != null) {
 			if (loginService.getActiveUser().isManagerflag()) {
-				System.out.println(eventid);
-				System.out.println(eventService.getEventById(eventid).getUser().getMail());
-				System.out.println(loginService.getActiveUser().getMail());
-				if(eventService.getEventById(eventid).getUser()==loginService.getActiveUser()){
-					return PageRenderingService.getMyEventDetail();
+				if(eventService.getEventById(eventid).getUser().getMail()==loginService.getActiveUser().getMail()){
+					FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getMyEventDetail()+"?eventid="+eventid);
+					
+				} else {
+					FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getReservation()+"?eventid="+eventid);
 				}
+			}else {
+				FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getReservation()+"?eventid="+eventid);
 			}
+		}else {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getReservation()+"?eventid="+eventid);
 		}
-		return PageRenderingService.getReservation();
+		
 		
 	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+	
+	
 	
 }
