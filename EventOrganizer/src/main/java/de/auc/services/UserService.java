@@ -8,7 +8,6 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 
 import de.auc.model.User;
 import de.auc.services.interfaces.IUserService;
@@ -34,7 +33,6 @@ public class UserService implements Serializable, IUserService {
 	 * @param user
 	 */
 	@Override
-	@Transactional
 	public void addUser(User user) {
 		try {
 			entityManager.getTransaction().begin();

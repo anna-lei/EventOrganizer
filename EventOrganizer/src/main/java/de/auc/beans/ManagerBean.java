@@ -60,7 +60,7 @@ public class ManagerBean implements Serializable {
 			}
 			if (!searchText.isEmpty()) {
 				FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
-						"Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden", "");
+						"Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden:", "");
 				FacesContext.getCurrentInstance().addMessage("search", searchMessage);
 			}
 		}
@@ -92,7 +92,6 @@ public class ManagerBean implements Serializable {
 
 				FacesContext.getCurrentInstance().getExternalContext().redirect(PageRenderingService.getHome());
 				FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -101,14 +100,11 @@ public class ManagerBean implements Serializable {
 			for (Event event : managerService.getManagerEvents()) {
 				managerEvents.add(event);
 			}
-
 		}
 	}
 
 	/**
-	 * Diese Methode dient ausschließlich der Anzeige, ob das Event
-	 * veröffentlicht ist.
-	 * 
+	 * Diese Methode dient ausschließlich der Anzeige, ob das Event veröffentlicht ist.
 	 * @param event
 	 * @return
 	 */
@@ -139,7 +135,7 @@ public class ManagerBean implements Serializable {
 			//Das Event muss zurückgesetzt werden, da es in der Datenbank nicht auf true gesetzt wurde
 			event.setPublicly(false);
 			FacesMessage publishMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Das Event konnte nicht veröffentlicht werden", "");
+					"Das Event konnte nicht veröffentlicht werden.", "");
 			FacesContext.getCurrentInstance().addMessage("publishform:nopublish", publishMessage);
 		}
 
@@ -159,19 +155,17 @@ public class ManagerBean implements Serializable {
 			} else {
 				//Tritt im Service ein Fehler auf, wird hier die entsprechende Message erstellt.
 				FacesMessage editMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-    					"Das Event konnte nicht gespeichert werden", "");
+    					"Das Event konnte nicht gespeichert werden.", "");
     			FacesContext.getCurrentInstance().addMessage("editform:edit", editMessage);
 			}
 		}
 		return PageRenderingService.getEditEvent();
-		
 	}
 
 	/**
 	 * Die Funktion Hinzufügens wird innerhalb des Managerservices verarbeitet.
 	 * Hier wird ausschließlich die Weiterleitung auf die entsprechende
 	 * JSF-Seite implementiert.
-	 * 
 	 * @return
 	 */
 	public String add() {
@@ -187,6 +181,7 @@ public class ManagerBean implements Serializable {
 			 * Weiterleitung über die ID in der URL möglich.
 			 */
 			event = managerService.addEvent(event);
+			
 			/**
 			 * Die Managerevents werden hier überschrieben, da es sich um eine
 			 * Sessionscoped Bean handelt. Die Postconstruct-Methode zur
@@ -197,10 +192,8 @@ public class ManagerBean implements Serializable {
 			return PageRenderingService.getMyEventDetail();
 
 		} else {
-
 			return PageRenderingService.getNewEvent();
 		}
-
 	}
 
 	public List<Event> getManagerEvents() {

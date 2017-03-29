@@ -7,6 +7,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
 <!-- HTML-Seite für einen Login -->
 <ui:composition template="template.xhtml">
 	<ui:define name="main.menu">
@@ -32,11 +33,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				</h:inputText>
 				<br></br>
 				<h:inputSecret value="#{loginBean.password}" p:placeholder="Passwort" class="inputText" tabindex="2">
-				<f:converter binding="#{passwordConverter}" />
+					<f:converter binding="#{passwordConverter}" />
 				</h:inputSecret>
 				<br></br>
 				<!-- Weiterleitung auf die Registrierungsseite -->
-				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;" tabindex="4">Neu registrieren</a>
+				<a href="#{pageRenderingService.getRegister()}" style="padding-right: 10px;" tabindex="4" class="link">Neu registrieren</a>
 				<h:commandButton action="#{loginBean.login}" value="Anmelden" class="button" tabindex="3"></h:commandButton>
 			</h:form>
 		</div>

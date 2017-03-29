@@ -17,12 +17,12 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	  		<li class="menuLi"><h:commandLink action="#{headerBean.managerReservations}" value="Reservierungen" class="reservations menulink"/></li>
 		</h:form>
 		
-		<!-- Hier wird der aktuelle User begrüßt -->
+		<!-- Wenn kein User angemeldet ist, wird der Login-Button angezeigt. -->
 		<h:form rendered="#{empty headerBean.loginService.activeUser}">
   			<li id="login" style="float:right;  margin-top: 11px;"><h:commandLink action="#{headerBean.login}" value="Login" class="login menulink"/></li>
   		</h:form>
   		
-  		<!-- Prüfung, ob ein Login oder Logout-Button notwendig ist -->
+  		<!-- Ist ein User angemeldet, wird der Logout-Button und eine Begrüßung des aktuelle Users angezeigt. -->
   		<h:form rendered="#{not empty headerBean.loginService.activeUser}">
   			<li style="float:right; margin-top: 11px;"><h:commandLink action="#{headerBean.logout}" value="Logout" class="login menulink"/></li>
 			<li class="name"><h:outputLabel value="Hallo #{headerBean.loginService.activeUser.prename}!"/></li>

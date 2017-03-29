@@ -35,8 +35,8 @@ public class LoginBean implements Serializable{
 	public String login(){
 		if(loginService.login(user, password)){
 			return PageRenderingService.getHome();
-			
 		}
+
 		if(FacesContext.getCurrentInstance().getMessageList().isEmpty()) {
 			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Die E-Mail-Adresse oder das Passwort ist nicht korrekt.", "");
 			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
@@ -58,7 +58,5 @@ public class LoginBean implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 	
 }

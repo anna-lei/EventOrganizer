@@ -39,7 +39,6 @@ public class Event {
 	private Double price;
 	@Column
 	private boolean publicly;
-		
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
@@ -50,8 +49,8 @@ public class Event {
 
 	}
 
-	public Event( String name, String description, String location, Date date,
-			Integer numberOfTickets, Double price, boolean publicly, User user) {
+	public Event( String name, String description, String location, Date date, Integer numberOfTickets, 
+			Double price, boolean publicly, User user) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -63,7 +62,6 @@ public class Event {
 		this.user = user;
 	}
 
-	
 	public Integer getEventid() {
 		return eventid;
 	}

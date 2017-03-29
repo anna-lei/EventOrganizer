@@ -16,6 +16,7 @@ import de.auc.services.interfaces.IUserService;
  */
 @ManagedBean
 public class UserExistMailValidator {
+	
 	@ManagedProperty("#{userService}")
 	private IUserService userService;
 	
@@ -25,18 +26,18 @@ public class UserExistMailValidator {
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Der User mit dieser E-Mail-Adresse existiert bereits.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
 		}
+		
 		if(value.toString().length()>50) {
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Die E-Mail-Adresse ist zu lang.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
-
 		} 
+		
 		//Regex zur Prüfung des Mailformats
 		if(!value.toString().matches("^[a-zA-ZäöüÄÖÜß0-9_.+-]+@[a-zA-ZÄÖÜäöüß0-9_.+-]+\\.[a-zA-Z]+$")) {
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Es handelt sich um keine valide E-Mail-Adresse.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
-
 		}
 	}
 	
@@ -47,4 +48,5 @@ public class UserExistMailValidator {
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
+	
 }

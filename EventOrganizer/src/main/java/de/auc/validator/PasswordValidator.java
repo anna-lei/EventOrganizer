@@ -14,6 +14,7 @@ import de.auc.services.interfaces.IUserService;
  */
 @ManagedBean
 public class PasswordValidator {
+	
 	@ManagedProperty("#{userService}")
 	private IUserService userService;
 
@@ -23,18 +24,14 @@ public class PasswordValidator {
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Das Passwort muss mindestens eine Zahl enthalten.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
-			
 		}
+
 		if (value.toString().length() < 8) {
 			// Das Passwort ist zu kurz
 			FacesMessage registerMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Das Passwort muss mindestens 8 Zeichen lang sein.", "");
 			FacesContext.getCurrentInstance().addMessage("registerform:register", registerMessage);
-
 		}
-		
-		
-
 	}
 
 	public IUserService getUserService() {

@@ -18,8 +18,8 @@ import de.auc.services.interfaces.IUserService;
 @Named(value="loginService")
 @SessionScoped
 public class LoginService implements Serializable, ILoginService{
-	private static final long serialVersionUID = 9199053082352550746L;
 	
+	private static final long serialVersionUID = 9199053082352550746L;
 	private User activeUser;
 	
 	@Inject
@@ -70,12 +70,10 @@ public class LoginService implements Serializable, ILoginService{
 		activeUser = user;
 	}
 
-	
 	@Override
 	public User getActiveUser() {
 		return activeUser;
 	}
-
 	
 	@Override
 	public void setActiveUser(User activeUser) {

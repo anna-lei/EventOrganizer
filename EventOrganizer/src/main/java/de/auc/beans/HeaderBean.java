@@ -18,7 +18,7 @@ import de.auc.services.interfaces.ILoginService;
 public class HeaderBean implements Serializable{
 
 	private static final long serialVersionUID = -1648932165104363219L;
-
+	
 	@Inject
 	private ILoginService loginService;
 	

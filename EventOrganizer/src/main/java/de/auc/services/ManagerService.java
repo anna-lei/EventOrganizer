@@ -8,9 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 
 import de.auc.model.Event;
 import de.auc.services.interfaces.IEventService;
@@ -47,7 +45,6 @@ public class ManagerService implements Serializable, IManagerService{
 		query.setParameter("user", loginService.getActiveUser());
 		managerEvents = query.getResultList();
 		return managerEvents;
-		
 	}
 
 	/**
@@ -60,26 +57,23 @@ public class ManagerService implements Serializable, IManagerService{
 	public List<Event> searchManagerEvents(String searchText, String filter) {
 		List<Event> currentEvents = new ArrayList<Event>();
 
-		
-			if (filter == null) {
-				TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user and e.name LIKE :search", Event.class);
-				query.setParameter("search", "%" + searchText + "%");
-				query.setParameter("user", loginService.getActiveUser());
-				currentEvents = query.getResultList();
-				return currentEvents;
-						
-				// Prüfung des Events auf den Suchtext und mitgegebenen Filter
-				// in Bezug auf den Status der Veröffentlichung
-			} else {
-				TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user and e.name LIKE :search and e.publicly = :filter", Event.class);
-				query.setParameter("search", "%" + searchText + "%");
-				query.setParameter("user", loginService.getActiveUser());
-				query.setParameter("filter", Boolean.parseBoolean(filter));
-				currentEvents = query.getResultList();
-				return currentEvents;
-				
-			} 
-
+		if (filter == null) {
+			TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user and e.name LIKE :search", Event.class);
+			query.setParameter("search", "%" + searchText + "%");
+			query.setParameter("user", loginService.getActiveUser());
+			currentEvents = query.getResultList();
+			return currentEvents;
+		}
+		// Prüfung des Events auf den Suchtext und mitgegebenen Filter
+		// in Bezug auf den Status der Veröffentlichung
+		else {
+			TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.user = :user and e.name LIKE :search and e.publicly = :filter", Event.class);
+			query.setParameter("search", "%" + searchText + "%");
+			query.setParameter("user", loginService.getActiveUser());
+			query.setParameter("filter", Boolean.parseBoolean(filter));
+			currentEvents = query.getResultList();
+			return currentEvents;
+		}
 	}
 
 	/**
@@ -115,7 +109,6 @@ public class ManagerService implements Serializable, IManagerService{
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
 
 	/**

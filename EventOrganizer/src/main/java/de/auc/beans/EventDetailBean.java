@@ -22,7 +22,6 @@ import de.auc.services.interfaces.ILoginService;
 @RequestScoped
 public class EventDetailBean implements Serializable {
 
-
 	private static final long serialVersionUID = 6046177730610293298L;
 	private Event event;
 
@@ -35,7 +34,6 @@ public class EventDetailBean implements Serializable {
 	public void eventDetails() throws IOException {
 		int eventid = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("eventid"));
 		
-		System.out.println("HIER::: " + eventService.getEventById(eventid).getDate() + " Event: " + eventService.getEventById(eventid).getName());
 		if (loginService.getActiveUser() != null) {
 			if (loginService.getActiveUser().isManagerflag()) {
 				if(eventService.getEventById(eventid).getUser().getMail()==loginService.getActiveUser().getMail()){

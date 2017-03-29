@@ -60,7 +60,7 @@ public class EventBean implements Serializable {
 			}
 			if (!searchText.isEmpty()) {
 				FacesMessage searchMessage = new FacesMessage(FacesMessage.SEVERITY_INFO,
-						"Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden", "");
+						"Für den Suchbegriff \"" + searchText + "\" wurden folgende Events gefunden:", "");
 				FacesContext.getCurrentInstance().addMessage("search", searchMessage);
 			}
 		}

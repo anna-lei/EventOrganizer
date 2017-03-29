@@ -54,7 +54,6 @@ public class ReservationEventService implements Serializable, IReservationEventS
 		}
 	}
 	
-	
 	@Override
 	public String generateCode() {
 		return UUID.randomUUID().toString();

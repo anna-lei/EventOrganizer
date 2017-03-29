@@ -30,8 +30,6 @@ public class ReservationBean implements Serializable{
 	private Integer selectedTickets = 2;
 	private Reservation reservation;
 	private List<Reservation> managerReservations = new ArrayList<Reservation>();
-
-		
 	
 	@Inject
 	private IReservationEventService reservationEventService;
@@ -49,6 +47,7 @@ public class ReservationBean implements Serializable{
 			FacesMessage loginMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sie müssen für diese Operation angemeldet sein.", "");
 			FacesContext.getCurrentInstance().addMessage("loginform:login", loginMessage);
 			return PageRenderingService.getLogin();
+			
 		//Hier wird geprüft, ob die angegebene Menge an Tickets nicht größer ist als die Anzahl an verfügbaren Tickets
 		} else if (event.getNumberOfTickets()<selectedTickets){
 			FacesMessage reservationMessage = 

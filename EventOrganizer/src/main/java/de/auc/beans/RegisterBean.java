@@ -112,7 +112,6 @@ public class RegisterBean implements Serializable{
 		this.password2 = password2;
 	}
 
-
 	public boolean isManagerflag() {
 		return managerflag;
 	}

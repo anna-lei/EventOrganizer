@@ -30,7 +30,6 @@ public class User {
 	private String prename;
 	@Column
 	private Date date;
-	
 	@Column(unique= true)
 	private String mail;
 	@Column
@@ -43,10 +42,8 @@ public class User {
 	public User() {
 		
 	}
-
 	
-	public User(String name, String prename, Date date, String mail, Integer password,
-			boolean managerflag) {
+	public User(String name, String prename, Date date, String mail, Integer password, boolean managerflag) {
 		super();
 		this.name = name;
 		this.prename = prename;

@@ -48,7 +48,4 @@ public class UserConverter implements Converter{
 		this.userService = userService;
 	}
 
-
-	
-
 }

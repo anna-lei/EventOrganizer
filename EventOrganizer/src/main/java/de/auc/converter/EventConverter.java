@@ -15,7 +15,6 @@ import de.auc.services.interfaces.IEventService;
  */
 @ManagedBean
 public class EventConverter implements Converter{
-
 	
 	@ManagedProperty("#{eventService}")
 	private IEventService eventService;
@@ -25,20 +24,18 @@ public class EventConverter implements Converter{
 		if(value == null) {
 			return value;
 		}
+		
 		//Dieser Fall wird für ein neues Event genutzt. Das leere Event wird dann durch die entsprechende JSF-Seite gefüllt.
 		if(value.equals("new")){
 			return new Event();
-			
 		} else {
 			try {
 				return eventService.getEventById(Integer.parseInt(value));
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				return null;
-				
 			}
 		}
-		
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package de.auc.services;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
@@ -28,6 +27,7 @@ import de.auc.model.User;
 public class DatabaseService implements Serializable {
 
 	private static final long serialVersionUID = 8077242953068886253L;
+	
 	@Inject
 	private EntityManager entityManager;
 
@@ -41,7 +41,6 @@ public class DatabaseService implements Serializable {
 	 * Überprüft, ob Inhalte in der Datenbank vorhanden sind. Beispielhaft wird
 	 * die Tabelle User durchsucht. Ist diese gefüllt, kann davon ausgegangen
 	 * werden, dass auch Events existieren aufgrund der PostConstruct-Methode.
-	 * 
 	 * @return
 	 */
 	public boolean getContentTables() {
@@ -53,32 +52,33 @@ public class DatabaseService implements Serializable {
 		} else {
 			return false;
 		}
-
 	}
 
 	@PostConstruct
 	public void initEventOrganizerData() {
 		if (getContentTables()) {
 			Calendar today = Calendar.getInstance();
+			/**
+			 * Hier wird die Zeitzone auf die Mitteleuropäischen Sommerzeit gesetzt.
+			 * Dadurch wird gewährleistet, dass die Zeitangaben korrekt gespeichert werden.
+			 * Die xhtml-Seiten, in denen ein Datum angezeigt wird, 
+			 * beinhalten ebenfalls die Angabe der Zeitzone zur richtigen Darstellung.
+			 */
 			today.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-
-			// TODO: Diese User nach dem Testen entfernen!
-			User testUser = new User("Claudia", "Schaefers", new Date(System.currentTimeMillis()), "cs@jee.de", "123".hashCode(),
-					true);
-			User testUser1 = new User("a", "a", new Date(System.currentTimeMillis()), "a", "a".hashCode(), true);
-			User testUser2 = new User("b", "b", new Date(System.currentTimeMillis()), "b", "b".hashCode(), false);
 
 			/** Testdaten: Benutzer */
 			today.set(1976, 10, 16);
-			User manager1 = new User("Manager", "Thomas", today.getTime(), "Thomas.Manager@eventfull.de", "Event123".hashCode(),
-					true);
+			User manager1 = new User("Manager", "Thomas", today.getTime(), "Thomas.Manager@eventfull.de", 
+					"Event123".hashCode(), true);
 			today.set(1988, 4, 20);
 			User manager2 = new User("Managment", "Sabine", today.getTime(), "Sabine_Management@eventtickets.de",
 					"Tickets23".hashCode(), true);
 			today.set(1994, 7, 28);
-			User user1 = new User("Fanfull", "Karl", today.getTime(), "Fanfull-Karl@web.de", "Musik287".hashCode(), false);
+			User user1 = new User("Fanfull", "Karl", today.getTime(), "Fanfull-Karl@web.de", 
+					"Musik287".hashCode(), false);
 			today.set(1975, 9, 12);
-			User user2 = new User("Musikliebe", "Leona", today.getTime(), "musikliebe@gmx.de", "Leona129".hashCode(), false);
+			User user2 = new User("Musikliebe", "Leona", today.getTime(), "musikliebe@gmx.de", 
+					"Leona129".hashCode(), false);
 
 			/** Testdaten: Event */
 			today.set(2017, 10, 15, 20, 30, 0);
@@ -208,22 +208,14 @@ public class DatabaseService implements Serializable {
 					"Berlin", today.getTime(), 1800, 44.90, false, manager2);
 
 			/** Testdaten: Reservierung */
-			
 			Reservation reservation1 = new Reservation(UUID.randomUUID().toString(), 6, user1, event1);
 			Reservation reservation2 = new Reservation(UUID.randomUUID().toString(), 2, user1, event2);
 			Reservation reservation3 = new Reservation(UUID.randomUUID().toString(), 4, user2, event5);
 			Reservation reservation4 = new Reservation(UUID.randomUUID().toString(), 5, user2, event6);
-		
 
 			try {
 				/** Testdaten: Benutzer - DB-Import */
 				entityManager.getTransaction().begin();
-
-				// TODO: raus nehmen
-				entityManager.persist(testUser);
-				entityManager.persist(testUser1);
-				entityManager.persist(testUser2);
-
 				entityManager.persist(manager1);
 				entityManager.persist(manager2);
 				entityManager.persist(user1);
@@ -289,4 +281,5 @@ public class DatabaseService implements Serializable {
 			}
 		}
 	}
+	
 }

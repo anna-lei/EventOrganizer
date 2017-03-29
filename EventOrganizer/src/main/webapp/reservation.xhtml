@@ -40,8 +40,10 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<th><h:outputText value="#{reservationBean.event.name}" /></th>
 					</tr>
 					<tr>
-						<td class="firstColumn">Datum:</td>
-						<td><h:outputText value="#{reservationBean.event.date}" ><f:convertDateTime timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:outputText></td>
+						<td class="firstColumn">Datum und Uhrzeit:</td>
+						<td><h:outputText value="#{reservationBean.event.date}" >
+							<f:convertDateTime timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:outputText>
+						</td>
 					</tr>
 					<tr>
 						<td class="firstColumn">Ort:</td>
@@ -64,9 +66,16 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<tr>
 						<td class="firstColumn">Anzahl Tickets:</td>
 						<td>
-							<!-- Falls noch keine Reservierung vollzogen wurde, Nutzung des Input-Textes, ansonsten ein Output-Text inklusive der selektierten Tickets  -->
-							<h:inputText id="reservation" p:type="number"  p:min="1" value="#{reservationBean.selectedTickets}" converterMessage="Bitte geben Sie eine ganzzahlige Anzahl an Tickets an." rendered="#{empty reservationBean.reservation.code}"/>
-							<h:outputText rendered="#{not empty reservationBean.reservation.code}" value="#{reservationBean.selectedTickets}" />
+							<!-- Falls noch keine Reservierung vollzogen wurde, Nutzung des Input-Textes, 
+								ansonsten ein Output-Text inklusive der selektierten Tickets  -->
+							<h:inputText id="reservation" required="true" p:type="number"  p:min="1" value="#{reservationBean.selectedTickets}" 
+								converterMessage="Bitte geben Sie eine ganzzahlige Anzahl an Tickets an." 
+								rendered="#{empty reservationBean.reservation.code}" requiredMessage="Es muss sich um eine ganze Zahl an Tickets handeln." 
+								validatorMessage="Es muss mindestens ein Ticket zur Reservierung angegeben werden." class="inputText">
+								<f:validateLongRange minimum="1" />
+							</h:inputText>
+							<h:outputText rendered="#{not empty reservationBean.reservation.code}" 
+								value="#{reservationBean.selectedTickets}" />
 							
 							<h:commandButton class="button" action="#{reservationBean.reserve}" value="Reservieren" rendered="#{empty reservationBean.reservation.code}">
 								<f:param name="eventid" value="#{reservationBean.event.eventid}" />
@@ -74,8 +83,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							
 						</td>
 					</tr>
-						<!--Anhängen des Reservierungscodes nach erfolgreicher Reservierung -->
 					<tr>
+						<!--Anhängen des Reservierungscodes nach erfolgreicher Reservierung -->
 						<td class="firstColumn"><h:outputLabel value="Reservierungscode:" rendered="#{not empty reservationBean.reservation.code}" class="success" /></td>
 						<td><h:outputText value="#{reservationBean.reservation.code}" rendered="#{not empty reservationBean.reservation.code}" class="success" /></td>
 					</tr>

@@ -10,7 +10,6 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 
 import de.auc.model.Event;
 import de.auc.services.interfaces.IEventService;
@@ -28,8 +27,6 @@ public class EventService implements Serializable, IEventService {
 	@Inject
 	private EntityManager entityManager;
 
-
-	
 	@Override
 	public List<Event> searchEvents(String searchText) {
 		List<Event> currentEvents = new ArrayList<Event>();
@@ -38,7 +35,6 @@ public class EventService implements Serializable, IEventService {
 		query.setParameter("search", "%" + searchText + "%");
 		currentEvents = query.getResultList();
 		return currentEvents;
-		
 	}
 
 	
@@ -49,11 +45,9 @@ public class EventService implements Serializable, IEventService {
 		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.publicly=true", Event.class);
 		currentEvents = query.getResultList();
 		return currentEvents;
-		
 	}
 
 	@Override
-	@Transactional
 	public void addEvent(Event event){
 		try {
 			entityManager.getTransaction().begin();

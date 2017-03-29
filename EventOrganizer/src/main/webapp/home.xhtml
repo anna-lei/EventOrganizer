@@ -38,7 +38,8 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 				<h:column>
 					<f:facet name="header">Event</f:facet>
 					
-					<!-- TODO Kommentar -->
+					<!-- Hat der eingeloggte User das Event erstellt, wird er auf die Detailansicht geleitet.
+						Ansonsten hat der eingeloggte User die Möglichkeit Tickets zu dem ausgewähltem Event zu reservieren. -->
 					<h:form>
 						<h:commandLink  action="#{eventDetailBean.eventDetails}" value="#{event.name}" class="link">
 							 <f:param name="eventid" value="#{event.eventid}" />
@@ -46,7 +47,7 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					</h:form>
 				</h:column>
 				<h:column>
-					<f:facet name="header">Datum</f:facet>
+					<f:facet name="header">Datum und Uhrzeit</f:facet>
 					<h:outputText value="#{event.date}" ><f:convertDateTime timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:outputText>
 				</h:column>
 				<h:column>

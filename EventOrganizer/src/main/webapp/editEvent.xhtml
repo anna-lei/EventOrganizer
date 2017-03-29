@@ -27,8 +27,6 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 				<h:outputLabel class="headline">Event bearbeiten</h:outputLabel>
 				<br/> <br/>
-
-
 				<h:form class="form">
 				<!-- Ausgabe der Messages durch die Validatoren -->
 					<h:messages class="warning"/>
@@ -36,32 +34,46 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 					<table>
 						<tr>
 							<td class="firstColumn"><h:outputLabel>Titel: </h:outputLabel></td>
-							<td><h:inputText validatorMessage="Der Titel muss gefüllt sein und maximal 50 Zeichen umfassen."  value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
-									<f:validateLength minimum="1" maximum="50" />
-								</h:inputText>
+							<td><h:inputText validatorMessage="Der Titel muss gefüllt sein und maximal 100 Zeichen umfassen."  
+								value="#{managerBean.event.name}" class="inputText" a:autofocus="true">
+								<f:validateLength minimum="1" maximum="100" /></h:inputText>
 							</td>
 						</tr>
 						<tr>
-							<td class="firstColumn"><h:outputLabel>Datum:</h:outputLabel></td>
-							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" converterMessage="Das Datum konnte nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy HH:mm" validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy HH:mm">
-									<f:convertDateTime  timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/>
-								</h:inputText></td>
+							<td class="firstColumn"><h:outputLabel>Datum und Uhrzeit:</h:outputLabel></td>
+							<td><h:inputText id="edit" value="#{managerBean.event.date}" class="inputText" 
+								converterMessage="Das Datum und die Uhrzeit konnten nicht konvertiert werden. Es muss im folgenden Format angegeben werden: dd.MM.yyyy HH:mm" 
+								validator="#{dateValidator.validate}" p:placeholder="dd.MM.yyyy HH:mm">
+								<f:convertDateTime  timeZone="GMT+2" pattern="dd.MM.yyyy HH:mm"/></h:inputText>
+							</td>
 						</tr>
 						<tr>
 							<td class="firstColumn"><h:outputLabel class="firstColumn">Ort:</h:outputLabel></td>
-							<td><h:inputText required="true" requiredMessage="Es muss ein Ort angegeben werden." value="#{managerBean.event.location}" class="inputText" /></td>
+							<td><h:inputText required="true" requiredMessage="Es muss ein Ort angegeben werden." 
+								value="#{managerBean.event.location}" class="inputText" />
+							</td>
 						</tr>
 						<tr>
 							<td class="firstColumn"><h:outputLabel>Anzahl Tickets: </h:outputLabel></td>
-							<td><h:inputText required="true" p:type="number"  p:min="1" value="#{managerBean.event.numberOfTickets}" requiredMessage="Es muss sich um eine ganze Zahl an Tickets handeln." class="inputText"/></td>
+							<td><h:inputText required="true" p:type="number"  p:min="1" value="#{managerBean.event.numberOfTickets}" 
+								requiredMessage="Es muss sich um eine ganze Zahl an Tickets handeln." 
+								validatorMessage="Die Anzahl der Tickets für ein Event muss mindestens 1 sein." class="inputText">
+								<f:validateLongRange minimum="1" /></h:inputText>
+							</td>
 						</tr>
 						<tr>
 							<td class="firstColumn"><h:outputLabel>Preis pro Ticket in €: </h:outputLabel></td>
-							<td><h:inputText required="true" pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" value="#{managerBean.event.price}" requiredMessage="Der Preis muss angegeben werden und maximal zwei Nachkomma-Stellen haben." class="inputText"/></td>
+							<td><h:inputText required="true" pt:type="number" pt:min="0" pt:step="0.01" maxFractionDigits="2" 
+								value="#{managerBean.event.price}" requiredMessage="Der Preis muss angegeben werden und maximal zwei Nachkomma-Stellen haben." 
+								validatorMessage="Der Preis pro Ticket muss positiv sein." class="inputText">
+								<f:validateLongRange minimum="0" /></h:inputText>
+							</td>
 						</tr>
 						<tr>
 							<td  class="firstColumn"><h:outputLabel>Beschreibung:</h:outputLabel></td>
-							<td><h:inputTextarea required="true" value="#{managerBean.event.description}" class="inputText" style="min-width: 500px; min-height: 150px;" requiredMessage="Die Beschreibung muss gefüllt sein."/></td>
+							<td><h:inputTextarea required="true" value="#{managerBean.event.description}" class="inputText" 
+								style="min-width: 500px; min-height: 150px;" requiredMessage="Die Beschreibung muss gefüllt sein."/>
+							</td>
 						</tr>
 					</table>
 					<br />
@@ -70,8 +82,11 @@ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 						<h:outputLink  value="#{pageRenderingService.getMyEventDetail()}" class="linkButton">
 							<f:param name="eventid" value="#{managerBean.event.eventid}" />Abbrechen
 						</h:outputLink>
-						<!-- Button, um das Event zu speichern -->
-						<h:commandButton class="button" action="#{managerBean.save}" value="Speichern"/>
+						<!-- commandLink, um das Event zu speichern -->
+						<h:commandLink class="linkButton" action="#{managerBean.save}" value="Speichern">
+							 <f:param name="eventid" value="#{managerBean.event.eventid}" />
+						</h:commandLink>
+					
 					</div>
 				
 				</h:form>
