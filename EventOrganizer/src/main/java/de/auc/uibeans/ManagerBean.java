@@ -1,4 +1,4 @@
-package de.auc.beans;
+package de.auc.uibeans;
 
 import java.io.IOException;
 import java.io.Serializable;

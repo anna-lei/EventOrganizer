@@ -1,4 +1,4 @@
-package de.auc.beans;
+package de.auc.uibeans;
 
 import java.io.Serializable;
 
@@ -55,6 +55,7 @@ public class LoginBean implements Serializable{
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}
