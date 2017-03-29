@@ -1,8 +1,10 @@
 package de.auc.services;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -34,7 +36,7 @@ public class PageRenderingService implements Serializable{
 		return PAGE_MYEVENTS_JSF;
 	}
 	
-	public static String getHome() {
+	public static String getHome()  {
 		return PAGE_HOME_JSF;
 	}
 	

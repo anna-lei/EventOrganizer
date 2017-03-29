@@ -30,7 +30,13 @@ public class EventConverter implements Converter{
 			return new Event();
 			
 		} else {
-			return eventService.getEventById(Integer.parseInt(value));
+			try {
+				return eventService.getEventById(Integer.parseInt(value));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				return null;
+				
+			}
 		}
 		
 	}
