@@ -2,6 +2,7 @@ package de.auc.services;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -37,12 +38,16 @@ public class EventService implements Serializable, IEventService {
 		return currentEvents;
 	}
 
-	
+	/**
+	 * Gibt eine Liste aller zukünftigen und veröffentlichten Events zurück.
+	 */
 	@Override
 	public List<Event> getPubliclyEvents() {
+		Calendar today = Calendar.getInstance();
 		List<Event> currentEvents = new ArrayList<Event>();
 
-		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.publicly=true", Event.class);
+		TypedQuery<Event> query = entityManager.createQuery("SELECT e FROM Event e where e.publicly=true and e.date > :now", Event.class);
+		query.setParameter("now", today.getTime());
 		currentEvents = query.getResultList();
 		return currentEvents;
 	}
